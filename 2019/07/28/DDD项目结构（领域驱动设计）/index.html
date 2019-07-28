@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="Dawn_南风"><meta name="author" content="Dawn_南风"><meta name="description" content="DDD项目结构（领域驱动设计）"><meta name="copyright" content="Dawn_南风"><title>DDD项目结构（领域驱动设计） | null</title><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-stun.png?v=1.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-stun.png?v=1.1.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css?v=1.1.4"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  sidebar: {"offsetTop":"20px"},
+  back2top: {"enable":true,"animation":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  notification: {"copy_success":"复制成功","copy_error":"复制失败"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="header" style="background-image: url(/blog_assert/index_paper.jpg)"><nav class="header-nav"><div class="header-nav-inner"><div class="fa fa-bars header-nav-menu-icon"></div><div class="header-nav-menu"><span><a href="/"><i class="fa fa-home"></i>首页</a></span><span><a href="/archives/"><i class="fa fa-folder-open"></i>归档</a></span><span><a href="/categories/"><i class="fa fa-th"></i>分类</a></span><span><a href="/tags/"><i class="fa fa-tags"></i>标签</a></span><span><a href="/about/"><i class="fa fa-user"></i>关于</a></span></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="site-info-title"></div><div class="site-info-subtitle"></div></div></div></header><main id="main"><div class="main-inner"><aside id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-overview">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DDD项目结构（领域驱动设计）"><span class="toc-number">1.</span> <span class="toc-text">DDD项目结构（领域驱动设计）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#infra（基础设施层）"><span class="toc-number">1.0.1.</span> <span class="toc-text">infra（基础设施层）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#domain（逻辑层）"><span class="toc-number">1.0.2.</span> <span class="toc-text">domain（逻辑层）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#app（事务层）"><span class="toc-number">1.0.3.</span> <span class="toc-text">app（事务层）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#api（接口层）"><span class="toc-number">1.0.4.</span> <span class="toc-text">api（接口层）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#名词解释"><span class="toc-number">1.0.5.</span> <span class="toc-text">名词解释</span></a></li></ol></li></ol></div></section><section class="hide sidebar-overview"><div class="sidebar-author"><img class="sidebar-author-avatar" src="/blog_assert/author.gif" alt="avatar"><p class="sidebar-author-motto">他时纵有逢君处，应作人间白发身</p></div><div class="sidebar-state"><div class="sidebar-state-item sidebar-state-posts"><a href="/archives/"><div class="sidebar-state-item-count">2</div><div class="sidebar-state-item-name">文章</div></a></div><div class="sidebar-state-item sidebar-state-categories"><a href="/categories/"><div class="sidebar-state-item-count">0</div><div class="sidebar-state-item-name">分类</div></a></div><div class="sidebar-state-item sidebar-state-tags"><a href="/tags/"><div class="sidebar-state-item-count">0</div><div class="sidebar-state-item-name">标签</div></a></div></div><div class="sidebar-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg" alt="creative commons"></a></div></section><div class="sidebar-progress"><div class="sidebar-progress-read"><span>你已阅读了</span><span class="sidebar-progress-number"></span></div><div class="sidebar-progress-line"></div></div></div></aside><div class="content headings code-highlight"><div class="post-header"><h1 class="post-title">DDD项目结构（领域驱动设计）</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-07-28</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>更新于 </span><span>2019-07-28</span></span><span class="post-header-meta-word-count"><i class="fa fa-file-word-o"></i><span>字数统计 </span><span>522</span></span><span class="post-header-meta-reading-time"><i class="fa fa-clock-o"></i><span>阅读时长 </span><span>2m</span></span></div></div><div class="post-body"><h3 id="DDD项目结构（领域驱动设计）"><a href="#DDD项目结构（领域驱动设计）" class="headerlink" title="DDD项目结构（领域驱动设计）"></a>DDD项目结构（领域驱动设计）</h3><a id="more"></a>
+<h5 id="infra（基础设施层）"><a href="#infra（基础设施层）" class="headerlink" title="infra（基础设施层）"></a>infra（基础设施层）</h5><blockquote>
+<p>负责基础资源的定义。</p>
+<p>如如常量类，数据集转换（entity-&gt;DTO）。属性文件的配置，数据库的基本操作，一些底层的工具方法（通过接口获取数据）等。</p>
+</blockquote>
+<h5 id="domain（逻辑层）"><a href="#domain（逻辑层）" class="headerlink" title="domain（逻辑层）"></a>domain（逻辑层）</h5><blockquote>
+<p><strong>（也许理解成服务域更恰当？）</strong></p>
+<p>其中分为两部分repository（资源库）和service（服务层）。</p>
+<blockquote>
+<p>repository（资源库）负责技术逻辑处理。</p>
+<p>在repository中存放的是基础的技术处理（数据库的CRUD），其实现类（impl）在infra中。</p>
+<p>并且<strong>只能做最基础的数据处理</strong>，如CRUD等操作，判空之类的操作都<strong>不能放在</strong>repository中。</p>
+</blockquote>
+<blockquote>
+<p>service负责业务逻辑处理，一般用于处理多表操作。</p>
+</blockquote>
+<blockquote>
+<p>里面的数据对象包括entity和VO。</p>
+<blockquote>
+<p><strong>VO</strong>只负责业务数据流转，没有处理逻辑，复杂的业务处理逻辑放在service中，domain中的service不需要impl，直接写。</p>
+<p>VO中的字段不必与entity中的一一对应，只要拥有实际业务处理逻辑需要的字段即可。</p>
+</blockquote>
+<blockquote>
+<p><strong>entity</strong>不仅包括与数据库交互，而且也包括基本单表的业务处理。业务处理包括<strong>数据校验</strong>等操作但不限于其他操作。</p>
+</blockquote>
+</blockquote>
+<p><strong>PS：</strong> domain层中的任何操作都不代表事务处理，因此不要加service注解或者事务回滚等注解。</p>
+</blockquote>
+<h5 id="app（事务层）"><a href="#app（事务层）" class="headerlink" title="app（事务层）"></a>app（事务层）</h5><blockquote>
+<p>app层处理实际需求，进行事务控制，流程调度。</p>
+<p>其中的assembler是DTO组装器，命名为XxxAssembler.java，复杂的数据库交互过程将entity组装成DTO后使用，简单的直接使用Entity即可。</p>
+<p>在app层进行事务控制，由app层中的service调用组装domain层中的各种方法。</p>
+</blockquote>
+<h5 id="api（接口层）"><a href="#api（接口层）" class="headerlink" title="api（接口层）"></a>api（接口层）</h5><blockquote>
+<p>api层做接口。负责与外界的数据交互。</p>
+<p>实际上，最后与数据库交互做持久化处理的实际上是DTO和entity。</p>
+</blockquote>
+<h5 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h5><blockquote>
+<p><strong>DTO：</strong>负责数据库交互。<br><strong>entity：</strong>负责数据库交互、单表的业务处理。<br><strong>VO：</strong>负责业务数据传输。</p>
+</blockquote>
+</div><footer class="post-footer"><div class="post-footer-end"><span>------</span><span>本文结束，感谢您的阅读</span><span>------</span></div><div class="post-footer-copyright"><div class="copyright-author"><span class="copyright-name">本文作者:</span><span class="copyright-value"><a href="http://yoursite.com">Dawn_南风</a></span></div><div class="copyright-link"><span class="copyright-name">本文链接:</span><span class="copyright-value"><a href="http://yoursite.com/2019/07/28/DDD项目结构（领域驱动设计）/">http://yoursite.com/2019/07/28/DDD项目结构（领域驱动设计）/</a></span></div><div class="copyright-notice"><span class="copyright-name">版权声明:</span><span class="copyright-value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav id="paginator"><div class="post-paginator"><div class="article-next pull-right"><a href="/2019/07/28/MyBatis拦截器--从基础到与Spring Boot整合/"><span class="title">MyBatis拦截器--从基础到与Spring Boot整合</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div></main><footer id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span class="fa fa-heart  footer-separator" style="color: #ff0000"></span><span>Dawn_南风</span></div><div><span class="footer-powered">由 <a href="http://hexo.io/" title="hexo" target="_blank" rel="noopener">hexo</a> 强力驱动</span><span> v3.9.0.</span><span class="footer-separator">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="stun" target="_blank" rel="noopener">stun</a></span><span> v1.1.4.</span></div></div></footer><div id="back-top"><div class="back-top-inner" data-popover="回到顶部" data-popover-pos="up"><i class="fa fa-rocket"></i></div></div></div><script>if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+  window.Promise = null;
+}
+</script><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@1.2.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="/js/utils.js?v=1.1.4"></script><script src="/js/stun-boot.js?v=1.1.4"></script><script src="/js/copy.js?v=1.1.4"></script><script src="/js/scroll.js?v=1.1.4"></script><script src="/js/header.js?v=1.1.4"></script><script src="/js/sidebar.js?v=1.1.4"></script></body></html>

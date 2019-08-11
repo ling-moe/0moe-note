@@ -13,47 +13,67 @@ var CONFIG = {
   notification: {"copy_success":"复制成功","copy_error":"复制失败"}
 };
 
-window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="header" style="background-image: url(/blog_assert/index_paper.jpg)"><nav class="header-nav"><div class="header-nav-inner"><div class="fa fa-bars header-nav-menu-icon"></div><div class="header-nav-menu"><span><a href="/"><i class="fa fa-home"></i>首页</a></span><span><a href="/archives/"><i class="fa fa-folder-open"></i>归档</a></span><span><a href="/"><i class="fa fa-th"></i>分类</a></span><span><a href="/"><i class="fa fa-tags"></i>标签</a></span><span><a href="/"><i class="fa fa-user"></i>关于</a></span></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="site-info-title">Dawn</div><div class="site-info-subtitle">南风</div></div></div></header><main id="main"><div class="main-inner"><aside id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-overview">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DDD项目结构（领域驱动设计）"><span class="toc-number">1.</span> <span class="toc-text">DDD项目结构（领域驱动设计）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#infra（基础设施层）"><span class="toc-number">1.0.1.</span> <span class="toc-text">infra（基础设施层）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#domain（逻辑层）"><span class="toc-number">1.0.2.</span> <span class="toc-text">domain（逻辑层）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#app（事务层）"><span class="toc-number">1.0.3.</span> <span class="toc-text">app（事务层）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#api（接口层）"><span class="toc-number">1.0.4.</span> <span class="toc-text">api（接口层）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#名词解释"><span class="toc-number">1.0.5.</span> <span class="toc-text">名词解释</span></a></li></ol></li></ol></div></section><section class="hide sidebar-overview"><div class="sidebar-author"><img class="sidebar-author-avatar" src="/blog_assert/author.gif" alt="avatar"><p class="sidebar-author-motto">他时纵有逢君处，应作人间白发身</p></div><div class="sidebar-state"><div class="sidebar-state-item sidebar-state-posts"><a href="/archives/"><div class="sidebar-state-item-count">3</div><div class="sidebar-state-item-name">文章</div></a></div><div class="sidebar-state-item sidebar-state-categories"><a href="/"><div class="sidebar-state-item-count">3</div><div class="sidebar-state-item-name">分类</div></a></div><div class="sidebar-state-item sidebar-state-tags"><a href="/"><div class="sidebar-state-item-count">1</div><div class="sidebar-state-item-name">标签</div></a></div></div><div class="sidebar-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg" alt="creative commons"></a></div></section><div class="sidebar-progress"><div class="sidebar-progress-read"><span>你已阅读了</span><span class="sidebar-progress-number"></span></div><div class="sidebar-progress-line"></div></div></div></aside><div class="content headings code-highlight"><div class="post-header"><h1 class="post-title">DDD项目结构（领域驱动设计）</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-07-28</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>更新于 </span><span>2019-07-28</span></span><span class="post-header-meta-word-count"><i class="fa fa-file-word-o"></i><span>字数统计 </span><span>522</span></span><span class="post-header-meta-reading-time"><i class="fa fa-clock-o"></i><span>阅读时长 </span><span>2m</span></span></div></div><div class="post-body"><h3 id="DDD项目结构（领域驱动设计）"><a href="#DDD项目结构（领域驱动设计）" class="headerlink" title="DDD项目结构（领域驱动设计）"></a>DDD项目结构（领域驱动设计）</h3><a id="more"></a>
-<h5 id="infra（基础设施层）"><a href="#infra（基础设施层）" class="headerlink" title="infra（基础设施层）"></a>infra（基础设施层）</h5><blockquote>
-<p>负责基础资源的定义。</p>
-<p>如如常量类，数据集转换（entity-&gt;DTO）。属性文件的配置，数据库的基本操作，一些底层的工具方法（通过接口获取数据）等。</p>
-</blockquote>
-<h5 id="domain（逻辑层）"><a href="#domain（逻辑层）" class="headerlink" title="domain（逻辑层）"></a>domain（逻辑层）</h5><blockquote>
-<p><strong>（也许理解成服务域更恰当？）</strong></p>
-<p>其中分为两部分repository（资源库）和service（服务层）。</p>
-<blockquote>
-<p>repository（资源库）负责技术逻辑处理。</p>
-<p>在repository中存放的是基础的技术处理（数据库的CRUD），其实现类（impl）在infra中。</p>
-<p>并且<strong>只能做最基础的数据处理</strong>，如CRUD等操作，判空之类的操作都<strong>不能放在</strong>repository中。</p>
-</blockquote>
-<blockquote>
-<p>service负责业务逻辑处理，一般用于处理多表操作。</p>
-</blockquote>
-<blockquote>
-<p>里面的数据对象包括entity和VO。</p>
-<blockquote>
-<p><strong>VO</strong>只负责业务数据流转，没有处理逻辑，复杂的业务处理逻辑放在service中，domain中的service不需要impl，直接写。</p>
-<p>VO中的字段不必与entity中的一一对应，只要拥有实际业务处理逻辑需要的字段即可。</p>
-</blockquote>
-<blockquote>
-<p><strong>entity</strong>不仅包括与数据库交互，而且也包括基本单表的业务处理。业务处理包括<strong>数据校验</strong>等操作但不限于其他操作。</p>
-</blockquote>
-</blockquote>
-<p><strong>PS：</strong> domain层中的任何操作都不代表事务处理，因此不要加service注解或者事务回滚等注解。</p>
-</blockquote>
-<h5 id="app（事务层）"><a href="#app（事务层）" class="headerlink" title="app（事务层）"></a>app（事务层）</h5><blockquote>
-<p>app层处理实际需求，进行事务控制，流程调度。</p>
-<p>其中的assembler是DTO组装器，命名为XxxAssembler.java，复杂的数据库交互过程将entity组装成DTO后使用，简单的直接使用Entity即可。</p>
-<p>在app层进行事务控制，由app层中的service调用组装domain层中的各种方法。</p>
-</blockquote>
-<h5 id="api（接口层）"><a href="#api（接口层）" class="headerlink" title="api（接口层）"></a>api（接口层）</h5><blockquote>
-<p>api层做接口。负责与外界的数据交互。</p>
-<p>实际上，最后与数据库交互做持久化处理的实际上是DTO和entity。</p>
-</blockquote>
-<h5 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h5><blockquote>
-<p><strong>DTO：</strong>负责数据库交互。<br><strong>entity：</strong>负责数据库交互、单表的业务处理。<br><strong>VO：</strong>负责业务数据传输。</p>
-</blockquote>
-</div><footer class="post-footer"><div class="post-footer-end"><span>------</span><span>本文结束，感谢您的阅读</span><span>------</span></div><div class="post-footer-copyright"><div class="copyright-author"><span class="copyright-name">本文作者:</span><span class="copyright-value"><a href="https://yukdawn.gitee.io">Dawn_南风</a></span></div><div class="copyright-link"><span class="copyright-name">本文链接:</span><span class="copyright-value"><a href="https://yukdawn.gitee.io/2019/07/28/DDD项目结构（领域驱动设计）/">https://yukdawn.gitee.io/2019/07/28/DDD项目结构（领域驱动设计）/</a></span></div><div class="copyright-notice"><span class="copyright-name">版权声明:</span><span class="copyright-value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-footer-tags"><i class="fa fa-tags icon"></i><span><a href="https://yukdawn.gitee.io/tags/随笔-小说/" title="随笔,小说">随笔,小说</a></span></div><nav id="paginator"><div class="post-paginator"><div class="article-prev pull-left"><a href="/2019/07/29/helloword/"><i class="fa fa-chevron-left"></i><span class="title">helloword</span></a></div><div class="article-next pull-right"><a href="/2019/07/28/MyBatis拦截器--从基础到与Spring Boot整合/"><span class="title">MyBatis拦截器--从基础到与Spring Boot整合</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div></main><footer id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span class="fa fa-heart  footer-separator" style="color: #ff0000"></span><span>Dawn_南风</span></div></div></footer><div id="back-top"><div class="back-top-inner" data-popover="回到顶部" data-popover-pos="up"><i class="fa fa-rocket"></i></div></div></div><script>if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="header" style="background-image: url(/blog_assert/index_paper.jpg)"><nav class="header-nav"><div class="header-nav-inner"><div class="fa fa-bars header-nav-menu-icon"></div><div class="header-nav-menu"><span><a href="/"><i class="fa fa-home"></i>首页</a></span><span><a href="/archives/"><i class="fa fa-folder-open"></i>归档</a></span><span><a href="/"><i class="fa fa-th"></i>分类</a></span><span><a href="/"><i class="fa fa-tags"></i>标签</a></span><span><a href="/"><i class="fa fa-user"></i>关于</a></span></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="site-info-title">Dawn</div><div class="site-info-subtitle">南风</div></div></div></header><main id="main"><div class="main-inner"><aside id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-overview">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DDD项目结构（领域驱动设计）"><span class="toc-number">1.</span> <span class="toc-text">DDD项目结构（领域驱动设计）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总体概览"><span class="toc-number">1.2.</span> <span class="toc-text">总体概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#infra（基础设施层）"><span class="toc-number">1.3.</span> <span class="toc-text">infra（基础设施层）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#domain（领域层）"><span class="toc-number">1.4.</span> <span class="toc-text">domain（领域层）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#app（事务层）"><span class="toc-number">1.5.</span> <span class="toc-text">app（事务层）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#api（接口层）"><span class="toc-number">1.6.</span> <span class="toc-text">api（接口层）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结语"><span class="toc-number">1.7.</span> <span class="toc-text">结语</span></a></li></ol></li></ol></div></section><section class="hide sidebar-overview"><div class="sidebar-author"><img class="sidebar-author-avatar" src="/blog_assert/author.gif" alt="avatar"><p class="sidebar-author-motto">他时纵有逢君处，应作人间白发身</p></div><div class="sidebar-state"><div class="sidebar-state-item sidebar-state-posts"><a href="/archives/"><div class="sidebar-state-item-count">2</div><div class="sidebar-state-item-name">文章</div></a></div><div class="sidebar-state-item sidebar-state-categories"><a href="/"><div class="sidebar-state-item-count">3</div><div class="sidebar-state-item-name">分类</div></a></div><div class="sidebar-state-item sidebar-state-tags"><a href="/"><div class="sidebar-state-item-count">2</div><div class="sidebar-state-item-name">标签</div></a></div></div><div class="sidebar-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg" alt="creative commons"></a></div></section><div class="sidebar-progress"><div class="sidebar-progress-read"><span>你已阅读了</span><span class="sidebar-progress-number"></span></div><div class="sidebar-progress-line"></div></div></div></aside><div class="content headings code-highlight"><div class="post-header"><h1 class="post-title">DDD项目结构（领域驱动设计）</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-07-28</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>更新于 </span><span>2019-07-30</span></span><span class="post-header-meta-word-count"><i class="fa fa-file-word-o"></i><span>字数统计 </span><span>1.3k</span></span><span class="post-header-meta-reading-time"><i class="fa fa-clock-o"></i><span>阅读时长 </span><span>7m</span></span></div></div><div class="post-body"><h1 id="DDD项目结构（领域驱动设计）"><a href="#DDD项目结构（领域驱动设计）" class="headerlink" title="DDD项目结构（领域驱动设计）"></a>DDD项目结构（领域驱动设计）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>DDD项目结构（领域驱动设计）这种工程结构模型我接触了一年多，虽然每个人都有不同的理解，不过相比于MVC的工程结构，对于代码结构的清晰度，还有业务逻辑的分层方面，DDD都是优于MVC的。</p>
+<p>尽管每个人对DDD模型的理解不同，但大家的思路总归是一致的（api、app、domain、infra），争议之处在于一些包放置的层级以及代码分层。</p>
+<p>因此这里记录了对DDD工程结构的理解，以后我会不定期更新。</p>
+<p>互相分享，互相学习。</p>
+<a id="more"></a>
+
+<h2 id="总体概览"><a href="#总体概览" class="headerlink" title="总体概览"></a>总体概览</h2><p>先晒出工程目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">├─ api</span><br><span class="line">│   ├─ controller</span><br><span class="line">│   ├─ dto</span><br><span class="line">├─ app</span><br><span class="line">│   ├─ service</span><br><span class="line">│   │  └─ impl</span><br><span class="line">├─ domain</span><br><span class="line">│   ├─ entity</span><br><span class="line">│   ├─ service</span><br><span class="line">│   │  └─ impl</span><br><span class="line">│   ├─ repository</span><br><span class="line">│   │  └─ impl</span><br><span class="line">│   ├─ vo</span><br><span class="line">├─ infra</span><br><span class="line">│   ├─ config</span><br><span class="line">│   ├─ constant</span><br><span class="line">│   ├─ util</span><br><span class="line">│   ├─ mappper</span><br><span class="line">│   ├─ feign</span><br></pre></td></tr></table></figure>
+
+<p>我会从下到上依次进行说明。</p>
+<h2 id="infra（基础设施层）"><a href="#infra（基础设施层）" class="headerlink" title="infra（基础设施层）"></a>infra（基础设施层）</h2><p>infra主要负责基础资源的定义。</p>
+<p>基础资源常见类型为以下几种：</p>
+<ul>
+<li>config</li>
+<li>constant</li>
+<li>utils</li>
+<li>mapper</li>
+<li>feign</li>
+</ul>
+<p>这里涉及到一个问题，什么是基础资源？</p>
+<p>基础资源指的是工程用到的工具类、配置类、常量类（枚举类）、获取数据的接口（包括从数据库中获取数据的mapper层和从外部接口获取数据的feign层）。</p>
+<p>基础资源构成了工程的骨架和常用工具，一个工程只有骨架（config，mapper，feign）齐全，工具（constant， utils）完备，才能正常进行开发。</p>
+<h2 id="domain（领域层）"><a href="#domain（领域层）" class="headerlink" title="domain（领域层）"></a>domain（领域层）</h2><p>领域层是整个DDD模型的核心，是上层（app层）和下层（infra层）的桥梁</p>
+<p>领域层主要分为三个包</p>
+<ul>
+<li>entity</li>
+<li>repository</li>
+<li>service</li>
+<li>vo</li>
+</ul>
+<p><code>entity</code>对应的是实体层，也是业务对象的核心，数据库中表映射的对象就是实体类。</p>
+<p>entity的基础意义是作为数据库表映射的<code>实体对象</code>。允许存在对实体类属性操作的封装方法。</p>
+<p>比如说，现在有需求对这个实体进行一个取消操作。取消操作需要设置cancelFlag=0，并且设置取消日期和操作人。这时就可以对这个取消操作封装成一个方法。</p>
+<p><code>repository</code>层对应的是资源库层，代表<code>对资源的操作</code>。在DDD模型中，mapper层仅能代表和数据库的交互操作，而DDD中资源这个概念并不仅仅指的是数据库的数据，还包括网络资源（http）和文件资源等。</p>
+<p>并且业务逻辑中，最常见的是头行结构的业务数据，可在repository层进行头行操作的业务逻辑封装。</p>
+<p>service层这里指的是<code>领域service层</code>（domain），并非是<code>应用service层</code>（app）。</p>
+<p>这里的service层是对业务操作进行一个粗粒度的封装，但不是完全封装。完全封装是应用service层要做的事。</p>
+<p>举个例子：有一个订单系统，有自动审批配置，如果自动审批开启，则要在订单提交后进行自动审批。</p>
+<p>领域service层要做的就是封装两个方法，提交和审批方法，而判断是否进行自动审批，则应该交给应用service层去做</p>
+<p>VO只负责数据流转，没有处理逻辑，负责对网络资源，数据库资源进行接收</p>
+<h2 id="app（事务层）"><a href="#app（事务层）" class="headerlink" title="app（事务层）"></a>app（事务层）</h2><p>app层处理实际需求，进行事务控制，流程调度。</p>
+<p>只有一层</p>
+<ul>
+<li>service</li>
+</ul>
+<p>app层需要对domain层，infra层的接口进行调用，并且要求实现对业务逻辑的完全封装（例如在domain层举的订单系统审批例子）。</p>
+<p>另外，是否需要事务控制则需要根据需求进行具体分析</p>
+<h2 id="api（接口层）"><a href="#api（接口层）" class="headerlink" title="api（接口层）"></a>api（接口层）</h2><p>api层做接口。负责与外界的数据交互。</p>
+<p>api层主要分为两个包</p>
+<ul>
+<li>controller</li>
+<li>dto</li>
+</ul>
+<p>controller层是整个系统和外部交互的端口，因此权限控制，资源访问方法控制（GET、POST、PUT、DELETE）、数据校验控制，数据防篡改控制，都要在这一层做</p>
+<p>dto层则是负责接收外部系统传递的数据。</p>
+<p>对于权限控制和数据控制方面，可在infra层定义相关的拦截器进行处理，controller层仅需要增加校验注解。这一层要尽可能的轻。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>在这种工程结构下，DTO的作用实际上是被严重弱化了，仅仅起到了一个接收数据的作用。</p>
+<p>还有事务方面，repository和domain是一定要加事务控制的，app则要根据具体业务逻辑来做。</p>
+<p>之前接过一个需求，要求订单生成完毕后传入另一个系统，无论另一个系统返回什么都要生成订单，此时app层就需要做独立事务处理，因此是否要求事务控制之还是要看实际应用场景是什么。</p>
+<p>另外还有数据库事务隔离级别的问题，比如mysql的默认级别是可重复读，tidb的默认级别是快照隔离，也因此被坑过。不过这个不在本文讨论范围之内，只是要强调事务控制要看具体场景，脱离实际应用都是空谈。</p>
+</div><footer class="post-footer"><div class="post-footer-end"><span>------</span><span>本文结束，感谢您的阅读</span><span>------</span></div><div class="post-footer-copyright"><div class="copyright-author"><span class="copyright-name">本文作者:</span><span class="copyright-value"><a href="https://yukdawn.gitee.io">Dawn_南风</a></span></div><div class="copyright-link"><span class="copyright-name">本文链接:</span><span class="copyright-value"><a href="https://yukdawn.gitee.io/2019/07/28/DDD项目结构（领域驱动设计）/">https://yukdawn.gitee.io/2019/07/28/DDD项目结构（领域驱动设计）/</a></span></div><div class="copyright-notice"><span class="copyright-name">版权声明:</span><span class="copyright-value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-footer-tags"><i class="fa fa-tags icon"></i><span><a href="https://yukdawn.gitee.io/tags/工程结构-DDD/" title="工程结构,DDD">工程结构,DDD</a></span></div><nav id="paginator"><div class="post-paginator"><div class="article-next pull-right"><a href="/2019/07/28/MyBatis拦截器--从基础到与Spring Boot整合/"><span class="title">MyBatis拦截器--从基础到与Spring Boot整合</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div></main><footer id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span class="fa fa-heart  footer-separator" style="color: #ff0000"></span><span>Dawn_南风</span></div></div></footer><div id="back-top"><div class="back-top-inner" data-popover="回到顶部" data-popover-pos="up"><i class="fa fa-rocket"></i></div></div></div><script>if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
   window.Promise = null;
 }
 </script><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@1.2.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="/js/utils.js?v=1.1.4"></script><script src="/js/stun-boot.js?v=1.1.4"></script><script src="/js/copy.js?v=1.1.4"></script><script src="/js/scroll.js?v=1.1.4"></script><script src="/js/header.js?v=1.1.4"></script><script src="/js/sidebar.js?v=1.1.4"></script></body></html>

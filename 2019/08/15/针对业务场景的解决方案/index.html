@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="Dawn_南风, Dawn, Dawn_南风 南风 南风破晓"><meta name="author" content="Dawn_南风"><meta name="description" content="针对业务场景的解决方案"><meta name="copyright" content="Dawn_南风"><meta name="google-site-verification" content="Vh-C_WKYdTKCJSX4GysRnoKRQnXr-CvL_4rAoev0OPs"><title>针对业务场景的解决方案 | Dawn</title><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-stun.png?v=1.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-stun.png?v=1.1.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css?v=1.1.4"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  sidebar: {"offsetTop":"20px"},
+  back2top: {"enable":true,"animation":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  notification: {"copy_success":"复制成功","copy_error":"复制失败"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="header" style="background-image: url(/blog_assert/index_paper.jpg)"><nav class="header-nav"><div class="header-nav-inner"><div class="fa fa-bars header-nav-menu-icon"></div><div class="header-nav-menu"><span><a href="/"><i class="fa fa-home"></i>首页</a></span><span><a href="/archives/"><i class="fa fa-folder-open"></i>归档</a></span><span><a href="/"><i class="fa fa-th"></i>分类</a></span><span><a href="/"><i class="fa fa-tags"></i>标签</a></span><span><a href="/"><i class="fa fa-user"></i>关于</a></span></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="site-info-title">Dawn</div><div class="site-info-subtitle">南风</div></div></div></header><main id="main"><div class="main-inner"><aside id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-overview">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#针对业务场景的解决方案"><span class="toc-number">1.</span> <span class="toc-text">针对业务场景的解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础篇"><span class="toc-number">1.2.</span> <span class="toc-text">基础篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#表设计原则"><span class="toc-number">1.2.1.</span> <span class="toc-text">表设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#锁的设计"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">锁的设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字段的设计"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">字段的设计</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API设计原则"><span class="toc-number">1.2.2.</span> <span class="toc-text">API设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#API连接符"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">API连接符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工程结构设计原则"><span class="toc-number">1.2.3.</span> <span class="toc-text">工程结构设计原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务设计原则"><span class="toc-number">1.2.4.</span> <span class="toc-text">事务设计原则</span></a></li></ol></li></ol></li></ol></div></section><section class="hide sidebar-overview"><div class="sidebar-author"><img class="sidebar-author-avatar" src="/blog_assert/author.gif" alt="avatar"><p class="sidebar-author-motto">他时纵有逢君处，应作人间白发身</p></div><div class="sidebar-state"><div class="sidebar-state-item sidebar-state-posts"><a href="/archives/"><div class="sidebar-state-item-count">3</div><div class="sidebar-state-item-name">文章</div></a></div><div class="sidebar-state-item sidebar-state-categories"><a href="/"><div class="sidebar-state-item-count">3</div><div class="sidebar-state-item-name">分类</div></a></div><div class="sidebar-state-item sidebar-state-tags"><a href="/"><div class="sidebar-state-item-count">2</div><div class="sidebar-state-item-name">标签</div></a></div></div><div class="sidebar-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg" alt="creative commons"></a></div></section><div class="sidebar-progress"><div class="sidebar-progress-read"><span>你已阅读了</span><span class="sidebar-progress-number"></span></div><div class="sidebar-progress-line"></div></div></div></aside><div class="content headings code-highlight"><div class="post-header"><h1 class="post-title">针对业务场景的解决方案</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-08-15</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>更新于 </span><span>2019-08-22</span></span><span class="post-header-meta-word-count"><i class="fa fa-file-word-o"></i><span>字数统计 </span><span>1.5k</span></span><span class="post-header-meta-reading-time"><i class="fa fa-clock-o"></i><span>阅读时长 </span><span>7m</span></span></div></div><div class="post-body"><h1 id="针对业务场景的解决方案"><a href="#针对业务场景的解决方案" class="headerlink" title="针对业务场景的解决方案"></a>针对业务场景的解决方案</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        这是一个系列专题，是根据我所经历的具体的业务场景所用到的解决方案和技术架构设计的一个汇总。</p>
+<p>​        一方面是对一直以来的经历做一个总结，在以后做项目的时候有一个基础的想法。</p>
+<p>​        另一方面是秉承这开源的精神，希望大家在接到甲方爸爸的需求时候，起码一个基本的解决方案的思路方向，不至于心里没底。</p>
+<p>​        如果针对某一场景，在以后的工作中有更好的解决方案，我也会更新进来并说明原因及优劣。</p>
+<a id="more"></a>
+
+<h2 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h2><p>​        基础篇包括表设计原则，API设计原则，工程结构设计原则，事务设计原则</p>
+<h3 id="表设计原则"><a href="#表设计原则" class="headerlink" title="表设计原则"></a>表设计原则</h3><h4 id="锁的设计"><a href="#锁的设计" class="headerlink" title="锁的设计"></a>锁的设计</h4><p>​        乐观锁和悲观锁都是经常使用的锁，现在大多使用的都是乐观锁，悲观锁由于其特性（一人编辑，其他人无法做任何操作，包括查看）很少被使用，这里不作赘述，现在主要是对于锁存在的情况下，异步更新数据所引发的问题。</p>
+<blockquote>
+<p>场景：</p>
+<p>​        在一个订单系统中，用到的数据库是TiDB，采用乐观锁。订单在提交后，需要将数据导出到外部系统，并且在外部系统生成外部系统订单号，由于外部系统的响应时间不确定，因此需要做成异步。</p>
+<p>问题：</p>
+<p>​        由于TiDB的默认事务级别是<code>快照隔离</code>，并不是他文档上描述的<code>可重复读</code>。因此在主线程事务没有提交时，异步线程开启，此时主线程的事务还未提交，这时候订单的版本号并不是最新的，如果异步事务根据这个版本号更新，则会发生无法更新的异常，异步事务直接结束。</p>
+<p>解决：</p>
+<p>​        订单增加回传状态flag相关字段，并将异步回传的事务提取出来，与订单能正常提交的事务拆开，两个事务放在controller层。在确定订单提交事务的提交后，再进行异步事务。是否成功更新回传flag。</p>
+<p>预防：</p>
+<p>​        两手准备：</p>
+<ol>
+<li>应把异步字段单独提取出来形成一张表，表中不应含有锁字段<code>版本号</code>。这样可以解决锁的问题</li>
+<li>在调用异步方法时，应直接传入最新的对象，不应传入对象的主键ID在再异步方法中查出数据。这样可以解决数据库隔离级别的问题。</li>
+</ol>
+</blockquote>
+<h4 id="字段的设计"><a href="#字段的设计" class="headerlink" title="字段的设计"></a>字段的设计</h4><p>​        对于业务单据来说，字段主要分为两大类：<code>状态字段</code>、<code>值字段</code>、<code>管控维度字段</code>。状态字段包括新建状态，提交状态等；值字段包括金额，数量等；管控维度字段包括公司，业务实体，采购组织等。</p>
+<blockquote>
+<p>状态字段：</p>
+<p>​        状态字段需要记录三点：状态FLAG，状态操作人，状态操作时间</p>
+<p>​        如果头状态需要根据行状态算出来，则要根据具体业务判断头状态是设置FLAG还是CODE</p>
+<p>​        状态需要分为状态CODE和状态FLAG，某种状态可以结合当前状态及标志位算出来。头状态的数量一般为``行状态数量阶乘-1(n!-1)`注意不要落下。</p>
+<p>​        状态操作人如果有多个，建议做成行转列，之后进行扩展也比较容易。</p>
+<p>值字段：</p>
+<p>​        值字段包括金额，数量等，这些在数据库中要注意小数点位数，java中注意要中BigDeciaml类型，防止精度丢失。</p>
+<p>管控维度字段：</p>
+<p>​        管控维度字段比较有争议的地方就是应该放在头上还是行上。这里需要看业务的具体要求和单据类型。以采购订单为例，供应商自然是要放在头上的，而物料肯定是要放在行上的。</p>
+<p>​        然后是头行上都有管控字段。这种情况一定要和产品商量好，如果行上字段的数据不一致，头应该怎么处理。举个订单上税率的例子，行上有税率（行税率），头上有税率（头税率），当行税率不一致，头税率怎么取（整张订单该以何种税率结算？）</p>
+<p>​        还有一点就是冗余设计。这种字段一般都配有code和name，是否需要在当前业务表上冗余这些字段，则要看单据是否要存储当前时间点信息，则需要冗余；如果要和管控字段的实时信息一致，则不要冗余。</p>
+</blockquote>
+<h3 id="API设计原则"><a href="#API设计原则" class="headerlink" title="API设计原则"></a>API设计原则</h3><p>API需要符合restful设计原则，这里对restful不作解释，只对细节作一些说明。</p>
+<h4 id="API连接符"><a href="#API连接符" class="headerlink" title="API连接符"></a>API连接符</h4><blockquote>
+<p>eg. PUT /v1/{orderId}/batch-enable</p>
+<p>这是一个简单的restful风格的API，其中有几点需要作下说明</p>
+<ol>
+<li>连字符需要用中划线<code>-</code>，不要使用batchCreate因为使用驼峰某些古老的浏览器不支持。下划线也不要使用，URL中的hostname不允许使用下划线，统一风格使用<code>-</code>；而且用户体验不好（只按-键和shift+-键哪个更简单一点？）。</li>
+<li>最好是加上版本号控制<code>/v1</code>，以后如果升级大版本可以直接<code>v2</code>，对外兼容性好，不需要再改动原本url</li>
+<li>启用禁用功能不要让外部传递flag，而应该是系统暴露启用禁用端口。</li>
+</ol>
+</blockquote>
+<h3 id="工程结构设计原则"><a href="#工程结构设计原则" class="headerlink" title="工程结构设计原则"></a>工程结构设计原则</h3><p>使用DDD工程结构，可查看<a href="https://yukdawn.gitee.io/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/"><strong>DDD项目结构（领域驱动设计）</strong></a>。方法封装粒度按照infra-&gt;domain-&gt;app的顺序从低到高。</p>
+<h3 id="事务设计原则"><a href="#事务设计原则" class="headerlink" title="事务设计原则"></a>事务设计原则</h3><p>主要是两点，默认事务与独立事务，独立事务需要谨慎使用</p>
+</div><footer class="post-footer"><div class="post-footer-end"><span>------</span><span>本文结束，感谢您的阅读</span><span>------</span></div><div class="post-footer-copyright"><div class="copyright-author"><span class="copyright-name">本文作者:</span><span class="copyright-value"><a href="https://yukdawn.gitee.io">Dawn_南风</a></span></div><div class="copyright-link"><span class="copyright-name">本文链接:</span><span class="copyright-value"><a href="https://yukdawn.gitee.io/2019/08/15/针对业务场景的解决方案/">https://yukdawn.gitee.io/2019/08/15/针对业务场景的解决方案/</a></span></div><div class="copyright-notice"><span class="copyright-name">版权声明:</span><span class="copyright-value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-footer-tags"><i class="fa fa-tags icon"></i><span><a href="https://yukdawn.gitee.io/tags/解决方案/" title="解决方案">解决方案</a></span></div><nav id="paginator"><div class="post-paginator"><div class="article-next pull-right"><a href="/2019/07/28/DDD项目结构（领域驱动设计）/"><span class="title">DDD项目结构（领域驱动设计）</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div></main><footer id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span class="fa fa-heart  footer-separator" style="color: #ff0000"></span><span>Dawn_南风</span></div></div></footer><div id="back-top"><div class="back-top-inner" data-popover="回到顶部" data-popover-pos="up"><i class="fa fa-rocket"></i></div></div></div><script>if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+  window.Promise = null;
+}
+</script><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@1.2.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="/js/utils.js?v=1.1.4"></script><script src="/js/stun-boot.js?v=1.1.4"></script><script src="/js/copy.js?v=1.1.4"></script><script src="/js/scroll.js?v=1.1.4"></script><script src="/js/header.js?v=1.1.4"></script><script src="/js/sidebar.js?v=1.1.4"></script></body></html>

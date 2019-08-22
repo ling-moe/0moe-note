@@ -617,7 +617,7 @@ code {
 .code-highlight figure.highlight.js figcaption:not(.custom) span::before {
   content: 'js';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.javascript figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -625,7 +625,7 @@ code {
 .code-highlight figure.highlight.javascript figcaption:not(.custom) span::before {
   content: 'javascript';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.python figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -633,7 +633,7 @@ code {
 .code-highlight figure.highlight.python figcaption:not(.custom) span::before {
   content: 'python';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.ruby figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -641,7 +641,7 @@ code {
 .code-highlight figure.highlight.ruby figcaption:not(.custom) span::before {
   content: 'ruby';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.xml figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -649,7 +649,7 @@ code {
 .code-highlight figure.highlight.xml figcaption:not(.custom) span::before {
   content: 'xml';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.html figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -657,7 +657,7 @@ code {
 .code-highlight figure.highlight.html figcaption:not(.custom) span::before {
   content: 'html';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.css figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -665,7 +665,7 @@ code {
 .code-highlight figure.highlight.css figcaption:not(.custom) span::before {
   content: 'css';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.php figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -673,7 +673,7 @@ code {
 .code-highlight figure.highlight.php figcaption:not(.custom) span::before {
   content: 'php';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.sql figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -681,7 +681,7 @@ code {
 .code-highlight figure.highlight.sql figcaption:not(.custom) span::before {
   content: 'sql';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.coffeescript figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -689,7 +689,7 @@ code {
 .code-highlight figure.highlight.coffeescript figcaption:not(.custom) span::before {
   content: 'coffeescript';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.java figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -697,7 +697,7 @@ code {
 .code-highlight figure.highlight.java figcaption:not(.custom) span::before {
   content: 'java';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.bash figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -705,7 +705,7 @@ code {
 .code-highlight figure.highlight.bash figcaption:not(.custom) span::before {
   content: 'bash';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.markdown figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -713,7 +713,7 @@ code {
 .code-highlight figure.highlight.markdown figcaption:not(.custom) span::before {
   content: 'markdown';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.kotlin figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -721,7 +721,7 @@ code {
 .code-highlight figure.highlight.kotlin figcaption:not(.custom) span::before {
   content: 'kotlin';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.c figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -729,7 +729,7 @@ code {
 .code-highlight figure.highlight.c figcaption:not(.custom) span::before {
   content: 'c';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.c\+\+ figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -737,7 +737,7 @@ code {
 .code-highlight figure.highlight.c\+\+ figcaption:not(.custom) span::before {
   content: 'c\+\+';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.c# figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -745,7 +745,7 @@ code {
 .code-highlight figure.highlight.c# figcaption:not(.custom) span::before {
   content: 'c#';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.go figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -753,7 +753,7 @@ code {
 .code-highlight figure.highlight.go figcaption:not(.custom) span::before {
   content: 'go';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.golang figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -761,7 +761,7 @@ code {
 .code-highlight figure.highlight.golang figcaption:not(.custom) span::before {
   content: 'golang';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.less figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -769,7 +769,7 @@ code {
 .code-highlight figure.highlight.less figcaption:not(.custom) span::before {
   content: 'less';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.sass figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -777,7 +777,7 @@ code {
 .code-highlight figure.highlight.sass figcaption:not(.custom) span::before {
   content: 'sass';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.scss figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -785,7 +785,7 @@ code {
 .code-highlight figure.highlight.scss figcaption:not(.custom) span::before {
   content: 'scss';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.stylus figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -793,7 +793,7 @@ code {
 .code-highlight figure.highlight.stylus figcaption:not(.custom) span::before {
   content: 'stylus';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.styl figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -801,7 +801,7 @@ code {
 .code-highlight figure.highlight.styl figcaption:not(.custom) span::before {
   content: 'styl';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.typescript figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -809,7 +809,7 @@ code {
 .code-highlight figure.highlight.typescript figcaption:not(.custom) span::before {
   content: 'typescript';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.ts figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -817,7 +817,7 @@ code {
 .code-highlight figure.highlight.ts figcaption:not(.custom) span::before {
   content: 'ts';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.yml figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -825,7 +825,7 @@ code {
 .code-highlight figure.highlight.yml figcaption:not(.custom) span::before {
   content: 'yml';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.yaml figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -833,7 +833,7 @@ code {
 .code-highlight figure.highlight.yaml figcaption:not(.custom) span::before {
   content: 'yaml';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.matlab figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -841,7 +841,7 @@ code {
 .code-highlight figure.highlight.matlab figcaption:not(.custom) span::before {
   content: 'matlab';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.objectivec figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -849,7 +849,7 @@ code {
 .code-highlight figure.highlight.objectivec figcaption:not(.custom) span::before {
   content: 'objectivec';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.makefile figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -857,7 +857,7 @@ code {
 .code-highlight figure.highlight.makefile figcaption:not(.custom) span::before {
   content: 'makefile';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.scala figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -865,7 +865,7 @@ code {
 .code-highlight figure.highlight.scala figcaption:not(.custom) span::before {
   content: 'scala';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.gradle figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -873,7 +873,7 @@ code {
 .code-highlight figure.highlight.gradle figcaption:not(.custom) span::before {
   content: 'gradle';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.swift figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -881,7 +881,7 @@ code {
 .code-highlight figure.highlight.swift figcaption:not(.custom) span::before {
   content: 'swift';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.rust figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -889,7 +889,7 @@ code {
 .code-highlight figure.highlight.rust figcaption:not(.custom) span::before {
   content: 'rust';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.lua figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -897,7 +897,7 @@ code {
 .code-highlight figure.highlight.lua figcaption:not(.custom) span::before {
   content: 'lua';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.lisp figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -905,7 +905,7 @@ code {
 .code-highlight figure.highlight.lisp figcaption:not(.custom) span::before {
   content: 'lisp';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.fortran figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -913,7 +913,7 @@ code {
 .code-highlight figure.highlight.fortran figcaption:not(.custom) span::before {
   content: 'fortran';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.dart figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -921,7 +921,7 @@ code {
 .code-highlight figure.highlight.dart figcaption:not(.custom) span::before {
   content: 'dart';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight figure.highlight.perl figcaption:not(.custom) {
   padding: 0.1rem 0;
@@ -929,7 +929,7 @@ code {
 .code-highlight figure.highlight.perl figcaption:not(.custom) span::before {
   content: 'perl';
   margin: 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }
 .code-highlight pre,
 .code-highlight .highlight {
@@ -937,8 +937,8 @@ code {
   margin: 0.5rem 0;
   min-width: 100%;
   line-height: 1.7;
-  color: #7a85b9;
-  background-color: #0f111a;
+  color: #f8f8f2;
+  background-color: #304148;
 }
 .code-highlight pre,
 .code-highlight code {
@@ -970,12 +970,12 @@ code {
   display: block;
   overflow: hidden;
   width: 100%;
-  color: #7a85b9;
-  background-color: #0f111a;
+  color: #f8f8f2;
+  background-color: #304148;
 }
 .code-highlight .highlight figcaption span {
   float: left;
-  color: #7a85b9;
+  color: #f8f8f2;
 }
 .code-highlight .highlight figcaption a {
   float: right;
@@ -991,11 +991,11 @@ code {
 .code-highlight .highlight table .gutter {
   padding: 0 0.6rem;
   width: 1rem;
-  background-color: #0f111a;
+  background-color: #304148;
 }
 .code-highlight .highlight table .gutter pre {
   text-align: right;
-  color: #7a85b9;
+  color: #f8f8f2;
   background-color: inherit;
 }
 .code-highlight .highlight table .code {
@@ -1006,7 +1006,7 @@ code {
 }
 .code-highlight pre .variable,
 .code-highlight pre .attribute {
-  color: #ff5370;
+  color: #ec5f67;
 }
 .code-highlight pre .number,
 .code-highlight pre .preprocessor,
@@ -1014,10 +1014,10 @@ code {
 .code-highlight pre .params,
 .code-highlight pre .constant,
 .code-highlight pre .command {
-  color: #f78c6c;
+  color: #f99157;
 }
 .code-highlight pre .built_in {
-  color: #ffcb6b;
+  color: #ffd700;
 }
 .code-highlight pre .special,
 .code-highlight pre .formula,
@@ -1028,18 +1028,18 @@ code {
 .code-highlight pre .header,
 .code-highlight pre .regexp,
 .code-highlight pre .tag {
-  color: #c3e88d;
+  color: #5fb3b3;
 }
 .code-highlight pre .keyword,
 .code-highlight pre .title {
-  color: #89ddff;
+  color: #99c794;
 }
 .code-highlight pre .function,
 .code-highlight pre .title {
-  color: #82aaff;
+  color: #69c;
 }
 .code-highlight pre .comment {
-  color: #98a4d0;
+  color: #65737e;
 }
 .code-highlight .ruby .constant,
 .code-highlight .xml .tag .title,
@@ -1050,17 +1050,17 @@ code {
 .code-highlight .tag .name,
 .code-highlight .css .class,
 .code-highlight .css .pseudo {
-  color: #ff5370;
+  color: #ec5f67;
 }
 .code-highlight .ruby .class .title,
 .code-highlight .css .rules .attribute,
 .code-highlight .ruby .symbol,
 .code-highlight .xml .cdata {
-  color: #c3e88d;
+  color: #5fb3b3;
 }
 .code-highlight .css .hexcolor,
 .code-highlight .tag .string {
-  color: #89ddff;
+  color: #99c794;
 }
 .code-highlight .python .decorator,
 .code-highlight .python .title,
@@ -1070,20 +1070,20 @@ code {
 .code-highlight .javascript .title,
 .code-highlight .js .title,
 .code-highlight .coffeescript .title {
-  color: #82aaff;
+  color: #69c;
 }
 .code-highlight .tag .attr,
 .code-highlight .javascript .keyword,
 .code-highlight .javascript .function,
 .code-highlight .js .keyword,
 .code-highlight .js .function {
-  color: #c792ea;
+  color: #c594c5;
 }
 .code-highlight .diff .addition {
-  background-color: #91f4a9;
+  background-color: #57c371;
 }
 .code-highlight .diff .deletion {
-  background-color: #ffb1ba;
+  background-color: #df6969;
 }
 .article-sort-item {
   display: -webkit-box;
@@ -2778,5 +2778,5 @@ code {
 }
 .highlight figcaption.custom span {
   margin: 0 1rem 0 0.6rem;
-  color: rgba(122,133,185,0.5);
+  color: rgba(248,248,242,0.5);
 }

@@ -28,12 +28,12 @@ window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="hea
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it gitlab-runner gitlab-runner register \</span><br><span class="line">  --non-interactive \</span><br><span class="line">  --executor "docker" \</span><br><span class="line">  --docker-image alpine:latest \</span><br><span class="line">  --url "https://gitlab.com/" \</span><br><span class="line">  --registration-token "PROJECT_REGISTRATION_TOKEN" \</span><br><span class="line">  --description "docker-runner" \</span><br><span class="line">  --tag-list "docker" \</span><br></pre></td></tr></table></figure>
 
 <p><code>url</code>和 <code>registration-token</code>是在Gitlab的CI/CD页面</p>
-<p><img src="Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/1566811661513.png" alt="1566811661513"></p>
+<p><img src="1566811661513.png" alt="1566811661513"></p>
 </li>
 <li><p>检查注册是否成功</p>
-<p><img src="Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/1566811779484.png" alt="1566811779484"></p>
+<p><img src="1566811779484.png" alt="1566811779484"></p>
 <p>绿色代表注册成功。</p>
-<p><img src="Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/1566811872456.png" alt="1566811872456"></p>
+<p><img src="1566811872456.png" alt="1566811872456"></p>
 <p>如果ip与本机不同，不用担心，这是gitlab分配的地址，可以正常调用。</p>
 </li>
 <li><p>查看日志</p>

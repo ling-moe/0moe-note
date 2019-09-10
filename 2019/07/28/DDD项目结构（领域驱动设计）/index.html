@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="Dawn_南风, Dawn, Dawn_南风 南风 南风破晓"><meta name="author" content="Dawn_南风"><meta name="description" content="DDD项目结构（领域驱动设计）"><meta name="copyright" content="Dawn_南风"><meta name="google-site-verification" content="Vh-C_WKYdTKCJSX4GysRnoKRQnXr-CvL_4rAoev0OPs"><title>DDD项目结构（领域驱动设计） | Dawn</title><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-stun.png?v=1.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-stun.png?v=1.1.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css?v=1.1.4"><script>var Stun = window.Stun || {};
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="Dawn_南风, Dawn, Dawn_南风 南风 南风破晓"><meta name="author" content="Dawn_南风"><meta name="description" content="DDD项目结构（领域驱动设计）"><meta name="copyright" content="Dawn_南风"><meta name="google-site-verification" content="Vh-C_WKYdTKCJSX4GysRnoKRQnXr-CvL_4rAoev0OPs"><script src="/prism/prism.js"></script><link rel="stylesheet" href="/prism/prism.css"><title>DDD项目结构（领域驱动设计） | Dawn</title><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-stun.png?v=1.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-stun.png?v=1.1.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css?v=1.1.4"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -20,9 +20,25 @@ window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="hea
 <a id="more"></a>
 
 <h2 id="总体概览"><a href="#总体概览" class="headerlink" title="总体概览"></a>总体概览</h2><p>先晒出工程目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">├─ api</span><br><span class="line">│   ├─ controller</span><br><span class="line">│   ├─ dto</span><br><span class="line">├─ app</span><br><span class="line">│   ├─ service</span><br><span class="line">│   │  └─ impl</span><br><span class="line">├─ domain</span><br><span class="line">│   ├─ entity</span><br><span class="line">│   ├─ service</span><br><span class="line">│   │  └─ impl</span><br><span class="line">│   ├─ repository</span><br><span class="line">│   │  └─ impl</span><br><span class="line">│   ├─ vo</span><br><span class="line">├─ infra</span><br><span class="line">│   ├─ config</span><br><span class="line">│   ├─ constant</span><br><span class="line">│   ├─ util</span><br><span class="line">│   ├─ mappper</span><br><span class="line">│   ├─ feign</span><br></pre></td></tr></table></figure>
-
-<p>我会从下到上依次进行说明。</p>
+<pre><code>├─ api
+│   ├─ controller
+│   ├─ dto
+├─ app
+│   ├─ service
+│   │  └─ impl
+├─ domain
+│   ├─ entity
+│   ├─ service
+│   │  └─ impl
+│   ├─ repository
+│   │  └─ impl
+│   ├─ vo
+├─ infra
+│   ├─ config
+│   ├─ constant
+│   ├─ util
+│   ├─ mappper
+│   ├─ feign</code></pre><p>我会从下到上依次进行说明。</p>
 <h2 id="infra（基础设施层）"><a href="#infra（基础设施层）" class="headerlink" title="infra（基础设施层）"></a>infra（基础设施层）</h2><p>infra主要负责基础资源的定义。</p>
 <p>基础资源常见类型为以下几种：</p>
 <ul>

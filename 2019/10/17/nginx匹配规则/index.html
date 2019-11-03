@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="Dawn_南风, 南风, Dawn_南风 南风 南风破晓"><meta name="author" content="Dawn_南风"><meta name="description" content="nginx匹配规则"><meta name="copyright" content="Dawn_南风"><meta name="google-site-verification" content="Vh-C_WKYdTKCJSX4GysRnoKRQnXr-CvL_4rAoev0OPs"><script src="/prism/prism.js"></script><link rel="stylesheet" href="/prism/prism.css"><title>nginx匹配规则 | 南风</title><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-stun.png?v=1.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-stun.png?v=1.1.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css?v=1.1.4"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  sidebar: {"offsetTop":"20px"},
+  back2top: {"enable":true,"animation":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  notification: {"copy_success":"复制成功","copy_error":"复制失败"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="header" style="background-image: url(/blog_assert/index_paper.jpg)"><nav class="header-nav"><div class="header-nav-inner"><div class="fa fa-bars header-nav-menu-icon"></div><div class="header-nav-menu"><span><a href="/"><i class="fa fa-home"></i>首页</a></span><span><a href="/archives/"><i class="fa fa-folder-open"></i>归档</a></span><span><a href="/"><i class="fa fa-th"></i>分类</a></span><span><a href="/"><i class="fa fa-tags"></i>标签</a></span><span><a href="/"><i class="fa fa-user"></i>关于</a></span></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="site-info-title">南风</div><div class="site-info-subtitle">用需求驱动学习</div></div></div></header><main id="main"><div class="main-inner"><aside id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-overview">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、语法规则"><span class="toc-number">1.</span> <span class="toc-text">一、语法规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#多个-location-配置的情况下匹配顺序为"><span class="toc-number">1.0.1.</span> <span class="toc-text">多个 location 配置的情况下匹配顺序为</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#二、运用场景"><span class="toc-number">2.</span> <span class="toc-text">二、运用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实际使用中，至少有三个匹配规则定义，如下："><span class="toc-number">2.0.1.</span> <span class="toc-text">实际使用中，至少有三个匹配规则定义，如下：</span></a></li></ol></li></div></section><section class="hide sidebar-overview"><div class="sidebar-author"><img class="sidebar-author-avatar" src="/blog_assert/author.gif" alt="avatar"><p class="sidebar-author-motto">他时纵有逢君处，应作人间白发身</p></div><div class="sidebar-state"><div class="sidebar-state-item sidebar-state-posts"><a href="/archives/"><div class="sidebar-state-item-count">8</div><div class="sidebar-state-item-name">文章</div></a></div><div class="sidebar-state-item sidebar-state-categories"><a href="/"><div class="sidebar-state-item-count">3</div><div class="sidebar-state-item-name">分类</div></a></div><div class="sidebar-state-item sidebar-state-tags"><a href="/"><div class="sidebar-state-item-count">10</div><div class="sidebar-state-item-name">标签</div></a></div></div><div class="sidebar-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg" alt="creative commons"></a></div></section><div class="sidebar-progress"><div class="sidebar-progress-read"><span>你已阅读了</span><span class="sidebar-progress-number"></span></div><div class="sidebar-progress-line"></div></div></div></aside><div class="content headings code-highlight"><div class="post-header"><h1 class="post-title">nginx匹配规则</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-10-17</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>更新于 </span><span>2019-10-17</span></span><span class="post-header-meta-word-count"><i class="fa fa-file-word-o"></i><span>字数统计 </span><span>665</span></span><span class="post-header-meta-reading-time"><i class="fa fa-clock-o"></i><span>阅读时长 </span><span>4m</span></span></div></div><div class="post-body"><h2 id="一、语法规则"><a href="#一、语法规则" class="headerlink" title="一、语法规则"></a>一、语法规则</h2><pre><code class="line-numbers language-nginx">location [=|~|~*|^~] /uri/ { … }</code></pre>
+<table>
+<thead>
+<tr>
+<th align="center">符&nbsp;号</th>
+<th align="left">含&nbsp;义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>=</code></td>
+<td align="left">开头表示精确匹配</td>
+</tr>
+<tr>
+<td align="center"><code>^~</code></td>
+<td align="left">开头表示 uri 以某个常规字符串开头，理解为匹配 <code>url</code> 路径即可。<code>nginx</code> 不对 <code>url</code> 做编码，因此请求为<code>/static/20%/aa</code>，可以被规则<code>^~ /static/ /aa</code>匹配到（注意是空格）</td>
+</tr>
+<tr>
+<td align="center"><code>~</code></td>
+<td align="left">开头表示区分大小写的正则匹配</td>
+</tr>
+<tr>
+<td align="center"><code>~*</code></td>
+<td align="left">开头表示不区分大小写的正则匹配</td>
+</tr>
+<tr>
+<td align="center"><code>/</code></td>
+<td align="left">通用匹配，任何请求都会匹配到</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+
+<h4 id="多个-location-配置的情况下匹配顺序为"><a href="#多个-location-配置的情况下匹配顺序为" class="headerlink" title="多个 location 配置的情况下匹配顺序为"></a>多个 location 配置的情况下匹配顺序为</h4><blockquote>
+<ul>
+<li>首先匹配 <code>=</code></li>
+<li>其次匹配 <code>^~</code></li>
+<li>其次是按文件中顺序的正则匹配</li>
+<li>最后是交给 / 通用匹配</li>
+<li>当有匹配成功时候，停止匹配，按当前匹配规则处理请求</li>
+</ul>
+</blockquote>
+<pre><code class="line-numbers language-nginx">location = / {
+   #规则A
+}
+location = /login {
+   #规则B
+}
+location ^~ /static/ {
+   #规则C
+}
+location ~ \.(gif|jpg|png|js|css)$ {
+   #规则D
+}
+location ~* \.png$ {
+   #规则E
+}
+location / {
+   #规则F
+}</code></pre>
+<blockquote>
+<p>那么产生的效果如下：</p>
+<ul>
+<li>访问根目录 /， 比如 <a href="http://localhost/" target="_blank" rel="noopener">http://localhost/</a> 将匹配规则 A</li>
+<li>访问 <a href="http://localhost/login" target="_blank" rel="noopener">http://localhost/login</a> 将匹配规则 B，<a href="http://localhost/register" target="_blank" rel="noopener">http://localhost/register</a> 则匹配规则 F</li>
+<li>访问 <a href="http://localhost/static/a.html" target="_blank" rel="noopener">http://localhost/static/a.html</a> 将匹配规则 C</li>
+<li>访问 <a href="http://localhost/a.gif" target="_blank" rel="noopener">http://localhost/a.gif</a>, <a href="http://localhost/b.jpg" target="_blank" rel="noopener">http://localhost/b.jpg</a> 将匹配规则 D和规则 E，但是规则 D 顺序优先，规则 E不起作用，而 <a href="http://localhost/static/c.png则优先匹配到规则" target="_blank" rel="noopener">http://localhost/static/c.png则优先匹配到规则</a> C</li>
+<li>访问 <a href="http://localhost/a.PNG" target="_blank" rel="noopener">http://localhost/a.PNG</a> 则匹配规则 E，而不会匹配规则 D，因为规则 E 不区分大小写</li>
+<li>访问 <a href="http://localhost/category/id/1111" target="_blank" rel="noopener">http://localhost/category/id/1111</a> 则最终匹配到规则 F，因为以上规则都不匹配，这个时候应该是 nginx 转发请求给后端应用服务器，比如 FastCGI（PHP），tomcat（jsp），nginx 作为反向代理服务器存在</li>
+</ul>
+</blockquote>
+<h2 id="二、运用场景"><a href="#二、运用场景" class="headerlink" title="二、运用场景"></a>二、运用场景</h2><h4 id="实际使用中，至少有三个匹配规则定义，如下："><a href="#实际使用中，至少有三个匹配规则定义，如下：" class="headerlink" title="实际使用中，至少有三个匹配规则定义，如下："></a>实际使用中，至少有三个匹配规则定义，如下：</h4><pre><code class="line-numbers language-nginx"># 直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。
+# 这里是直接转发给后端应用服务器了，也可以是一个静态首页
+# 第一个必选规则
+location = / {
+    proxy_pass http://tomcat:8080/index
+}
+
+# 第二个必选规则是处理静态文件请求，这是 nginx 作为 http 服务器的强项
+# 有两种配置模式，目录匹配或后缀匹配，任选其一或搭配使用
+location ^~ /static/ {
+    root /webroot/static/;
+}
+location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ {
+    root /webroot/res/;
+}
+
+# 第三个规则就是通用规则，用来转发动态请求到后端应用服务器
+# 非静态文件请求就默认是动态请求，自己根据实际把握
+# 毕竟目前的一些框架的流行，带.php、.jsp后缀的情况很少了
+location / {
+    proxy_pass http://tomcat:8080/
+}</code></pre>
+</div><footer class="post-footer"><div class="post-footer-end"><span>------</span><span>本文结束，感谢您的阅读</span><span>------</span></div><div class="post-footer-copyright"><div class="copyright-author"><span class="copyright-name">本文作者:</span><span class="copyright-value"><a href="https://yukdawn.gitee.io">Dawn_南风</a></span></div><div class="copyright-link"><span class="copyright-name">本文链接:</span><span class="copyright-value"><a href="https://yukdawn.gitee.io/2019/10/17/nginx匹配规则/">https://yukdawn.gitee.io/2019/10/17/nginx匹配规则/</a></span></div><div class="copyright-notice"><span class="copyright-name">版权声明:</span><span class="copyright-value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-footer-tags"><i class="fa fa-tags icon"></i><span><a href="https://yukdawn.gitee.io/tags/nginx/" title="nginx">nginx</a></span><span><a href="https://yukdawn.gitee.io/tags/服务器/" title="服务器">服务器</a></span></div><nav id="paginator"><div class="post-paginator"><div class="article-prev pull-left"><a href="/2019/11/03/使用flex制作滚动列表/"><i class="fa fa-chevron-left"></i><span class="title">使用flex制作滚动列表</span></a></div><div class="article-next pull-right"><a href="/2019/10/17/linux常用命令/"><span class="title">linux常用命令</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div></main><footer id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span class="fa fa-heart  footer-separator" style="color: #ff0000"></span><span>Dawn_南风</span></div></div></footer><div id="back-top"><div class="back-top-inner" data-popover="回到顶部" data-popover-pos="up"><i class="fa fa-rocket"></i></div></div></div><script>if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+  window.Promise = null;
+}
+</script><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@1.2.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="/js/utils.js?v=1.1.4"></script><script src="/js/stun-boot.js?v=1.1.4"></script><script src="/js/copy.js?v=1.1.4"></script><script src="/js/scroll.js?v=1.1.4"></script><script src="/js/header.js?v=1.1.4"></script><script src="/js/sidebar.js?v=1.1.4"></script></body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="Dawn_南风, 南风, Dawn_南风 南风 南风破晓"><meta name="author" content="Dawn_南风"><meta name="description" content="使用flex制作滚动列表"><meta name="copyright" content="Dawn_南风"><meta name="google-site-verification" content="Vh-C_WKYdTKCJSX4GysRnoKRQnXr-CvL_4rAoev0OPs"><script src="/prism/prism.js"></script><link rel="stylesheet" href="/prism/prism.css"><title>使用flex制作滚动列表 | 南风</title><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-stun.png?v=1.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-stun.png?v=1.1.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="/css/index.css?v=1.1.4"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  sidebar: {"offsetTop":"20px"},
+  back2top: {"enable":true,"animation":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  notification: {"copy_success":"复制成功","copy_error":"复制失败"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="header" style="background-image: url(/blog_assert/index_paper.jpg)"><nav class="header-nav"><div class="header-nav-inner"><div class="fa fa-bars header-nav-menu-icon"></div><div class="header-nav-menu"><span><a href="/"><i class="fa fa-home"></i>首页</a></span><span><a href="/archives/"><i class="fa fa-folder-open"></i>归档</a></span><span><a href="/"><i class="fa fa-th"></i>分类</a></span><span><a href="/"><i class="fa fa-tags"></i>标签</a></span><span><a href="/"><i class="fa fa-user"></i>关于</a></span></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="site-info-title">南风</div><div class="site-info-subtitle">用需求驱动学习</div></div></div></header><main id="main"><div class="main-inner"><aside id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-overview">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用flex制作滚动列表"><span class="toc-number">1.</span> <span class="toc-text">使用flex制作滚动列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.2.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果"><span class="toc-number">1.3.</span> <span class="toc-text">效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">1.4.</span> <span class="toc-text">分析</span></a></li></ol></li></ol></div></section><section class="hide sidebar-overview"><div class="sidebar-author"><img class="sidebar-author-avatar" src="/blog_assert/author.gif" alt="avatar"><p class="sidebar-author-motto">他时纵有逢君处，应作人间白发身</p></div><div class="sidebar-state"><div class="sidebar-state-item sidebar-state-posts"><a href="/archives/"><div class="sidebar-state-item-count">8</div><div class="sidebar-state-item-name">文章</div></a></div><div class="sidebar-state-item sidebar-state-categories"><a href="/"><div class="sidebar-state-item-count">3</div><div class="sidebar-state-item-name">分类</div></a></div><div class="sidebar-state-item sidebar-state-tags"><a href="/"><div class="sidebar-state-item-count">10</div><div class="sidebar-state-item-name">标签</div></a></div></div><div class="sidebar-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg" alt="creative commons"></a></div></section><div class="sidebar-progress"><div class="sidebar-progress-read"><span>你已阅读了</span><span class="sidebar-progress-number"></span></div><div class="sidebar-progress-line"></div></div></div></aside><div class="content headings code-highlight"><div class="post-header"><h1 class="post-title">使用flex制作滚动列表</h1><div class="post-header-meta"><span class="post-header-meta-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-11-03</span></span><span class="post-header-meta-update"><i class="fa fa-calendar-check-o"></i><span>更新于 </span><span>2019-11-03</span></span><span class="post-header-meta-word-count"><i class="fa fa-file-word-o"></i><span>字数统计 </span><span>526</span></span><span class="post-header-meta-reading-time"><i class="fa fa-clock-o"></i><span>阅读时长 </span><span>4m</span></span></div></div><div class="post-body"><h1 id="使用flex制作滚动列表"><a href="#使用flex制作滚动列表" class="headerlink" title="使用flex制作滚动列表"></a>使用flex制作滚动列表</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为自己在做一点小东西，所以就有个需求，一个元素里面需要有两个子元素，两个子元素竖排排列，第二个子元素里面的内容不定长，需要做滚动，但第二个元素的高度需要自适应。</p>
+<p>在学习的过程稿发现flex和overflow挺有意思的，特此记录下来。</p>
+<a id="more"></a>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="line-numbers language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;div class=&quot;parent&quot;&gt;
+    &lt;div style=&quot;height: 200px; background: #66ccff&quot;&gt;标题&lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;1&lt;/li&gt;
+      &lt;li&gt;2&lt;/li&gt;
+      &lt;li&gt;3&lt;/li&gt;
+      &lt;li&gt;4&lt;/li&gt;
+      &lt;li&gt;5&lt;/li&gt;
+      &lt;li&gt;6&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;style&gt;
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .parent {
+      display: flex;
+      flex-direction: column;
+      height: 500px;
+      overflow: hidden
+    }
+    ul {
+      overflow: auto;
+      height: 100%;
+    }
+    li {
+      height: 200px;
+      border: 1px solid #ccc;
+    }
+  &lt;/style&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><!DOCTYPE html>
+<html lang="en">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="parent">
+    <div style="height: 200px; background: #66ccff">标题</div>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+    </ul>
+  </div>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .parent {
+      display: flex;
+      flex-direction: column;
+      height: 500px;
+      overflow: hidden
+    }
+    ul {
+      overflow: auto;
+    }
+    li {
+      height: 200px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</body>
+
+</html>
+
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>首先是<code>.parent</code>。将display设置为弹性布局，并且规定了布局方向为竖排，对于溢出元素的处理方式设置为隐藏。这样的情况下，html就会将这个元素里面的布局重置，保证了里面的元素可以自适应高度，不会出现子元素与父元素高度相同的情况，并且对于移除内容进行了隐藏</p>
+<p>第二就是<code>ul</code>。对于其中<code>ul</code>其中的溢出元素做了自动处理，实际上是将溢出元素设置为滚动，这样ul里面的元素就可以进行滚动。</p>
+<p>第三要注意<code>height</code>。如果要求<code>ul</code>为自适应，则height一定为<code>100%</code>（或者<code>inherit</code>）,并且父级元素需要显示的设置高度，不能为<code>auto</code></p>
+</div><footer class="post-footer"><div class="post-footer-end"><span>------</span><span>本文结束，感谢您的阅读</span><span>------</span></div><div class="post-footer-copyright"><div class="copyright-author"><span class="copyright-name">本文作者:</span><span class="copyright-value"><a href="https://yukdawn.gitee.io">Dawn_南风</a></span></div><div class="copyright-link"><span class="copyright-name">本文链接:</span><span class="copyright-value"><a href="https://yukdawn.gitee.io/2019/11/03/使用flex制作滚动列表/">https://yukdawn.gitee.io/2019/11/03/使用flex制作滚动列表/</a></span></div><div class="copyright-notice"><span class="copyright-name">版权声明:</span><span class="copyright-value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-footer-tags"><i class="fa fa-tags icon"></i><span><a href="https://yukdawn.gitee.io/tags/html/" title="html">html</a></span><span><a href="https://yukdawn.gitee.io/tags/css/" title="css">css</a></span></div><nav id="paginator"><div class="post-paginator"><div class="article-next pull-right"><a href="/2019/10/17/nginx匹配规则/"><span class="title">nginx匹配规则</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div></div></main><footer id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span class="fa fa-heart  footer-separator" style="color: #ff0000"></span><span>Dawn_南风</span></div></div></footer><div id="back-top"><div class="back-top-inner" data-popover="回到顶部" data-popover-pos="up"><i class="fa fa-rocket"></i></div></div></div><script>if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+  window.Promise = null;
+}
+</script><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@1.2.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script><script src="/js/utils.js?v=1.1.4"></script><script src="/js/stun-boot.js?v=1.1.4"></script><script src="/js/copy.js?v=1.1.4"></script><script src="/js/scroll.js?v=1.1.4"></script><script src="/js/header.js?v=1.1.4"></script><script src="/js/sidebar.js?v=1.1.4"></script></body></html>

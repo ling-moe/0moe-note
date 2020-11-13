@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.3.0" type="image/png" sizes="32x32"><meta name="description" content="MyBatis拦截器–从基础到与Spring Boot整合                            前言        MyBatis拦截器是Java持久层框架，最近在研究拦截器的写法。本以为会很复杂，实际上从使用上来说，是很简单的。 本文主要介绍的时各个方法和注解的含义及使用方式，并且与springboot进行简单的整合。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis拦截器--从基础到与Spring Boot整合">
+<meta property="og:url" content="https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/index.html">
+<meta property="og:site_name" content="南风">
+<meta property="og:description" content="MyBatis拦截器–从基础到与Spring Boot整合                            前言        MyBatis拦截器是Java持久层框架，最近在研究拦截器的写法。本以为会很复杂，实际上从使用上来说，是很简单的。 本文主要介绍的时各个方法和注解的含义及使用方式，并且与springboot进行简单的整合。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/1543743905576.png">
+<meta property="og:image" content="https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/1543744369471.png">
+<meta property="og:image" content="https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/1543745710452.png">
+<meta property="article:published_time" content="2019-07-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-07-27T16:00:00.000Z">
+<meta property="article:author" content="Dawn_南风">
+<meta property="article:tag" content="Dawn_南风">
+<meta property="article:tag" content="南风">
+<meta property="article:tag" content="南风破晓">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/1543743905576.png"><title>MyBatis拦截器--从基础到与Spring Boot整合 | 南风</title><link ref="canonical" href="https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.3.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"ocean","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">南风</div><div class="header-banner-info__subtitle">用需求驱动学习</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">MyBatis拦截器--从基础到与Spring Boot整合</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2019-07-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2019-07-28</span></span></div></header><div class="post-body">
+        <h3 id="mybatis拦截器从基础到与spring-boot整合"   >
+          <a href="#mybatis拦截器从基础到与spring-boot整合" class="heading-link"><i class="fas fa-link"></i></a>MyBatis拦截器–从基础到与Spring Boot整合</h3>
+      
+
+        <h4 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a>前言</h4>
+      
+<p>MyBatis拦截器是Java持久层框架，最近在研究拦截器的写法。本以为会很复杂，实际上从使用上来说，是很简单的。</p>
+<p>本文主要介绍的时各个<strong>方法</strong>和<strong>注解</strong>的<code>含义</code>及<code>使用方式</code>，并且与springboot进行简单的整合。</p>
+<a id="more"></a>
+<p>话不多说，开始说明。</p>
+
+        <h4 id="关于拦截器"   >
+          <a href="#关于拦截器" class="heading-link"><i class="fas fa-link"></i></a>关于拦截器</h4>
+      
+<p>Mybatis拦截器的写法很简单，需要继承<code>Interceptor</code>类，重写其中的<code>intercept()</code>、<code>plugin()</code>、<code>setProperties()</code>。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.apache.ibatis.plugin;</span><br><span class="line"></span><br><span class="line"><span class="comment">//import ingnore</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Interceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function">Object <span class="title">intercept</span><span class="params">(Invocation invocation)</span> <span class="keyword">throws</span> Throwable</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function">Object <span class="title">plugin</span><span class="params">(Object target)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setProperties</span><span class="params">(Properties properties)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>具体如下：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Intercepts(@Signature(type = Executor.class, method = &quot;query&quot;, args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class&#125;))</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAuthorityDataInterceptor</span> <span class="keyword">implements</span> <span class="title">Interceptor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Invocation invocation)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> invocation.proceed();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">plugin</span><span class="params">(Object target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Plugin.wrap(target,<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setProperties</span><span class="params">(Properties properties)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>这是先说方法，再说注解</p>
+
+        <h5 id="方法"   >
+          <a href="#方法" class="heading-link"><i class="fas fa-link"></i></a>方法</h5>
+      
+<ul>
+<li>
+<p><code>setProperties()</code>方法主要是用来从配置中获取属性。</p>
+<p>如果是使用xml式配置拦截器，可在Mybatis配置文件中添加节点，属性可以以如下方式传递</p>
+<figure class="highlight xml"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;tk.mybatis.simple.plugin.XXXInterceptor&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;propl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;valuel&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prop2&quot;</span> <span class="attr">value</span>=<span class="string">&quot;value2&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+<p>如果在<code>Spring boot</code>中使用，则需要单独写一个配置类，如下：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatisMapperAutoConfiguration</span></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">zipkinInterceptor</span><span class="params">(SqlSessionFactory sqlSessionFactory)</span> </span>&#123;</span><br><span class="line">        ZipkinInterceptor zipkinInterceptor = <span class="keyword">new</span> ZipkinInterceptor();</span><br><span class="line">        Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">        properties.setProperty(<span class="string">&quot;prop1&quot;</span>,<span class="string">&quot;value1&quot;</span>);</span><br><span class="line">        zipkinInterceptor.setProperties(properties);</span><br><span class="line">        sqlSessionFactory.getConfiguration().addInterceptor(zipkinInterceptor);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>如果说<strong>不需要配置属性</strong>，则在<code>spring boot</code>中，不需要去编写配置类，只需要像我一样在拦截器上加个<code>@Component</code>即可。</p>
+</li>
+<li>
+<p><code>plugin()</code>方法用于指定哪些方法可以被此拦截器拦截。如下：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">plugin</span><span class="params">(Object target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (target <span class="keyword">instanceof</span> Executor) &#123;</span><br><span class="line">        <span class="comment">//表明只有Executor方法才会执行这个拦截器内的intercept()</span></span><br><span class="line">        <span class="keyword">return</span> Plugin.wrap(target, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p><code>Plugin.wrap()</code>是个包装方法，如果需要此拦截器，则将此此拦截器连同入参中的<code>target</code>一起包装后返回，如果不需要则直接返回<code>target</code></p>
+<p>另附具体<code>Plugin.wrap()</code>的源码：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">wrap</span><span class="params">(Object target, Interceptor interceptor)</span> </span>&#123;</span><br><span class="line">  Map&lt;Class&lt;?&gt;, Set&lt;Method&gt;&gt; signatureMap = getSignatureMap(interceptor);</span><br><span class="line">  Class&lt;?&gt; type = target.getClass();</span><br><span class="line">  Class&lt;?&gt;[] interfaces = getAllInterfaces(type, signatureMap);</span><br><span class="line">  <span class="keyword">if</span> (interfaces.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> Proxy.newProxyInstance(</span><br><span class="line">        type.getClassLoader(),</span><br><span class="line">        interfaces,</span><br><span class="line">        <span class="keyword">new</span> Plugin(target, interceptor, signatureMap));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+</li>
+<li>
+<p><code>intercept()</code>方法是用来对拦截的<code>sql</code>进行具体的操作。</p>
+<p>这里拿分页插件<code>PageHelper</code>中的类<code>PageInterceptor</code>进行说明。</p>
+<p>坐标：<code>com.github.pagehelper.PageInterceptor#intercept(Invocation)</code></p>
+<p><img src="1543743905576.png" alt="1543743905576" /></p>
+<ol>
+<li>
+<p><code>invocation.getArgs()</code>是从入参<code>invocation</code>获取拦截器所拦截方法的参数，其参数顺序和<strong>被拦截的方法</strong>保持一致，这个<strong>参数的个数</strong>以及<strong>参数具体是什么</strong>我们下一步说到<code>@Signature</code>注解时会讲。</p>
+</li>
+<li>
+<p>获取执行器，可以用<code>Executor</code>直接执行被我们修改过的sql，示例如下</p>
+<p><img src="1543744369471.png" alt="1543744369471" /></p>
+<p>这里就是不继续执行原来的方法体中的内容，而是去执行我们修改后的sql并且返回。</p>
+</li>
+<li>
+<p>关于返回值</p>
+<p>除了以上这种直接去执行我们修改过sql的方式，如果我们想让方法继续执行下去也是可以的。</p>
+<p>只需要返回：</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> invocation.proceed();</span><br></pre></td></tr></table></div></figure>
+</li>
+</ol>
+</li>
+</ul>
+
+        <h5 id="注解"   >
+          <a href="#注解" class="heading-link"><i class="fas fa-link"></i></a>注解</h5>
+      
+<p><code>MyBatis</code>拦截器用到了两个注解：<code>@Intercepts</code>和<code>@Signature</code></p>
+<ul>
+<li>
+<p><code>@Intercepts</code></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(ElementType.TYPE)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Intercepts &#123;</span><br><span class="line">  Signature[] value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>可以看到，其中是一个<code>Signature</code>类型的数组，意味着一个拦截器可以拦截多种方法。</p>
+</li>
+<li>
+<p><code>@Signature</code></p>
+<p><strong>Signature</strong>意为<strong>签名，署名</strong>。实际上作用也与语义相同：表明需要拦截方法的方法签名。</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Signature &#123;</span><br><span class="line">  Class&lt;?&gt; type();</span><br><span class="line"></span><br><span class="line">  <span class="function">String <span class="title">method</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  Class&lt;?&gt;[] args();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<p>有三个参数，</p>
+<ul>
+<li><code>type</code>：类型</li>
+<li><code>method</code>：方法名称</li>
+<li><code>args</code>：方法参数</li>
+</ul>
+<p>这三个参数可以确定一个方法。默认情况下， <code>MyBatis</code>允许使用插件（拦截器）来拦截的接口和包括以下几个。</p>
+<ul>
+<li>Executor ( update 、 query 、 flushStatements 、 commit 、 rollback 、 get Transaction、 close、 isClosed)</li>
+<li>ParameterHandler ( getParameterObj ect、setParameters)</li>
+<li>ResultSetHandler ( handleResul tSets 、 handleCursorResultSets 、 handleOutputParameters)</li>
+<li>StatementHandler (prepare、 parameterize、 batch、 update、 query)</li>
+</ul>
+<p>实际上，我们只需要记住这几个接口名称就可以，其余我们可以根据实际需要去看源码来确定具体所需要拦截的类。</p>
+<ul>
+<li>以<code>Executor</code>的<code>query</code>方法举例说明<code>@Signature</code>是如何确定一个方法。</li>
+</ul>
+<p><img src="1543745710452.png" alt="1543745710452" /></p>
+<p>如果我们需要拦截第一个方法，只需要这么写<code>@Signature</code></p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Signature(type = </span></span><br><span class="line"><span class="meta">			Executor.class, </span></span><br><span class="line"><span class="meta">			method = &quot;query&quot;, </span></span><br><span class="line"><span class="meta">			args = &#123;</span></span><br><span class="line"><span class="meta">				MappedStatement.class, </span></span><br><span class="line"><span class="meta">				Object.class, </span></span><br><span class="line"><span class="meta">				RowBounds.class, </span></span><br><span class="line"><span class="meta">				ResultHandler.class, </span></span><br><span class="line"><span class="meta">				CacheKey.class, </span></span><br><span class="line"><span class="meta">				BoundSql.class</span></span><br><span class="line"><span class="meta">				&#125;</span></span><br><span class="line"><span class="meta">)</span></span><br></pre></td></tr></table></div></figure>
+<p>可以注意看，<code>type</code>的值与<strong>类名</strong>相同，<code>method</code>与<strong>方法名</strong>相同，为了避免方法重载，<code>args</code>中指定了<strong>各个参数的类型和个数</strong>。</p>
+<ul>
+<li>
+<p>如果我们想拦截多个方法，比如说上图1和2的方法我们都想拦截到，只需要再加个<code>@Signature</code>就可以，要记得<code>@Intercepts</code>的value可是数组啊</p>
+</li>
+<li>
+<pre class="highlight"><code class="java"><span class="hljs-meta">@Intercepts</span>(
+    &#123;
+        <span class="hljs-meta">@Signature</span>(type = Executor.class, method = <span class="hljs-string">"query"</span>, args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class&#125;),
+        <span class="hljs-meta">@Signature</span>(type = Executor.class, method = <span class="hljs-string">"query"</span>, args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class&#125;),
+    &#125;
+)
+&lt;!--code￼<span class="hljs-number">10</span>--&gt;
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p>在拦截器上加<code>@Component</code>注解</p>
+<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Intercepts(@Signature(type = Executor.class, method = &quot;query&quot;, args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class&#125;))</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAuthorityDataInterceptor</span> <span class="keyword">implements</span> <span class="title">Interceptor</span></span></span><br></pre></td></tr></table></div></figure>
+</li>
+</ol>
+
+        <h4 id="后记"   >
+          <a href="#后记" class="heading-link"><i class="fas fa-link"></i></a>后记</h4>
+      
+<p>在mybatis的xml文件中，使用的是ognl语法，然而在mybatis中new的变量，因类加载器不同，会导致<code>equals</code>或<code>==</code>永远是<code>false</code>，需要注意。</p>
+
+        <h4 id="资料参考"   >
+          <a href="#资料参考" class="heading-link"><i class="fas fa-link"></i></a>资料参考</h4>
+      
+<p>《MyBatis从入门到精通》——<strong>刘增辉</strong>（PageHelper作者）</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://note.0moe.cn">Dawn_南风</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/">https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">DDD项目结构（领域驱动设计）</span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mybatis%E6%8B%A6%E6%88%AA%E5%99%A8%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8Espring-boot%E6%95%B4%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">
+          MyBatis拦截器–从基础到与Spring Boot整合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">
+          前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">
+          关于拦截器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.2.2.</span> <span class="toc-text">
+          注解</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">1.3.</span> <span class="toc-text">
+          后记</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%84%E6%96%99%E5%8F%82%E8%80%83"><span class="toc-number">1.4.</span> <span class="toc-text">
+          资料参考</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/blog_assert/author.gif" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">12</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">23</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Dawn_南风</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.3.0"></script><script src="/js/stun-boot.js?v=2.3.0"></script><script src="/js/scroll.js?v=2.3.0"></script><script src="/js/header.js?v=2.3.0"></script><script src="/js/sidebar.js?v=2.3.0"></script></body></html>

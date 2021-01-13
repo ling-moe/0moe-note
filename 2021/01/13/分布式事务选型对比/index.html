@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/blog_assert/icon/favicon.ico?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/blog_assert/icon/favicon.ico?v=2.3.0" type="image/png" sizes="32x32"><meta name="description" content="分布式事务选型对比                            前言        随着互联网架构的不断扩展，传统的ACID事务已经无法满足要求。为了解决这个问题，BASE理论被提出来取代ACID，基于BASE理论和CAP理论的分布式事务也有各种事务策略。如何保证整个事务整体的原子性与一致性问题？分布式事务如何选项才能更加适合当下的业务场景？已经成为了当下事务的痛点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式事务选型对比">
+<meta property="og:url" content="https://note.0moe.cn/2021/01/13/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94/index.html">
+<meta property="og:site_name" content="南风">
+<meta property="og:description" content="分布式事务选型对比                            前言        随着互联网架构的不断扩展，传统的ACID事务已经无法满足要求。为了解决这个问题，BASE理论被提出来取代ACID，基于BASE理论和CAP理论的分布式事务也有各种事务策略。如何保证整个事务整体的原子性与一致性问题？分布式事务如何选项才能更加适合当下的业务场景？已经成为了当下事务的痛点">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-13T06:28:51.000Z">
+<meta property="article:modified_time" content="2021-01-13T06:52:29.046Z">
+<meta property="article:author" content="Dawn_南风">
+<meta property="article:tag" content="事务">
+<meta property="article:tag" content="分布式">
+<meta name="twitter:card" content="summary"><title>分布式事务选型对比 | 南风</title><link ref="canonical" href="https://note.0moe.cn/2021/01/13/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.3.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"ocean","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">南风</div><div class="header-banner-info__subtitle">用需求驱动学习</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">分布式事务选型对比</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-01-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-01-13</span></span></div></header><div class="post-body">
+        <h1 id="分布式事务选型对比"   >
+          <a href="#分布式事务选型对比" class="heading-link"><i class="fas fa-link"></i></a>分布式事务选型对比</h1>
+      
+
+        <h2 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a>前言</h2>
+      
+<p>随着互联网架构的不断扩展，传统的ACID事务已经无法满足要求。为了解决这个问题，BASE理论被提出来取代ACID，基于BASE理论和CAP理论的分布式事务也有各种事务策略。如何保证整个事务整体的原子性与一致性问题？分布式事务如何选项才能更加适合当下的业务场景？已经成为了当下事务的痛点。</p>
+<a id="more"></a>
+
+        <h2 id="解决方案对比"   >
+          <a href="#解决方案对比" class="heading-link"><i class="fas fa-link"></i></a>解决方案对比</h2>
+      
+
+        <h3 id="2pc两阶段提交"   >
+          <a href="#2pc两阶段提交" class="heading-link"><i class="fas fa-link"></i></a>2PC两阶段提交</h3>
+      
+
+        <h4 id="xa方案"   >
+          <a href="#xa方案" class="heading-link"><i class="fas fa-link"></i></a>XA方案</h4>
+      
+<p>为了提供统一的对接模型和标准，X/OPEN组织提出了一个DTP（Distributed Transaction Processing Reference Model）模型，其中规定了分布式事务中的三个角色：</p>
+<ul>
+<li>AP：应用程序</li>
+<li>TM：事务管理器，负责协调管理整个分布式事务</li>
+<li>RM：资源管理器也就是事务参与者，负责控制分支事务</li>
+</ul>
+<p>DTP模型还定义了TM和RM之间通信的接口规范，这个规范就是XA，本职上也是数据库提供的2PC接口协议。基于XA方案的事务流程如下：</p>
+<ul>
+<li>AP 持有 D1 和 D2 两个数据源；</li>
+<li>AP 通过 TM 通知 D1 的 RM 操作数据，同时通知 D2 的 TM 操作数据，此时 D1 和 D2 操作的数据锁定，RM 不提交事务；</li>
+<li>TM 收到 两个数据源的 RM 执行恢复，只要有一方失败，则向另外的 RM 发起回滚指令，对应 RM 回滚分支事务释放资源锁；</li>
+<li>若均为成功，TM 向所有 RM 发起提交指令，所有 RM 接到指令提交事务，释放资源锁。</li>
+</ul>
+<p>XA方案本质上是数据库层面的分布式事务，要求数据库支持事务，实现强一致性。在整个事务流程中，从准备阶段到第二阶段的commit或rollback的整个过程中，TM一直持有对应相关数据资源的锁，如果有其他事务要修改数据库的该条数据，就必须等待锁的释放，存在长事务风险。</p>
+
+        <h4 id="结论"   >
+          <a href="#结论" class="heading-link"><i class="fas fa-link"></i></a>结论</h4>
+      
+<p>适合于本地的多事务组合，对于基于网络io的分布式事务，由于无法解决io丢失问题，因此并不可靠</p>
+
+        <h3 id="tcc"   >
+          <a href="#tcc" class="heading-link"><i class="fas fa-link"></i></a>TCC</h3>
+      
+<p>关于TCC（Try-Confirm-Cancel）的概念，最早是由Pat Helland于2007年发表的一篇名为《Life beyond Distributed Transactions:an Apostate’s Opinion》的论文提出。 TCC事务机制相比于上面介绍的XA，解决了其几个缺点: 1.解决了协调者单点，由主业务方发起并完成这个业务活动。业务活动管理器也变成多点，引入集群。 2.同步阻塞:引入超时，超时后进行补偿，并且不会锁定整个资源，将资源转换为业务逻辑形式，粒度变小。 3.数据一致性，有了补偿机制之后，由业务活动管理器控制一致性</p>
+<p>对于TCC的解释:</p>
+<ul>
+<li>Try阶段：尝试执行,完成所有业务检查（一致性）,预留必须业务资源（准隔离性）</li>
+<li>Confirm阶段：确认执行真正执行业务，不作任何业务检查，只使用Try阶段预留的业务资源，Confirm操作满足幂等性。要求具备幂等设计，Confirm失败后需要进行重试。</li>
+<li>Cancel阶段：取消执行，释放Try阶段预留的业务资源 Cancel操作满足幂等性Cancel阶段的异常和Confirm阶段异常处理方案基本上一致。</li>
+</ul>
+<p>举个简单的例子如果你用100元买了一瓶水， Try阶段:你需要向你的钱包检查是否够100元并锁住这100元，水也是一样的。</p>
+<p>如果有一个失败，则进行cancel(释放这100元和这一瓶水)，如果cancel失败不论什么失败都进行重试cancel，所以需要保持幂等。</p>
+<p>如果都成功，则进行confirm,确认这100元扣，和这一瓶水被卖，如果confirm失败无论什么失败则重试(会依靠活动日志进行重试)</p>
+<p>对于TCC来说适合一些:</p>
+<ul>
+<li>强隔离性，严格一致性要求的活动业务。</li>
+<li>执行时间较短的业务</li>
+</ul>
+
+        <h4 id="结论-2"   >
+          <a href="#结论-2" class="heading-link"><i class="fas fa-link"></i></a>结论</h4>
+      
+<p>TCC的特点在于业务资源检查与加锁，一阶段进行校验，资源锁定，如果第一阶段都成功，二阶段对锁定资源进行交易逻辑，否则，对锁定资源进行释放。应用实施成本较高。</p>
+
+        <h3 id="mq事务"   >
+          <a href="#mq事务" class="heading-link"><i class="fas fa-link"></i></a>MQ事务</h3>
+      
+<p>RocketMQ在4.3版本开始支持事务消息，即prepare消息。这种消息在发送到MQ之后不会立即投递到消费者，会由发送者二次确认后，由RocketMQ根据确认指令决定投递还是丢弃。基于该方案的整个事务流程如下：</p>
+<ul>
+<li>事务发起方发送prepare消息到RocketMQ，RocketMQ存储该消息并反馈发起方消息接收成功，prepare消息不允许被消费者消费。</li>
+<li>发起方接收到RocketMQ的反馈后，执行本地事务，若本地事务执行成功，发起方向RocketMQ发送prepare消息的commit指令，否则发送rolback。</li>
+<li>RocketMQ接收到发起方二次对prepare消息的确认指令后，执行消息的对应操作，commit控制消息进入实际的消费队列，rollback会删除对应消息，至此，保证了本地事务与消息发送的原子性问题。</li>
+<li>对于事务发起方二次确认的可靠性问题，RocketMQ提供反向的定时任务汇差事务状态机制，最多重试15次，超过则丢弃消息。</li>
+<li>事务参与者监听RocketMQ，基于消息确认（ACK）机制，参与者接收到消息并业务处理完成后向RocketMQ发送ack，保证参与者接收消息的可靠性问题。</li>
+<li>事务参与者对事务消息的消费方法实现幂等性，解决可能存在的消息重复消费问题。</li>
+</ul>
+
+        <h4 id="结论-3"   >
+          <a href="#结论-3" class="heading-link"><i class="fas fa-link"></i></a>结论</h4>
+      
+<p>适合非主要流程的事务处理，如电商中的评论，物流信息等。允许丢失部分信息，必要时可人工干预。</p>
+
+        <h3 id="saga事务"   >
+          <a href="#saga事务" class="heading-link"><i class="fas fa-link"></i></a>saga事务</h3>
+      
+<p>Saga是30年前一篇数据库伦理提到的一个概念。其核心思想是将长事务拆分为多个本地短事务，由Saga事务协调器协调，如果正常结束那就正常完成，如果某个步骤失败，则根据相反顺序一次调用补偿操作。 Saga的组成：</p>
+<p>每个Saga由一系列sub-transaction Ti 组成 每个Ti 都有对应的补偿动作Ci，补偿动作用于撤销Ti造成的结果,这里的每个T，都是一个本地事务。 可以看到，和TCC相比，Saga没有“预留 try”动作，它的Ti就是直接提交到库。</p>
+<p>Saga的执行顺序有两种：</p>
+<p>T1, T2, T3, …, Tn</p>
+<p>T1, T2, …, Tj, Cj,…, C2, C1，其中0 &lt; j &lt; n Saga定义了两种恢复策略：</p>
+<p>向后恢复，即上面提到的第二种执行顺序，其中j是发生错误的sub-transaction，这种做法的效果是撤销掉之前所有成功的sub-transation，使得整个Saga的执行结果撤销。 向前恢复，适用于必须要成功的场景，执行顺序是类似于这样的：T1, T2, …, Tj(失败), Tj(重试),…, Tn，其中j是发生错误的sub-transaction。该情况下不需要Ci。</p>
+<p>这里要注意的是，在saga模式中不能保证隔离性，因为没有锁住资源，其他事务依然可以覆盖或者影响当前事务。</p>
+<p>还是拿100元买一瓶水的例子来说，这里定义</p>
+<p>T1=扣100元 T2=给用户加一瓶水 T3=减库存一瓶水</p>
+<p>C1=加100元 C2=给用户减一瓶水 C3=给库存加一瓶水</p>
+<p>我们一次进行T1,T2，T3如果发生问题，就执行发生问题的C操作的反向。 上面说到的隔离性的问题会出现在，如果执行到T3这个时候需要执行回滚，但是这个用户已经把水喝了(另外一个事务)，回滚的时候就会发现，无法给用户减一瓶水了。这就是事务之间没有隔离性的问题</p>
+<p>可以看见saga模式没有隔离性的影响还是较大，可以参照华为的解决方案:从业务层面入手加入一 Session 以及锁的机制来保证能够串行化操作资源。也可以在业务层面通过预先冻结资金的方式隔离这部分资源， 最后在业务操作的过程中可以通过及时读取当前状态的方式获取到最新的更新。</p>
+
+        <h4 id="结论-4"   >
+          <a href="#结论-4" class="heading-link"><i class="fas fa-link"></i></a>结论</h4>
+      
+<p>Saga的核心就是补偿，一阶段就是服务的正常顺序调用（数据库事务正常提交），如果都执行成功，则第二阶段则什么都不做；但如果其中有执行发生异常，则依次调用其补偿服务（一般多逆序调用未已执行服务的反交易）来保证整个交易的一致性。应用实施成本一般。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://note.0moe.cn">Dawn_南风</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://note.0moe.cn/2021/01/13/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94/">https://note.0moe.cn/2021/01/13/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://note.0moe.cn/tags/%E4%BA%8B%E5%8A%A1/">事务</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://note.0moe.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/06/19/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84k3s%E5%88%B0istio%EF%BC%88%E4%B8%80%EF%BC%89/"><span class="paginator-prev__text">从绫开始的k3s到istio（一）：安装K3S</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94"><span class="toc-number">1.</span> <span class="toc-text">
+          分布式事务选型对比</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">
+          前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.</span> <span class="toc-text">
+          解决方案对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2pc%E4%B8%A4%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          2PC两阶段提交</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#xa%E6%96%B9%E6%A1%88"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">
+          XA方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">
+          结论</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcc"><span class="toc-number">1.2.2.</span> <span class="toc-text">
+          TCC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA-2"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">
+          结论</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mq%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.2.3.</span> <span class="toc-text">
+          MQ事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA-3"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">
+          结论</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#saga%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.2.4.</span> <span class="toc-text">
+          saga事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA-4"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">
+          结论</span></a></li></ol></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/blog_assert/author.gif" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Dawn_南风</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function loadValine () {
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var guest_info = 'nick,mail,link';
+
+  guest_info = guest_info.split(',').filter(function(item) {
+    return GUEST_INFO.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#valine-container',
+    appId: 'VRhYR3EGwGA6iw2TAUzlvGTp-9Nh9j0Va',
+    appKey: 'sNvkmexbN6XoJoXsrt08XkpB',
+    notify: true,
+    verify: true,
+    placeholder: '纵使相逢应不识，想说啥，写下叭~',
+    avatar: 'wavatar',
+    meta: guest_info,
+    pageSize: '10' || 10,
+    visitor: false,
+    recordIP: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: window.location.pathname
+  });
+}
+
+if (false) {
+  loadValine();
+} else {
+  window.addEventListener('DOMContentLoaded', loadValine, false);
+}</script><script src="/js/utils.js?v=2.3.0"></script><script src="/js/stun-boot.js?v=2.3.0"></script><script src="/js/scroll.js?v=2.3.0"></script><script src="/js/header.js?v=2.3.0"></script><script src="/js/sidebar.js?v=2.3.0"></script></body></html>

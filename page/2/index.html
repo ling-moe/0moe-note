@@ -1,62 +1,495 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/blog_assert/icon/favicon.ico?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/blog_assert/icon/favicon.ico?v=2.3.0" type="image/png" sizes="32x32"><meta property="og:type" content="website">
-<meta property="og:title" content="南风">
-<meta property="og:url" content="https://note.0moe.cn/page/2/index.html">
-<meta property="og:site_name" content="南风">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="Dawn_南风">
-<meta property="article:tag" content="Dawn_南风">
-<meta property="article:tag" content="南风">
-<meta property="article:tag" content="南风破晓">
-<meta name="twitter:card" content="summary"><title>南风</title><link ref="canonical" href="https://note.0moe.cn/page/2/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.3.0"><script>var Stun = window.Stun || {};
-var CONFIG = {
-  root: '/',
-  algolia: undefined,
-  assistSearch: undefined,
-  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
-  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
-  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
-  postWidget: {"endText":true},
-  nightMode: {"enable":true},
-  back2top: {"enable":true},
-  codeblock: {"style":"default","highlight":"ocean","wordWrap":false},
-  reward: false,
-  fancybox: false,
-  zoomImage: {"gapAside":"20px"},
-  galleryWaterfall: undefined,
-  lazyload: false,
-  pjax: undefined,
-  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
-  shortcuts: undefined,
-  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
-  sourcePath: {"js":"js","css":"css","images":"images"},
-};
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">南风</div><div class="header-banner-info__subtitle">用需求驱动学习</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2019/08/15/%E9%92%88%E5%AF%B9%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">针对业务场景的解决方案</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2019-08-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-01-13</span></span></div></header><div class="post-body"><div class="post-excerpt"><h1 id="针对业务场景的解决方案"   >
-          <a href="#针对业务场景的解决方案" class="heading-link"><i class="fas fa-link"></i></a>针对业务场景的解决方案</h1>
-      
 
-        <h2 id="前言"   >
-          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a>前言</h2>
-      
-<p>​		这是一个系列专题，是根据我所经历的具体的业务场景所用到的解决方案和技术架构设计的一个汇总。</p>
-<p>​		一方面是对一直以来的经历做一个总结，在以后做项目的时候有一个基础的想法。</p>
-<p>​		另一方面是秉承这开源的精神，希望大家在接到甲方爸爸的需求时候，起码一个基本的解决方案的思路方向，不至于心里没底。</p>
-<p>​		如果针对某一场景，在以后的工作中有更好的解决方案，我也会更新进来并说明原因及优劣。</p></div><div class="post-readmore"><a class="post-readmore__link" href="/2019/08/15/%E9%92%88%E5%AF%B9%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/">DDD项目结构（领域驱动设计）</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2019-07-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2019-07-30</span></span></div></header><div class="post-body"><div class="post-excerpt"><h1 id="ddd项目结构领域驱动设计"   >
-          <a href="#ddd项目结构领域驱动设计" class="heading-link"><i class="fas fa-link"></i></a>DDD项目结构（领域驱动设计）</h1>
-      
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
-        <h2 id="前言"   >
-          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a>前言</h2>
-      
-<p>DDD项目结构（领域驱动设计）这种工程结构模型我接触了一年多，虽然每个人都有不同的理解，不过相比于MVC的工程结构，对于代码结构的清晰度，还有业务逻辑的分层方面，DDD都是优于MVC的。</p>
-<p>尽管每个人对DDD模型的理解不同，但大家的思路总归是一致的（api、app、domain、infra），争议之处在于一些包放置的层级以及代码分层。</p>
-<p>因此这里记录了对DDD工程结构的理解，以后我会不定期更新。</p>
-<p>互相分享，互相学习。</p></div><div class="post-readmore"><a class="post-readmore__link" href="/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/">MyBatis拦截器--从基础到与Spring Boot整合</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2019-07-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2019-07-28</span></span></div></header><div class="post-body"><div class="post-excerpt"><h3 id="mybatis拦截器从基础到与spring-boot整合"   >
-          <a href="#mybatis拦截器从基础到与spring-boot整合" class="heading-link"><i class="fas fa-link"></i></a>MyBatis拦截器–从基础到与Spring Boot整合</h3>
-      
 
-        <h4 id="前言"   >
-          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a>前言</h4>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assert/icon/favicon.ico">
+  <link rel="icon" type="image/png" href="/assert/icon/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Dawn_南风">
+  <meta name="keywords" content="Dawn_南风,南风,南风破晓">
+  <title>南风</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"note.0moe.cn","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"G-E18BJGHLYV","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>南风破晓</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/assert/index_paper.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="需求驱动学习">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/08/15/%E9%92%88%E5%AF%B9%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">针对业务场景的解决方案</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/08/15/%E9%92%88%E5%AF%B9%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+          
+          
+            
+          
+          针对业务场景的解决方案前言​        这是一个系列专题，是根据我所经历的具体的业务场景所用到的解决方案和技术架构设计的一个汇总。
+​        一方面是对一直以来的经历做一个总结，在以后做项目的时候有一个基础的想法。
+​        另一方面是秉承这开源的精神，希望大家在接到甲方爸爸的需求时候，起码一个基本的解决方案的思路方向，不至于心里没底。
+​        如果针对某一场景，在以
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-08-15 19:52" pubdate>
+              2019-08-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">解决方案</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/">DDD项目结构（领域驱动设计）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/">
+          
+          
+            
+          
+          DDD项目结构（领域驱动设计）前言DDD项目结构（领域驱动设计）这种工程结构模型我接触了一年多，虽然每个人都有不同的理解，不过相比于MVC的工程结构，对于代码结构的清晰度，还有业务逻辑的分层方面，DDD都是优于MVC的。
+尽管每个人对DDD模型的理解不同，但大家的思路总归是一致的（api、app、domain、infra），争议之处在于一些包放置的层级以及代码分层。
+因此这里记录了对DDD工程结构
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-07-28 00:00" pubdate>
+              2019-07-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/">工程结构</a>
+            
+              <a href="/categories/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/spring/">spring</a>
+            
+              <a href="/categories/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/spring/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84-DDD/">工程结构,DDD</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/">MyBatis拦截器--从基础到与Spring Boot整合</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/">
+          
+          
+            
+          
+          MyBatis拦截器–从基础到与Spring Boot整合前言MyBatis拦截器是Java持久层框架，最近在研究拦截器的写法。本以为会很复杂，实际上从使用上来说，是很简单的。
+本文主要介绍的时各个方法和注解的含义及使用方式，并且与springboot进行简单的整合。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-07-28 00:00" pubdate>
+              2019-07-28
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-<p>MyBatis拦截器是Java持久层框架，最近在研究拦截器的写法。本以为会很复杂，实际上从使用上来说，是很简单的。</p>
-<p>本文主要介绍的时各个<strong>方法</strong>和<strong>注解</strong>的<code>含义</code>及<code>使用方式</code>，并且与springboot进行简单的整合。</p></div><div class="post-readmore"><a class="post-readmore__link" href="/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/blog_assert/author.gif" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Dawn_南风</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.3.0"></script><script src="/js/stun-boot.js?v=2.3.0"></script><script src="/js/scroll.js?v=2.3.0"></script><script src="/js/header.js?v=2.3.0"></script><script src="/js/sidebar.js?v=2.3.0"></script></body></html>
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'G-E18BJGHLYV', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

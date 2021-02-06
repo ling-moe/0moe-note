@@ -1,119 +1,537 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/blog_assert/icon/favicon.ico?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/blog_assert/icon/favicon.ico?v=2.3.0" type="image/png" sizes="32x32"><meta name="description" content="Gitlab的specificRunner安装与注册                            前言        这里使用docker版本的specificRunner，以下命令可直接使用。 注册时必须须替换url和 registration-token，其他项可按需求更改。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Gitlab的specificRunner安装与注册">
-<meta property="og:url" content="https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/index.html">
-<meta property="og:site_name" content="南风">
-<meta property="og:description" content="Gitlab的specificRunner安装与注册                            前言        这里使用docker版本的specificRunner，以下命令可直接使用。 注册时必须须替换url和 registration-token，其他项可按需求更改。">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/1566811661513.png">
-<meta property="og:image" content="https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/1566811779484.png">
-<meta property="og:image" content="https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/1566811872456.png">
-<meta property="article:published_time" content="2019-08-26T09:12:01.000Z">
-<meta property="article:modified_time" content="2019-08-28T09:33:16.604Z">
-<meta property="article:author" content="Dawn_南风">
-<meta property="article:tag" content="脚本,随笔">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/1566811661513.png"><title>Gitlab的specificRunner安装与注册 | 南风</title><link ref="canonical" href="https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.3.0"><script>var Stun = window.Stun || {};
-var CONFIG = {
-  root: '/',
-  algolia: undefined,
-  assistSearch: undefined,
-  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
-  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
-  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
-  postWidget: {"endText":true},
-  nightMode: {"enable":true},
-  back2top: {"enable":true},
-  codeblock: {"style":"default","highlight":"ocean","wordWrap":false},
-  reward: false,
-  fancybox: false,
-  zoomImage: {"gapAside":"20px"},
-  galleryWaterfall: undefined,
-  lazyload: false,
-  pjax: undefined,
-  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
-  shortcuts: undefined,
-  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
-  sourcePath: {"js":"js","css":"css","images":"images"},
-};
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">南风</div><div class="header-banner-info__subtitle">用需求驱动学习</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Gitlab的specificRunner安装与注册</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2019-08-26</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2019-08-28</span></span></div></header><div class="post-body">
-        <h1 id="gitlab的specificrunner安装与注册"   >
-          <a href="#gitlab的specificrunner安装与注册" class="heading-link"><i class="fas fa-link"></i></a>Gitlab的specificRunner安装与注册</h1>
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assert/icon/favicon.ico">
+  <link rel="icon" type="image/png" href="/assert/icon/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Dawn_南风">
+  <meta name="keywords" content="Dawn_南风,南风,南风破晓">
+  <title>Gitlab的specificRunner安装与注册 - 南风</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+<link rel="stylesheet" href="/assert/css/prism-material-light.css">
+
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"note.0moe.cn","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"G-E18BJGHLYV","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>南风破晓</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Gitlab的specificRunner安装与注册">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-08-26 17:12" pubdate>
+        2019年8月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      266 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      3
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
       
 
-        <h2 id="前言"   >
-          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a>前言</h2>
-      
-<p>这里使用docker版本的specificRunner，以下命令可直接使用。</p>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Gitlab的specificRunner安装与注册</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Gitlab的specificRunner安装与注册"><a href="#Gitlab的specificRunner安装与注册" class="headerlink" title="Gitlab的specificRunner安装与注册"></a>Gitlab的specificRunner安装与注册</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这里使用docker版本的specificRunner，以下命令可直接使用。</p>
 <p>注册时必须须替换<code>url</code>和 <code>registration-token</code>，其他项可按需求更改。</p>
 <a id="more"></a>
 
-        <h2 id="流程"   >
-          <a href="#流程" class="heading-link"><i class="fas fa-link"></i></a>流程</h2>
-      
-<ol>
-<li>
-<p>拉下最新版本镜像</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="code"><pre><span class="line">docker pull gitlab/gitlab-runner</span><br></pre></td></tr></table></div></figure>
-</li>
-<li>
-<p>启动启动容器</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="code"><pre><span class="line">docker run -d --name gitlab-runner --restart always \</span><br><span class="line">  -v /srv/gitlab-runner/config:/etc/gitlab-runner \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  gitlab/gitlab-runner:latest</span><br></pre></td></tr></table></div></figure>
-</li>
-<li>
-<p>runner注册</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="code"><pre><span class="line">docker exec -it gitlab-runner gitlab-runner register \</span><br><span class="line">  --non-interactive \</span><br><span class="line">  --executor &quot;docker&quot; \</span><br><span class="line">  --docker-image alpine:latest \</span><br><span class="line">  --url &quot;https://gitlab.com/&quot; \</span><br><span class="line">  --registration-token &quot;PROJECT_REGISTRATION_TOKEN&quot; \</span><br><span class="line">  --description &quot;docker-runner&quot; \</span><br><span class="line">  --tag-list &quot;docker&quot; \</span><br></pre></td></tr></table></div></figure>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
+<li><p>拉下最新版本镜像</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull gitlab&#x2F;gitlab-runner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></li>
+<li><p>启动启动容器</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -d --name gitlab-runner --restart always \
+  -v &#x2F;srv&#x2F;gitlab-runner&#x2F;config:&#x2F;etc&#x2F;gitlab-runner \
+  -v &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock \
+  gitlab&#x2F;gitlab-runner:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+<li><p>runner注册</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker exec -it gitlab-runner gitlab-runner register \
+  --non-interactive \
+  --executor &quot;docker&quot; \
+  --docker-image alpine:latest \
+  --url &quot;https:&#x2F;&#x2F;gitlab.com&#x2F;&quot; \
+  --registration-token &quot;PROJECT_REGISTRATION_TOKEN&quot; \
+  --description &quot;docker-runner&quot; \
+  --tag-list &quot;docker&quot; \<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 <p><code>url</code>和 <code>registration-token</code>是在Gitlab的CI/CD页面</p>
-<p><img src="1566811661513.png" alt="1566811661513" /></p>
+<p><img src="1566811661513.png" srcset="/img/loading.gif" alt="1566811661513"></p>
 </li>
-<li>
-<p>检查注册是否成功</p>
-<p><img src="1566811779484.png" alt="1566811779484" /></p>
+<li><p>检查注册是否成功</p>
+<p><img src="1566811779484.png" srcset="/img/loading.gif" alt="1566811779484"></p>
 <p>绿色代表注册成功。</p>
-<p><img src="1566811872456.png" alt="1566811872456" /></p>
+<p><img src="1566811872456.png" srcset="/img/loading.gif" alt="1566811872456"></p>
 <p>如果ip与本机不同，不用担心，这是gitlab分配的地址，可以正常调用。</p>
 </li>
-<li>
-<p>查看日志</p>
-<figure class="highlight shell"><div class="table-container"><table><tr><td class="code"><pre><span class="line">docker logs -f gitlab-runner</span><br></pre></td></tr></table></div></figure>
+<li><p>查看日志</p>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker logs -f gitlab-runner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>如果是虚拟机中的docker，则需要将虚拟机挂在到物理网络才可以连接。否则虽然虚拟机中的runner可以注册到gitlab，但gitlab无法访问</p>
 </li>
 </ol>
 
-        <h2 id="注意"   >
-          <a href="#注意" class="heading-link"><i class="fas fa-link"></i></a>注意</h2>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%84%9A%E6%9C%AC-%E9%9A%8F%E7%AC%94/">脚本,随笔</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/09/10/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">服务器自动部署脚本</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/08/15/%E9%92%88%E5%AF%B9%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+                        <span class="hidden-mobile">针对业务场景的解决方案</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "VRhYR3EGwGA6iw2TAUzlvGTp-9Nh9j0Va",
+          app_key: "sNvkmexbN6XoJoXsrt08XkpB",
+          placeholder: "纵使相逢应不识，想说啥，写下叭~",
+          path: window.location.pathname,
+          avatar: "wavatar",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-<p>如果是虚拟机中的docker，则需要将虚拟机挂在到物理网络才可以连接。否则虽然虚拟机中的runner可以注册到gitlab，但gitlab无法访问</p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://note.0moe.cn">Dawn_南风</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/">https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://note.0moe.cn/tags/%E8%84%9A%E6%9C%AC-%E9%9A%8F%E7%AC%94/">脚本,随笔</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2019/09/10/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">服务器自动部署脚本</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2019/08/15/%E9%92%88%E5%AF%B9%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"><span class="paginator-prev__text">针对业务场景的解决方案</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#gitlab%E7%9A%84specificrunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C"><span class="toc-number">1.</span> <span class="toc-text">
-          Gitlab的specificRunner安装与注册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">
-          前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">
-          流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">1.3.</span> <span class="toc-text">
-          注意</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/blog_assert/author.gif" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Dawn_南风</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function loadValine () {
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var guest_info = 'nick,mail,link';
+      typing(title)
+      
+    })(window, document);
+  </script>
 
-  guest_info = guest_info.split(',').filter(function(item) {
-    return GUEST_INFO.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#valine-container',
-    appId: 'VRhYR3EGwGA6iw2TAUzlvGTp-9Nh9j0Va',
-    appKey: 'sNvkmexbN6XoJoXsrt08XkpB',
-    notify: true,
-    verify: true,
-    placeholder: '纵使相逢应不识，想说啥，写下叭~',
-    avatar: 'wavatar',
-    meta: guest_info,
-    pageSize: '10' || 10,
-    visitor: false,
-    recordIP: false,
-    lang: 'zh-cn' || 'zh-cn',
-    path: window.location.pathname
-  });
-}
 
-if (false) {
-  loadValine();
-} else {
-  window.addEventListener('DOMContentLoaded', loadValine, false);
-}</script><script src="/js/utils.js?v=2.3.0"></script><script src="/js/stun-boot.js?v=2.3.0"></script><script src="/js/scroll.js?v=2.3.0"></script><script src="/js/header.js?v=2.3.0"></script><script src="/js/sidebar.js?v=2.3.0"></script></body></html>
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'G-E18BJGHLYV', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

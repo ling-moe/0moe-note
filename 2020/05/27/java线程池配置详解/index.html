@@ -1,123 +1,313 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/blog_assert/icon/favicon.ico?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/blog_assert/icon/favicon.ico?v=2.3.0" type="image/png" sizes="32x32"><meta name="description" content="java线程池配置详解                            前言        网络资料多是复制粘贴，在此重写，以我为准。                     结论          4核 &#x2F;&#x2F; 核心线程池大小private int corePoolSize &#x3D; 20;&#x2F;&#x2F; 最大可创建的线程数private int maxPoolSize &#x3D; 80;&#x2F;&#x2F;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="java线程池配置详解">
-<meta property="og:url" content="https://note.0moe.cn/2020/05/27/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/index.html">
-<meta property="og:site_name" content="南风">
-<meta property="og:description" content="java线程池配置详解                            前言        网络资料多是复制粘贴，在此重写，以我为准。                     结论          4核 &#x2F;&#x2F; 核心线程池大小private int corePoolSize &#x3D; 20;&#x2F;&#x2F; 最大可创建的线程数private int maxPoolSize &#x3D; 80;&#x2F;&#x2F;">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://note.0moe.cn/2020/05/27/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/1590563487338.png">
-<meta property="article:published_time" content="2020-05-27T02:26:06.000Z">
-<meta property="article:modified_time" content="2020-05-27T09:47:05.016Z">
-<meta property="article:author" content="Dawn_南风">
-<meta property="article:tag" content="java">
-<meta property="article:tag" content="线程池， 多线程">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://note.0moe.cn/2020/05/27/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/1590563487338.png"><title>java线程池配置详解 | 南风</title><link ref="canonical" href="https://note.0moe.cn/2020/05/27/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.3.0"><script>var Stun = window.Stun || {};
-var CONFIG = {
-  root: '/',
-  algolia: undefined,
-  assistSearch: undefined,
-  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
-  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
-  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
-  postWidget: {"endText":true},
-  nightMode: {"enable":true},
-  back2top: {"enable":true},
-  codeblock: {"style":"default","highlight":"ocean","wordWrap":false},
-  reward: false,
-  fancybox: false,
-  zoomImage: {"gapAside":"20px"},
-  galleryWaterfall: undefined,
-  lazyload: false,
-  pjax: undefined,
-  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
-  shortcuts: undefined,
-  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
-  sourcePath: {"js":"js","css":"css","images":"images"},
-};
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">南风</div><div class="header-banner-info__subtitle">用需求驱动学习</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">java线程池配置详解</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-05-27</span></span></div></header><div class="post-body">
-        <h1 id="java线程池配置详解"   >
-          <a href="#java线程池配置详解" class="heading-link"><i class="fas fa-link"></i></a>java线程池配置详解</h1>
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assert/icon/favicon.ico">
+  <link rel="icon" type="image/png" href="/assert/icon/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Dawn_南风">
+  <meta name="keywords" content="Dawn_南风,南风,南风破晓">
+  <title>java线程池配置详解 - 南风</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+<link rel="stylesheet" href="/assert/css/prism-material-light.css">
+
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"note.0moe.cn","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"G-E18BJGHLYV","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>南风破晓</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="java线程池配置详解">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-27 10:26" pubdate>
+        2020年5月27日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
       
 
-        <h2 id="前言"   >
-          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a>前言</h2>
-      
-<p>网络资料多是复制粘贴，在此重写，以我为准。</p>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">java线程池配置详解</h1>
+            
+            <div class="markdown-body">
+              <h1 id="java线程池配置详解"><a href="#java线程池配置详解" class="headerlink" title="java线程池配置详解"></a>java线程池配置详解</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>网络资料多是复制粘贴，在此重写，以我为准。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
+<li><p>4核</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 核心线程池大小</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> corePoolSize <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
 
-        <h2 id="结论"   >
-          <a href="#结论" class="heading-link"><i class="fas fa-link"></i></a>结论</h2>
-      
-<ul>
-<li>
-<p>4核</p>
-<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 核心线程池大小</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> corePoolSize = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最大可创建的线程数</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> maxPoolSize = <span class="number">80</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 队列最大长度</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> queueCapacity = <span class="number">400</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 线程池维护线程所允许的空闲时间</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> keepAliveSeconds = <span class="number">200</span>;</span><br></pre></td></tr></table></div></figure>
-</li>
+<span class="token comment">// 最大可创建的线程数</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> maxPoolSize <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 队列最大长度</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> queueCapacity <span class="token operator">=</span> <span class="token number">400</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 线程池维护线程所允许的空闲时间</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> keepAliveSeconds <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<a id="more"></a></li>
+<li><p>2核</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 核心线程池大小</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> corePoolSize <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 最大可创建的线程数</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> maxPoolSize <span class="token operator">=</span> <span class="token number">40</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 队列最大长度</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> queueCapacity <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 线程池维护线程所允许的空闲时间</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> keepAliveSeconds <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+<li><p>1核</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 核心线程池大小</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> corePoolSize <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 最大可创建的线程数</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> maxPoolSize <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 队列最大长度</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> queueCapacity <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 线程池维护线程所允许的空闲时间</span>
+<span class="token keyword">private</span> <span class="token keyword">int</span> keepAliveSeconds <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+<h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2></li>
 </ul>
-<a id="more"></a>
-<ul>
-<li>
-<p>2核</p>
-<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 核心线程池大小</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> corePoolSize = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最大可创建的线程数</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> maxPoolSize = <span class="number">40</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 队列最大长度</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> queueCapacity = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 线程池维护线程所允许的空闲时间</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> keepAliveSeconds = <span class="number">100</span>;</span><br></pre></td></tr></table></div></figure>
-</li>
-<li>
-<p>1核</p>
-<figure class="highlight java"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 核心线程池大小</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> corePoolSize = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最大可创建的线程数</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> maxPoolSize = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 队列最大长度</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> queueCapacity = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 线程池维护线程所允许的空闲时间</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> keepAliveSeconds = <span class="number">50</span>;</span><br></pre></td></tr></table></div></figure>
-</li>
-</ul>
-
-        <h2 id="参数说明"   >
-          <a href="#参数说明" class="heading-link"><i class="fas fa-link"></i></a>参数说明</h2>
-      
 <p>ThreadPoolExecutor类可设置的参数主要有：</p>
 <ul>
-<li>
-<p><code>corePoolSize</code></p>
+<li><p><code>corePoolSize</code></p>
 <blockquote>
 <p>核心线程数，核心线程会一直存活，即使没有任务需要处理。当线程数小于核心线程数时，即使现有的线程空闲，线程池也会优先创建新线程来处理任务，而不是直接交给现有的线程处理。</p>
 <p>核心线程在allowCoreThreadTimeout被设置为true时会超时退出，默认情况下不会退出。</p>
 </blockquote>
 </li>
-<li>
-<p><code>maxPoolSize</code></p>
+<li><p><code>maxPoolSize</code></p>
 <blockquote>
 <p>当线程数大于或等于核心线程，且任务队列已满时，线程池会创建新的线程，直到线程数量达到maxPoolSize。如果线程数已等于maxPoolSize，且任务队列已满，则已超出线程池的处理能力，线程池会拒绝处理任务而抛出异常。</p>
 </blockquote>
 </li>
-<li>
-<p><code>keepAliveSeconds</code></p>
+<li><p><code>keepAliveSeconds</code></p>
 <blockquote>
 <p>当线程空闲时间达到keepAliveSeconds，该线程会退出，直到线程数量等于corePoolSize。如果allowCoreThreadTimeout设置为true，则所有线程均会退出直到线程数量为0。</p>
 </blockquote>
 </li>
-<li>
-<p><code>allowCoreThreadTimeout</code></p>
+<li><p><code>allowCoreThreadTimeout</code></p>
 <blockquote>
 <p>是否允许核心线程空闲退出，默认值为false。</p>
 </blockquote>
 </li>
-<li>
-<p><code>queueCapacity</code></p>
+<li><p><code>queueCapacity</code></p>
 <blockquote>
 <p>任务队列容量。从maxPoolSize的描述上可以看出，任务队列的容量会影响到线程的变化，因此任务队列的长度也需要恰当的设置。</p>
 </blockquote>
 </li>
 </ul>
-
-        <h2 id="扩容流程"   >
-          <a href="#扩容流程" class="heading-link"><i class="fas fa-link"></i></a>扩容流程：</h2>
-      
-<p><img src="1590563487338.png" alt="线程池" /></p>
-
-        <h2 id="参数配置"   >
-          <a href="#参数配置" class="heading-link"><i class="fas fa-link"></i></a>参数配置</h2>
-      
-
-        <h3 id="corepoolsize"   >
-          <a href="#corepoolsize" class="heading-link"><i class="fas fa-link"></i></a>corePoolSize</h3>
-      
-<p>任务主要分为两类<strong>计算密集型</strong>和<strong>IO密集型</strong></p>
+<h2 id="扩容流程："><a href="#扩容流程：" class="headerlink" title="扩容流程："></a>扩容流程：</h2><p><img src="1590563487338.png" srcset="/img/loading.gif" alt="线程池"></p>
+<h2 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h2><h3 id="corePoolSize"><a href="#corePoolSize" class="headerlink" title="corePoolSize"></a>corePoolSize</h3><p>任务主要分为两类<strong>计算密集型</strong>和<strong>IO密集型</strong></p>
 <p>目前大多数cpu都是多核多线程，像我是6核12线程，因此以往的用cpu核数计算并不恰当，应以实际线程数为主。</p>
 <p>注意：有些cpu说是4核8线程，但实际上是6线程+2虚拟线程，此时要用6来计算。</p>
 <p>或者直接一把梭：Runtime.getRuntime().availableProcessors()</p>
@@ -128,68 +318,278 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></he
 <p>计算公式：线程数 =cpu实际线程数/(1 - 阻塞系数)，其中阻塞系数的取值在0和1之间。计算密集型人物的阻塞系数为0，而IO密集型任务的阻塞系数则接近1。</p>
 <p>通用的说，计算密集型的<code>corePoolSize</code>=cpu实际线程数+1</p>
 <p>IO密集型的<code>corePoolSize</code>=cpu实际线程数*5</p>
-
-        <h3 id="queuecapacity"   >
-          <a href="#queuecapacity" class="heading-link"><i class="fas fa-link"></i></a>queueCapacity</h3>
-      
-<p>任务队列的长度要根据核心线程数，以及系统对任务响应时间的要求有关。队列长度计算公式为(corePoolSize/tasktime)*responsetime。</p>
+<h3 id="queueCapacity"><a href="#queueCapacity" class="headerlink" title="queueCapacity"></a>queueCapacity</h3><p>任务队列的长度要根据核心线程数，以及系统对任务响应时间的要求有关。队列长度计算公式为(corePoolSize/tasktime)*responsetime。</p>
 <p>一般来说，tasktime是0.1，responsetime是2，因此等价于</p>
 <p>queueCapacity=20*corePoolSize</p>
-
-        <h3 id="maxpoolsize"   >
-          <a href="#maxpoolsize" class="heading-link"><i class="fas fa-link"></i></a>maxPoolSize</h3>
-      
-<p>如果需要最大线程池扩容，则说明任务队列已满。在这种情况下，对于计算密集型的任务，扩容线程池意义不是很大，因为不需要上下文的切换，这种情况下建议增加物理核数；对于IO密集型的任务，说明IO的速度变慢，需要将空闲的cpu资源让给后续的线程，需要增加线程池的容量。</p>
+<h3 id="maxPoolSize"><a href="#maxPoolSize" class="headerlink" title="maxPoolSize"></a>maxPoolSize</h3><p>如果需要最大线程池扩容，则说明任务队列已满。在这种情况下，对于计算密集型的任务，扩容线程池意义不是很大，因为不需要上下文的切换，这种情况下建议增加物理核数；对于IO密集型的任务，说明IO的速度变慢，需要将空闲的cpu资源让给后续的线程，需要增加线程池的容量。</p>
 <p>一般来说，我们设置为core的4倍。</p>
 <p>maxPoolSize=4*corePoolSize</p>
-
-        <h3 id="keepalivetime"   >
-          <a href="#keepalivetime" class="heading-link"><i class="fas fa-link"></i></a>keepAliveTime</h3>
-      
-<p>此参数设置的最大意义是当线程池维持在一个较高的使用率，延长线程存活时间可以有效的提高处理速度，避免无用的创建-销毁线程。</p>
+<h3 id="keepAliveTime"><a href="#keepAliveTime" class="headerlink" title="keepAliveTime"></a>keepAliveTime</h3><p>此参数设置的最大意义是当线程池维持在一个较高的使用率，延长线程存活时间可以有效的提高处理速度，避免无用的创建-销毁线程。</p>
 <p>keepAliveTime = 5*responsetime * corePoolSize</p>
+<h3 id="allowCoreThreadTimeout"><a href="#allowCoreThreadTimeout" class="headerlink" title="allowCoreThreadTimeout"></a>allowCoreThreadTimeout</h3><p>此参数建议维持默认false，不建议核心线程也退出。</p>
 
-        <h3 id="allowcorethreadtimeout"   >
-          <a href="#allowcorethreadtimeout" class="heading-link"><i class="fas fa-link"></i></a>allowCoreThreadTimeout</h3>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%8C-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">线程池， 多线程</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/19/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84k3s%E5%88%B0istio%EF%BC%88%E4%B8%80%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">从绫开始的k3s到istio（一）：安装K3S</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/20/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-mpvue-vant%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/">
+                        <span class="hidden-mobile">微信小程序+mpvue+vant的打开方式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "VRhYR3EGwGA6iw2TAUzlvGTp-9Nh9j0Va",
+          app_key: "sNvkmexbN6XoJoXsrt08XkpB",
+          placeholder: "纵使相逢应不识，想说啥，写下叭~",
+          path: window.location.pathname,
+          avatar: "wavatar",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-<p>此参数建议维持默认false，不建议核心线程也退出。</p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://note.0moe.cn">Dawn_南风</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://note.0moe.cn/2020/05/27/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/">https://note.0moe.cn/2020/05/27/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://note.0moe.cn/tags/java/">java</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://note.0moe.cn/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%8C-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">线程池， 多线程</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/06/19/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84k3s%E5%88%B0istio%EF%BC%88%E4%B8%80%EF%BC%89/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">从绫开始的k3s到istio（一）：安装K3S</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2019/12/20/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-mpvue-vant%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/"><span class="paginator-prev__text">微信小程序+mpvue+vant的打开方式</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="valine-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">
-          java线程池配置详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">
-          前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">1.2.</span> <span class="toc-text">
-          结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">1.3.</span> <span class="toc-text">
-          参数说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9%E6%B5%81%E7%A8%8B"><span class="toc-number">1.4.</span> <span class="toc-text">
-          扩容流程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="toc-number">1.5.</span> <span class="toc-text">
-          参数配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#corepoolsize"><span class="toc-number">1.5.1.</span> <span class="toc-text">
-          corePoolSize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queuecapacity"><span class="toc-number">1.5.2.</span> <span class="toc-text">
-          queueCapacity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#maxpoolsize"><span class="toc-number">1.5.3.</span> <span class="toc-text">
-          maxPoolSize</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#keepalivetime"><span class="toc-number">1.5.4.</span> <span class="toc-text">
-          keepAliveTime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#allowcorethreadtimeout"><span class="toc-number">1.5.5.</span> <span class="toc-text">
-          allowCoreThreadTimeout</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/blog_assert/author.gif" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">3</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Dawn_南风</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/leancloud-storage@latest/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script><script>function loadValine () {
-  var GUEST_INFO = ['nick', 'mail', 'link'];
-  var guest_info = 'nick,mail,link';
+      typing(title)
+      
+    })(window, document);
+  </script>
 
-  guest_info = guest_info.split(',').filter(function(item) {
-    return GUEST_INFO.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#valine-container',
-    appId: 'VRhYR3EGwGA6iw2TAUzlvGTp-9Nh9j0Va',
-    appKey: 'sNvkmexbN6XoJoXsrt08XkpB',
-    notify: true,
-    verify: true,
-    placeholder: '纵使相逢应不识，想说啥，写下叭~',
-    avatar: 'wavatar',
-    meta: guest_info,
-    pageSize: '10' || 10,
-    visitor: false,
-    recordIP: false,
-    lang: 'zh-cn' || 'zh-cn',
-    path: window.location.pathname
-  });
-}
 
-if (false) {
-  loadValine();
-} else {
-  window.addEventListener('DOMContentLoaded', loadValine, false);
-}</script><script src="/js/utils.js?v=2.3.0"></script><script src="/js/stun-boot.js?v=2.3.0"></script><script src="/js/scroll.js?v=2.3.0"></script><script src="/js/header.js?v=2.3.0"></script><script src="/js/sidebar.js?v=2.3.0"></script></body></html>
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'G-E18BJGHLYV', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

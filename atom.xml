@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>南风</title>
+  <icon>https://note.0moe.cn/icon.png</icon>
+  <subtitle>需求驱动学习</subtitle>
+  <link href="https://note.0moe.cn/atom.xml" rel="self"/>
+  
+  <link href="https://note.0moe.cn/"/>
+  <updated>2021-02-08T01:05:06.576Z</updated>
+  <id>https://note.0moe.cn/</id>
+  
+  <author>
+    <name>Dawn_南风</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从绫开始分析搭建一个后台管理系统（一）</title>
+    <link href="https://note.0moe.cn/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://note.0moe.cn/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2021-02-08T00:21:35.000Z</published>
+    <updated>2021-02-08T01:05:06.576Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这是从绫开始系列的新坑，适合有一些基础的朋友，&lt;del&gt;比如会写hello world的朋友&lt;/del&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="从绫开始" scheme="https://note.0moe.cn/tags/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B/"/>
+    
+    <category term="后台管理系统" scheme="https://note.0moe.cn/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分布式事务选型对比</title>
+    <link href="https://note.0moe.cn/2021/01/13/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94/"/>
+    <id>https://note.0moe.cn/2021/01/13/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94/</id>
+    <published>2021-01-13T06:28:51.000Z</published>
+    <updated>2021-01-13T06:52:29.046Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;分布式事务选型对比&quot;&gt;&lt;a href=&quot;#分布式事务选型对比&quot; class=&quot;headerlink&quot; title=&quot;分布式事务选型对比&quot;&gt;&lt;/a&gt;分布式事务选型对比&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;随着互联网架构的不断扩展，传统的ACID事务已经无法满足要求。为了解决这个问题，BASE理论被提出来取代ACID，基于BASE理论和CAP理论的分布式事务也有各种事务策略。如何保证整个事务整体的原子性与一致性问题？分布式事务如何选项才能更加适合当下的业务场景？已经成为了当下事务的痛点。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="事务" scheme="https://note.0moe.cn/tags/%E4%BA%8B%E5%8A%A1/"/>
+    
+    <category term="分布式" scheme="https://note.0moe.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从绫开始的k3s到istio（一）：安装K3S</title>
+    <link href="https://note.0moe.cn/2020/06/19/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84k3s%E5%88%B0istio%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://note.0moe.cn/2020/06/19/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84k3s%E5%88%B0istio%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2020-06-19T06:12:56.000Z</published>
+    <updated>2020-11-13T02:09:34.856Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;从绫开始的k3s到istio（一）：安装K3S&quot;&gt;&lt;a href=&quot;#从绫开始的k3s到istio（一）：安装K3S&quot; class=&quot;headerlink&quot; title=&quot;从绫开始的k3s到istio（一）：安装K3S&quot;&gt;&lt;/a&gt;从绫开始的k3s到istio（一）：安装K3S&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;因为k8s太大了嘛，就一直想搞也莫得银子。正巧从逼乎上看到了k3s，也是挺有意思，正好我服务器也能勉强带的动（2C4G）就搞了一个。这个系列主要使用k3s+istio。从k3s安装，配置资源服务，部署代码，自动化构建到状态监控等，会一直更新下去。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="k3s" scheme="https://note.0moe.cn/tags/k3s/"/>
+    
+    <category term="k8s" scheme="https://note.0moe.cn/tags/k8s/"/>
+    
+    <category term="istio" scheme="https://note.0moe.cn/tags/istio/"/>
+    
+    <category term="mysql" scheme="https://note.0moe.cn/tags/mysql/"/>
+    
+    <category term="redis" scheme="https://note.0moe.cn/tags/redis/"/>
+    
+    <category term="gateway" scheme="https://note.0moe.cn/tags/gateway/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java线程池配置详解</title>
+    <link href="https://note.0moe.cn/2020/05/27/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://note.0moe.cn/2020/05/27/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/</id>
+    <published>2020-05-27T02:26:06.000Z</published>
+    <updated>2020-05-27T09:47:05.016Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;java线程池配置详解&quot;&gt;&lt;a href=&quot;#java线程池配置详解&quot; class=&quot;headerlink&quot; title=&quot;java线程池配置详解&quot;&gt;&lt;/a&gt;java线程池配置详解&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;网络资料多是复制粘贴，在此重写，以我为准。&lt;/p&gt;
+&lt;h2 id=&quot;结论&quot;&gt;&lt;a href=&quot;#结论&quot; class=&quot;headerlink&quot; title=&quot;结论&quot;&gt;&lt;/a&gt;结论&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;4核&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-java&quot; data-language=&quot;java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// 核心线程池大小&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; corePoolSize &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// 最大可创建的线程数&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; maxPoolSize &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// 队列最大长度&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; queueCapacity &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// 线程池维护线程所允许的空闲时间&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; keepAliveSeconds &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</summary>
+    
+    
+    
+    
+    <category term="java" scheme="https://note.0moe.cn/tags/java/"/>
+    
+    <category term="线程池， 多线程" scheme="https://note.0moe.cn/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%8C-%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信小程序+mpvue+vant的打开方式</title>
+    <link href="https://note.0moe.cn/2019/12/20/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-mpvue-vant%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/"/>
+    <id>https://note.0moe.cn/2019/12/20/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-mpvue-vant%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/</id>
+    <published>2019-12-20T02:06:10.000Z</published>
+    <updated>2021-02-06T06:30:34.839Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;微信小程序-mpvue-vant的打开方式&quot;&gt;&lt;a href=&quot;#微信小程序-mpvue-vant的打开方式&quot; class=&quot;headerlink&quot; title=&quot;微信小程序+mpvue+vant的打开方式&quot;&gt;&lt;/a&gt;微信小程序+mpvue+vant的打开方式&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;前阵子使用mpvue构建微信小程序，在引入其他框架时出现了一点问题，需要去修改配置，这里给出具体的配置流程。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="vue" scheme="https://note.0moe.cn/tags/vue/"/>
+    
+    <category term="微信小程序" scheme="https://note.0moe.cn/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+    <category term="mpvue" scheme="https://note.0moe.cn/tags/mpvue/"/>
+    
+    <category term="vant" scheme="https://note.0moe.cn/tags/vant/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于docker版nginx的几点注意</title>
+    <link href="https://note.0moe.cn/2019/11/16/%E5%85%B3%E4%BA%8Edocker%E7%89%88nginx%E7%9A%84%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F/"/>
+    <id>https://note.0moe.cn/2019/11/16/%E5%85%B3%E4%BA%8Edocker%E7%89%88nginx%E7%9A%84%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F/</id>
+    <published>2019-11-15T16:40:59.000Z</published>
+    <updated>2020-11-13T02:41:36.695Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;关于docker版nginx的几点注意&quot;&gt;&lt;a href=&quot;#关于docker版nginx的几点注意&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="nginx" scheme="https://note.0moe.cn/tags/nginx/"/>
+    
+    <category term="docker" scheme="https://note.0moe.cn/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用flex制作滚动列表</title>
+    <link href="https://note.0moe.cn/2019/11/03/%E4%BD%BF%E7%94%A8flex%E5%88%B6%E4%BD%9C%E6%BB%9A%E5%8A%A8%E5%88%97%E8%A1%A8/"/>
+    <id>https://note.0moe.cn/2019/11/03/%E4%BD%BF%E7%94%A8flex%E5%88%B6%E4%BD%9C%E6%BB%9A%E5%8A%A8%E5%88%97%E8%A1%A8/</id>
+    <published>2019-11-03T02:10:31.000Z</published>
+    <updated>2021-02-08T00:16:10.716Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;使用flex制作滚动列表&quot;&gt;&lt;a href=&quot;#使用flex制作滚动列表&quot; class=&quot;headerlink&quot; title=&quot;使用flex制作滚动列表&quot;&gt;&lt;/a&gt;使用flex制作滚动列表&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;因为自己在做一点小东西，所以就有个需求，一个元素里面需要有两个子元素，两个子元素竖排排列，第二个子元素里面的内容不定长，需要做滚动，但第二个元素的高度需要自适应。&lt;/p&gt;
+&lt;p&gt;在学习的过程稿发现flex和overflow挺有意思的，特此记录下来。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="html" scheme="https://note.0moe.cn/tags/html/"/>
+    
+    <category term="css" scheme="https://note.0moe.cn/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx匹配规则</title>
+    <link href="https://note.0moe.cn/2019/10/17/nginx%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99/"/>
+    <id>https://note.0moe.cn/2019/10/17/nginx%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99/</id>
+    <published>2019-10-17T01:43:33.000Z</published>
+    <updated>2019-10-17T02:07:32.607Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一、语法规则&quot;&gt;&lt;a href=&quot;#一、语法规则&quot; class=&quot;headerlink&quot; title=&quot;一、语法规则&quot;&gt;&lt;/a&gt;一、语法规则&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-nginx&quot; data-language=&quot;nginx&quot;&gt;&lt;code class=&quot;language-nginx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;uri&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;&amp;#123;&lt;/span&gt; … &lt;span class=&quot;token punctuation&quot;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;center&quot;&gt;符&amp;nbsp;号&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;含&amp;nbsp;义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;code&gt;=&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;开头表示精确匹配&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;code&gt;^~&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;开头表示 uri 以某个常规字符串开头，理解为匹配 &lt;code&gt;url&lt;/code&gt; 路径即可。&lt;code&gt;nginx&lt;/code&gt; 不对 &lt;code&gt;url&lt;/code&gt; 做编码，因此请求为&lt;code&gt;/static/20%/aa&lt;/code&gt;，可以被规则&lt;code&gt;^~ /static/ /aa&lt;/code&gt;匹配到（注意是空格）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;code&gt;~&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;开头表示区分大小写的正则匹配&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;code&gt;~*&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;开头表示不区分大小写的正则匹配&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;&lt;code&gt;/&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;通用匹配，任何请求都会匹配到&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;</summary>
+    
+    
+    
+    
+    <category term="nginx" scheme="https://note.0moe.cn/tags/nginx/"/>
+    
+    <category term="服务器" scheme="https://note.0moe.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux常用命令</title>
+    <link href="https://note.0moe.cn/2019/10/17/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://note.0moe.cn/2019/10/17/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2019-10-17T01:43:17.000Z</published>
+    <updated>2021-01-13T02:37:25.061Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;内存资源最多的前 10 个进程&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-shell&quot; data-language=&quot;shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;ps -auxf | sort -nr -k 4 | head -10&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt; CPU 资源最多的前 10 个进程 &lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-shell&quot; data-language=&quot;shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;ps -auxf | sort -nr -k 3 | head -10&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;find在根目录下根据文件名查找&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-shell&quot; data-language=&quot;shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;find &amp;#x2F; -name 文件名&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</summary>
+    
+    
+    
+    
+    <category term="linux" scheme="https://note.0moe.cn/tags/linux/"/>
+    
+    <category term="运维" scheme="https://note.0moe.cn/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>服务器自动部署脚本</title>
+    <link href="https://note.0moe.cn/2019/09/10/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/"/>
+    <id>https://note.0moe.cn/2019/09/10/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/</id>
+    <published>2019-09-10T07:56:06.000Z</published>
+    <updated>2020-11-13T02:41:22.078Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;服务器自动部署脚本&quot;&gt;&lt;a href=&quot;#服务器自动部署脚本&quot; class=&quot;headerlink&quot; title=&quot;服务器自动部署脚本&quot;&gt;&lt;/a&gt;服务器自动部署脚本&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;自搭服务器需要自动打包部署流程，写了个脚本，备忘。&lt;/p&gt;
+&lt;p&gt;没有特殊需求直接放在工程根目录下就可以。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="java" scheme="https://note.0moe.cn/tags/java/"/>
+    
+    <category term="服务器" scheme="https://note.0moe.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="springboot" scheme="https://note.0moe.cn/tags/springboot/"/>
+    
+    <category term="ops" scheme="https://note.0moe.cn/tags/ops/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gitlab的specificRunner安装与注册</title>
+    <link href="https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/"/>
+    <id>https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/</id>
+    <published>2019-08-26T09:12:01.000Z</published>
+    <updated>2019-08-28T09:33:16.604Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Gitlab的specificRunner安装与注册&quot;&gt;&lt;a href=&quot;#Gitlab的specificRunner安装与注册&quot; class=&quot;headerlink&quot; title=&quot;Gitlab的specificRunner安装与注册&quot;&gt;&lt;/a&gt;Gitlab的specificRunner安装与注册&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这里使用docker版本的specificRunner，以下命令可直接使用。&lt;/p&gt;
+&lt;p&gt;注册时必须须替换&lt;code&gt;url&lt;/code&gt;和 &lt;code&gt;registration-token&lt;/code&gt;，其他项可按需求更改。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="脚本,随笔" scheme="https://note.0moe.cn/tags/%E8%84%9A%E6%9C%AC-%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>针对业务场景的解决方案</title>
+    <link href="https://note.0moe.cn/2019/08/15/%E9%92%88%E5%AF%B9%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://note.0moe.cn/2019/08/15/%E9%92%88%E5%AF%B9%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2019-08-15T11:52:52.000Z</published>
+    <updated>2021-01-13T02:23:46.211Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;针对业务场景的解决方案&quot;&gt;&lt;a href=&quot;#针对业务场景的解决方案&quot; class=&quot;headerlink&quot; title=&quot;针对业务场景的解决方案&quot;&gt;&lt;/a&gt;针对业务场景的解决方案&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​        这是一个系列专题，是根据我所经历的具体的业务场景所用到的解决方案和技术架构设计的一个汇总。&lt;/p&gt;
+&lt;p&gt;​        一方面是对一直以来的经历做一个总结，在以后做项目的时候有一个基础的想法。&lt;/p&gt;
+&lt;p&gt;​        另一方面是秉承这开源的精神，希望大家在接到甲方爸爸的需求时候，起码一个基本的解决方案的思路方向，不至于心里没底。&lt;/p&gt;
+&lt;p&gt;​        如果针对某一场景，在以后的工作中有更好的解决方案，我也会更新进来并说明原因及优劣。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="解决方案" scheme="https://note.0moe.cn/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DDD项目结构（领域驱动设计）</title>
+    <link href="https://note.0moe.cn/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/"/>
+    <id>https://note.0moe.cn/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/</id>
+    <published>2019-07-27T16:00:00.000Z</published>
+    <updated>2019-07-29T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;DDD项目结构（领域驱动设计）&quot;&gt;&lt;a href=&quot;#DDD项目结构（领域驱动设计）&quot; class=&quot;headerlink&quot; title=&quot;DDD项目结构（领域驱动设计）&quot;&gt;&lt;/a&gt;DDD项目结构（领域驱动设计）&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;DDD项目结构（领域驱动设计）这种工程结构模型我接触了一年多，虽然每个人都有不同的理解，不过相比于MVC的工程结构，对于代码结构的清晰度，还有业务逻辑的分层方面，DDD都是优于MVC的。&lt;/p&gt;
+&lt;p&gt;尽管每个人对DDD模型的理解不同，但大家的思路总归是一致的（api、app、domain、infra），争议之处在于一些包放置的层级以及代码分层。&lt;/p&gt;
+&lt;p&gt;因此这里记录了对DDD工程结构的理解，以后我会不定期更新。&lt;/p&gt;
+&lt;p&gt;互相分享，互相学习。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="工程结构" scheme="https://note.0moe.cn/categories/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="spring" scheme="https://note.0moe.cn/categories/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/spring/"/>
+    
+    <category term="微服务" scheme="https://note.0moe.cn/categories/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/spring/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="工程结构,DDD" scheme="https://note.0moe.cn/tags/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84-DDD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MyBatis拦截器--从基础到与Spring Boot整合</title>
+    <link href="https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/"/>
+    <id>https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/</id>
+    <published>2019-07-27T16:00:00.000Z</published>
+    <updated>2019-07-27T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;MyBatis拦截器–从基础到与Spring-Boot整合&quot;&gt;&lt;a href=&quot;#MyBatis拦截器–从基础到与Spring-Boot整合&quot; class=&quot;headerlink&quot; title=&quot;MyBatis拦截器–从基础到与Spring Boot整合&quot;&gt;&lt;/a&gt;MyBatis拦截器–从基础到与Spring Boot整合&lt;/h3&gt;&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;MyBatis拦截器是Java持久层框架，最近在研究拦截器的写法。本以为会很复杂，实际上从使用上来说，是很简单的。&lt;/p&gt;
+&lt;p&gt;本文主要介绍的时各个&lt;strong&gt;方法&lt;/strong&gt;和&lt;strong&gt;注解&lt;/strong&gt;的&lt;code&gt;含义&lt;/code&gt;及&lt;code&gt;使用方式&lt;/code&gt;，并且与springboot进行简单的整合。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+</feed>

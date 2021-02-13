@@ -68,7 +68,8 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="南风" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -242,12 +243,14 @@
 <ul>
 <li><p>hostname。</p>
 <p>因为k3s的node节点有命名规则，只允许字母、数字和中划线(<code>-</code>)。并且节点名称默认名称使用hostname，因此某些云服务商的默认命名可能有问题，比如VM_6。这种节点是无法创建成功的，因此我们首先要重命名hostname。</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo hostnamectl set-hostname &lt;newhostname&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></li>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo hostnamectl set-hostname &lt;newhostname&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+</li>
 <li><p>用istio代替traefik做反向代理</p>
 <p>因为traefik不支持mysql、redis等协议代理，因此我们用istio做反代</p>
 </li>
 </ul>
 <h3 id="国内源安装k3s"><a href="#国内源安装k3s" class="headerlink" title="国内源安装k3s"></a>国内源安装k3s</h3>  <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">curl -sfL https:&#x2F;&#x2F;docs.rancher.cn&#x2F;k3s&#x2F;k3s-install.sh | INSTALL_K3S_MIRROR&#x3D;cn INSTALL_K3S_EXEC&#x3D;&quot;server --no-deploy&#x3D;traefik --kube-apiserver-arg service-node-port-range&#x3D;1-65535&quot; sh -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
 <p>  关于安装参数，我们一条一条来解释：</p>
 <blockquote>
 <p>INSTALL_K3S_MIRROR：使用国内源安装</p>
@@ -269,11 +272,13 @@ gpgkey&#x3D;https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;kubernetes&#x2F;yum&#x2F;d
 EOF
 setenforce 0
 yum install -y kubelet kubeadm kubectl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <h3 id="安装验证"><a href="#安装验证" class="headerlink" title="安装验证"></a>安装验证</h3><ul>
 <li><p>检查节点状态</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ kubectl get node 
 NAME   STATUS   ROLES    AGE     VERSION
-vm6   Ready    master   5d23h   v1.18.3+k3s1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></li>
+vm6   Ready    master   5d23h   v1.18.3+k3s1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
+</li>
 <li><p>检查节点的污点情况</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 请检查节点的污点情况，如果是false，则下面可以略过
 $ kubectl describe node vm6 | grep Unschedulable
@@ -283,7 +288,8 @@ Unschedulable:      false
 $ kubectl taint nodes --all node-role.kubernetes.io&#x2F;master-
 $ kubectl taint nodes --all node-role.kubernetes.io&#x2F;master:PreferNoSchedule-
 # 这一步不确定性较大，如果都不可用，请自行根据文档解决，文档地址
-# https:&#x2F;&#x2F;kubernetes.io&#x2F;zh&#x2F;docs&#x2F;concepts&#x2F;configuration&#x2F;taint-and-toleration&#x2F;#%E6%A6%82%E5%BF%B5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+# https:&#x2F;&#x2F;kubernetes.io&#x2F;zh&#x2F;docs&#x2F;concepts&#x2F;configuration&#x2F;taint-and-toleration&#x2F;#%E6%A6%82%E5%BF%B5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+</li>
 <li><p>检查dns解析情况</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ nslookup kubernetes.default
 Server:    10.0.0.10
@@ -303,9 +309,10 @@ search default.svc.cluster.local svc.cluster.local svc.cluster.local cluster.loc
 options ndots:5
 # 若产生其他问题请根据文档解决
 # https:&#x2F;&#x2F;kubernetes.io&#x2F;zh&#x2F;docs&#x2F;tasks&#x2F;debug-application-cluster&#x2F;debug-service&#x2F;#service-%E6%98%AF%E5%90%A6%E9%80%9A%E8%BF%87-dns-%E5%B7%A5%E4%BD%9C<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
-<h2 id="文档地址"><a href="#文档地址" class="headerlink" title="文档地址"></a>文档地址</h2></li>
+
+</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://docs.rancher.cn/k3s/">K3S中文文档</a></p>
+<h2 id="文档地址"><a href="#文档地址" class="headerlink" title="文档地址"></a>文档地址</h2><p><a target="_blank" rel="noopener" href="https://docs.rancher.cn/k3s/">K3S中文文档</a></p>
 
             </div>
             <hr>

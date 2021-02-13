@@ -68,7 +68,8 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="南风" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -238,10 +239,13 @@
             <div class="markdown-body">
               <p>内存资源最多的前 10 个进程</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ps -auxf | sort -nr -k 4 | head -10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
 <p> CPU 资源最多的前 10 个进程 </p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ps -auxf | sort -nr -k 3 | head -10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
 <p>find在根目录下根据文件名查找</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">find &#x2F; -name 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
 <a id="more"></a>
 
 <h3 id="NGINX-一般目录"><a href="#NGINX-一般目录" class="headerlink" title="NGINX 一般目录"></a>NGINX 一般目录</h3><div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 启动文件
@@ -250,11 +254,13 @@
 &#x2F;usr&#x2F;src&#x2F;nginx&#x2F;conf&#x2F;nginx.conf
 # 日志目录
 &#x2F;usr&#x2F;src&#x2F;nginx&#x2F;logs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <h3 id="SSH-KEY-生成"><a href="#SSH-KEY-生成" class="headerlink" title="SSH KEY 生成"></a>SSH KEY 生成</h3><div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
 # 三连回车
 ssh-agent -s
 eval &#96;ssh-agent -s&#96;
 ssh-add ~&#x2F;.ssh&#x2F;id_rsa<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <h3 id="建立swap分区"><a href="#建立swap分区" class="headerlink" title="建立swap分区"></a>建立swap分区</h3><div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#1.创建要作为swap分区的文件:增加1GB大小的交换分区，则命令写法如下，其中的count等于想要的块的数量（bs*count&#x3D;文件大小）。
 dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;root&#x2F;swapfile bs&#x3D;1M count&#x3D;1024
 
@@ -266,6 +272,7 @@ swapon &#x2F;root&#x2F;swapfile
 
 #4.使系统开机时自启用，在文件&#x2F;etc&#x2F;fstab中添加一行：
 echo &quot;&#x2F;root&#x2F;swapfile swap swap defaults 0 0&quot; &gt;&gt;&#x2F;etc&#x2F;fstab<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 
             </div>
             <hr>

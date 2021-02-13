@@ -68,7 +68,8 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="南风" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -254,6 +255,7 @@
   <span class="token keyword">void</span> <span class="token function">setProperties</span><span class="token punctuation">(</span><span class="token class-name">Properties</span> properties<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <p>具体如下：</p>
 <div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Intercepts</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Signature</span><span class="token punctuation">(</span>type <span class="token operator">=</span> <span class="token class-name">Executor</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token string">"query"</span><span class="token punctuation">,</span> args <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token class-name">MappedStatement</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">RowBounds</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">ResultHandler</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Component</span>
@@ -273,16 +275,18 @@
 
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <p>这是先说方法，再说注解</p>
 <h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><ul>
 <li><p><code>setProperties()</code>方法主要是用来从配置中获取属性。</p>
 <p>如果是使用xml式配置拦截器，可在Mybatis配置文件中添加节点，属性可以以如下方式传递</p>
 <div class="code-wrapper"><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span> <span class="token attr-name">interceptor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tk.mybatis.simple.plugin.XXXInterceptor<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>propl<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>valuel<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>prop2<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>value2<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span> <span class="token attr-name">interceptor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tk.mybatis.simple.plugin.XXXInterceptor<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>propl<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>valuel<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>prop2<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value2<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <p>如果在<code>Spring boot</code>中使用，则需要单独写一个配置类，如下：</p>
 <div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MybatisMapperAutoConfiguration</span><span class="token punctuation">&#123;</span>
@@ -295,6 +299,7 @@
         sqlSessionFactory<span class="token punctuation">.</span><span class="token function">getConfiguration</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addInterceptor</span><span class="token punctuation">(</span>zipkinInterceptor<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <p>如果说<strong>不需要配置属性</strong>，则在<code>spring boot</code>中，不需要去编写配置类，只需要像我一样在拦截器上加个<code>@Component</code>即可。</p>
 </li>
 <li><p><code>plugin()</code>方法用于指定哪些方法可以被此拦截器拦截。如下：</p>
@@ -306,6 +311,7 @@
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> target<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <p><code>Plugin.wrap()</code>是个包装方法，如果需要此拦截器，则将此此拦截器连同入参中的<code>target</code>一起包装后返回，如果不需要则直接返回<code>target</code></p>
 <p>另附具体<code>Plugin.wrap()</code>的源码：</p>
 <div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Object</span> <span class="token function">wrap</span><span class="token punctuation">(</span><span class="token class-name">Object</span> target<span class="token punctuation">,</span> <span class="token class-name">Interceptor</span> interceptor<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -319,7 +325,8 @@
         <span class="token keyword">new</span> <span class="token class-name">Plugin</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> interceptor<span class="token punctuation">,</span> signatureMap<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span>
   <span class="token keyword">return</span> target<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+</li>
 <li><p><code>intercept()</code>方法是用来对拦截的<code>sql</code>进行具体的操作。</p>
 <p>这里拿分页插件<code>PageHelper</code>中的类<code>PageInterceptor</code>进行说明。</p>
 <p>坐标：<code>com.github.pagehelper.PageInterceptor#intercept(Invocation)</code></p>
@@ -337,6 +344,7 @@
 <div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">return</span> invocation<span class="token punctuation">.</span><span class="token function">proceed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
 
 
+
 </li>
 </ol>
 </li>
@@ -350,6 +358,7 @@
 <span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">Intercepts</span> <span class="token punctuation">&#123;</span>
   <span class="token class-name">Signature</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <p>可以看到，其中是一个<code>Signature</code>类型的数组，意味着一个拦截器可以拦截多种方法。</p>
 </li>
 <li><p><code>@Signature</code></p>
@@ -364,6 +373,7 @@
 
   <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">args</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <p>有三个参数，</p>
 <ul>
 <li><code>type</code>：类型</li>
@@ -395,18 +405,18 @@
 				<span class="token class-name">BoundSql</span><span class="token punctuation">.</span><span class="token keyword">class</span>
 				<span class="token punctuation">&#125;</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <p>可以注意看，<code>type</code>的值与<strong>类名</strong>相同，<code>method</code>与<strong>方法名</strong>相同，为了避免方法重载，<code>args</code>中指定了<strong>各个参数的类型和个数</strong>。</p>
 <ul>
 <li><p>如果我们想拦截多个方法，比如说上图1和2的方法我们都想拦截到，只需要再加个<code>@Signature</code>就可以，要记得<code>@Intercepts</code>的value可是数组啊</p>
 </li>
-<li><p>```java<br>@Intercepts(</p>
-<div class="code-wrapper"><pre><code>&#123;
-    @Signature(type = Executor.class, method = &quot;query&quot;, args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class&#125;),
-    @Signature(type = Executor.class, method = &quot;query&quot;, args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class&#125;),
-&#125;
-</code></pre></div>
-<p>)</p>
-<div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">
+<li><div class="code-wrapper"><pre><code class="java">@Intercepts(
+    &#123;
+        @Signature(type = Executor.class, method = &quot;query&quot;, args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class&#125;),
+        @Signature(type = Executor.class, method = &quot;query&quot;, args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class&#125;),
+    &#125;
+)
+<pre class="line-numbers language-none"><code class="language-none">
 
 
 
@@ -428,7 +438,9 @@
            zipkinInterceptor.setProperties(properties);
            sqlSessionFactory.getConfiguration().addInterceptor(zipkinInterceptor);
        &#125;
-   &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+   &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+</code></pre>
+</li>
 </ul>
 </li>
 </ul>
@@ -437,9 +449,10 @@
 <div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Intercepts</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Signature</span><span class="token punctuation">(</span>type <span class="token operator">=</span> <span class="token class-name">Executor</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token string">"query"</span><span class="token punctuation">,</span> args <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token class-name">MappedStatement</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">RowBounds</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">ResultHandler</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@Component</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserAuthorityDataInterceptor</span> <span class="token keyword">implements</span> <span class="token class-name">Interceptor</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div>
-<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>在mybatis的xml文件中，使用的是ognl语法，然而在mybatis中new的变量，因类加载器不同，会导致<code>equals</code>或<code>==</code>永远是<code>false</code>，需要注意。</p>
+
 </li>
 </ol>
+<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><p>在mybatis的xml文件中，使用的是ognl语法，然而在mybatis中new的变量，因类加载器不同，会导致<code>equals</code>或<code>==</code>永远是<code>false</code>，需要注意。</p>
 <h4 id="资料参考"><a href="#资料参考" class="headerlink" title="资料参考"></a>资料参考</h4><p>《MyBatis从入门到精通》——<strong>刘增辉</strong>（PageHelper作者）</p>
 
             </div>

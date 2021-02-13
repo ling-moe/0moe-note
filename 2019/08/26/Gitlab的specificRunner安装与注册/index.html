@@ -68,7 +68,8 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="南风" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -242,12 +243,14 @@
 
 <h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
 <li><p>拉下最新版本镜像</p>
-<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull gitlab&#x2F;gitlab-runner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></li>
+<div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker pull gitlab&#x2F;gitlab-runner<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+</li>
 <li><p>启动启动容器</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker run -d --name gitlab-runner --restart always \
   -v &#x2F;srv&#x2F;gitlab-runner&#x2F;config:&#x2F;etc&#x2F;gitlab-runner \
   -v &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock \
-  gitlab&#x2F;gitlab-runner:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></li>
+  gitlab&#x2F;gitlab-runner:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div>
+</li>
 <li><p>runner注册</p>
 <div class="code-wrapper"><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">docker exec -it gitlab-runner gitlab-runner register \
   --non-interactive \
@@ -257,6 +260,7 @@
   --registration-token &quot;PROJECT_REGISTRATION_TOKEN&quot; \
   --description &quot;docker-runner&quot; \
   --tag-list &quot;docker&quot; \<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+
 <p><code>url</code>和 <code>registration-token</code>是在Gitlab的CI/CD页面</p>
 <p><img src="1566811661513.png" srcset="/img/loading.gif" alt="1566811661513"></p>
 </li>

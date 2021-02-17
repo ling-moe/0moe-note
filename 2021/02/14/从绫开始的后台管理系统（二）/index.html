@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assert/icon/favicon.ico">
+  <link rel="icon" type="image/png" href="/assert/icon/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Dawn_南风">
+  <meta name="keywords" content="Dawn_南风,南风,南风破晓">
+  <title>从绫开始的后台管理系统（二） - 南风</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+<link rel="stylesheet" href="/assert/css/prism-material-light.css">
+
+      
+      
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.css" />
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"note.0moe.cn","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":"UA-189010513-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="南风" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>南风破晓</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="从绫开始的后台管理系统（二）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-14 21:10" pubdate>
+        2021年2月14日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      44
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">从绫开始的后台管理系统（二）</h1>
+            
+            <div class="markdown-body">
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>那这一章就正式开始对ruoyi的后端配置进行分析。</p>
+<p>ruoyi的后端模块主要包括权限系统，动态数据源、数据权限隔离、代码生成器、定时任务，common工具，还有后端接口，下面我们逐一进行分析。</p>
+<p>我们也会讲一些关于工程结构，依赖管理配置方面的设计。</p>
+<h2 id="工程结构"><a href="#工程结构" class="headerlink" title="工程结构"></a>工程结构</h2><p>工程结构主要分为两部分：pom结构和包结构。</p>
+<h3 id="pom结构"><a href="#pom结构" class="headerlink" title="pom结构"></a>pom结构</h3><p>pom结构遵循oo（面向对象）原则，即配置尽量放在父工程中进行管理，同时子工程也要能够根据自己的需要进行调整（封装与继承），但注意在划分工程时不要成环，即子工程互相依赖。</p>
+<p><img src="http://file.note.0moe.cn/img/image-20210217215151835.png" srcset="/img/loading.gif" alt="image-20210217215151835"></p>
+<p>我们可以看到，属性配置<code>properties</code>，和依赖管理<code>dependencyManagement</code>，都是放在父工程<code>ruoyi</code>中，子工程只需要继承父工程就可以使用父工程的配置和依赖。</p>
+<p>注意：注意打包结构<code>packaging</code>，自己选择是要打成jar，war，还是pom包。一般来说父工程是pom包，子项目打包时现在一般时jar包（内置tomcat），如果使用外部tomcat则要打成war包。</p>
+<p><img src="http://file.note.0moe.cn/img/image-20210217220344888.png" srcset="/img/loading.gif" alt="image-20210217220344888"></p>
+<h3 id="包结构"><a href="#包结构" class="headerlink" title="包结构"></a>包结构</h3><p>包结构目前由两种模型驱动：mvc模型和DDD模型。mvc模型是传统的驱动模型，讲究的是视图与数据分离，由controller负责管理；DDD模型（领域驱动模型）是近几年的一种驱动模型，他讲究的是根据业务领域划分功能边界。</p>
+<ul>
+<li><p>mvc模型</p>
+<p>mvc模型在模板渲染时代（jsp和freemarker）比较流行，自从前后端分离流行起来后，渐渐的大家觉得味不太对，因为没有视图需要渲染了，controller的责任好像不像以前那么沉重了，但是又找不到新的，合适的称呼；而且因为ssm架构，导致配置xml和配置类越来越多，不是很好管理，因此mvc才渐渐没落下去。</p>
+<p>mvc模型的基本结构为controller-dao-service，业务相关的类都依据这三者进行划分，有一些配置和工具类，则单独放在config和utils包中进行管理。</p>
+</li>
+<li><p>DDD模型</p>
+<p>DDD模型（领域驱动模型）因上述的发展原因被挖了出来，实际上互联网各种理论很早就有人提出来了，只是顺应时代发展才出现这种风水轮流转的局面。mvc模型不足以描述复杂的结构，因此才掏出了DDD。</p>
+<p>DDD模型讲究以业务边界划分领域，在业务边界有重合的地方，则单独补充一个业务融合领域。</p>
+<p>由于DDD讲究一个理解（业务理解和架构理解），因此并没有mvc模型划分的那么清晰。每个人都有自己的一套理解和最佳实践。简单的说是分为api-app-domain-infra四层，具体可以去看我的这篇文章<a href="https://note.0moe.cn/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/">DDD项目结构（领域驱动设计）</a>。</p>
+</li>
+</ul>
+<p>这里我不讲的太深，具体理论有各路大神比我讲的更好。</p>
+<p>ruoyi的包结构有一些地方让我有点难受，它把service放在了依赖<code>ruoyi-system</code>中，而controller放到了<code>ruoyi-admin</code>中这样就导致我要改动代码有时就要改两遍。</p>
+<p>我理解作者的意图，他是想把字典，系统信息等等服务作为一个依赖提供，以供其他包调用，将controller和service解耦。但是我还是比较喜欢放在同一个包里，统一对外提供服务，这个就属于仁者见仁智者见智了。</p>
+<p>在我看来，一个模块是一个整体，controller是面向http提供服务，service和mapper是面向class提供服务，所以他们这种提供服务的属性没必要拆开，应该由调用方面对不同的场景是，选择不同的服务方法。</p>
+<blockquote>
+<p>遇到这种情况我们会放在同一个包里。</p>
+</blockquote>
+<h2 id="权限系统"><a href="#权限系统" class="headerlink" title="权限系统"></a>权限系统</h2><h3 id="权限验证设计"><a href="#权限验证设计" class="headerlink" title="权限验证设计"></a>权限验证设计</h3><p>ruoyi的权限系统是使用spring security的方案，token颁发是使用jwt+redis。即将token下发给客户端，且在服务器也存储一份。鉴权时在接口调用处进行鉴权。</p>
+<h4 id="token颁发"><a href="#token颁发" class="headerlink" title="token颁发"></a>token颁发</h4><p>这个设计在我来看着实是有些臃肿。如果需要用户信息只要单开一个请求用户信息的接口就好了，没必要每次都用jwt去请求，这样一来存了两次（客户端一次，服务端一次），真的有这个必要吗？</p>
+<p>现在主流的方案有两种，<code>jwt</code>和<code>token+redis</code></p>
+<ol>
+<li>jwt是无状态分布式的设计，类似于证书签署下发。<ul>
+<li>优点<ol>
+<li>jwt可以减少服务器压力。因为是无状态的设计，所以用户信息都存储在本体中被下发到客户端，客户端携带jwt访问资源时，可以直接读取到用户信息。特别是在分布式环境下，各个服务不需要再根据token去获取用户信息，鉴权中心也不需要再去存储用户信息。</li>
+</ol>
+</li>
+<li>缺点<ol>
+<li>jwt无法主动过期。因为是无状态的设计，jwt自身会包含一个过期时间，但是服务端无法让它主动过期或续签。比如我们想要修改用户的数据（如时区，权限等）这样就要使原有的jwt失效，重新颁发。要想主动过期必须要维护一个集合，以此来验证jwt是否有效。实际上证书注销也是这么做的，在https请求时会验证证书是否有效。</li>
+<li>jwt存储过多数据会造成http头负担过大。如果用户信息中有太多的属性，比如时区，登录地区，操作系统等，或者直接在里面维护一个权限list。这样会导致http头负担暴增，http开销变得极大。</li>
+<li>jwt未加密。jwt是使用base64编码，因此等同于明文。且使用base64编码增大数据体积，使<code>2</code>的缺点进一步被放大。</li>
+<li>接口防刷及多端验证。持有jwt的客户端可以无穷端登录或者无限刷你的接口，这个时候你就要去管理jwt以防止这种问题。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>token+redis是类session中心化存储的设计。<ul>
+<li>优点<ol>
+<li>可进行会话管理。因为用户信息和登录状态都是存储在服务器的，因此服务器可以控制会话，动态修改用户信息。并且这也是类session设计的优势所在，现在不推荐使用session的原因是因为session的跨域问题，安全问题以及存储扩展问题。</li>
+</ol>
+</li>
+<li>缺点<ol>
+<li>信息存储会增加服务器负担，且需要选择合适的存储组件。因为是中心化管理，所以用户信息必须要放在服务器存储，且这类数据读写频率会非常高，不能用数据库进行管理，需要引入redis等其他高速读写组件。<code>这同时也是中心化管理所需要的资源，不然中心化管理没法做。</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<p>ruoyi的权限系统设计相当于把这两个设计聚合到一起。它解决了jwt过期的缺点，但jwt的优点完全没有用到，且其他的缺点无法解决，反而事倍功半。</p>
+<blockquote>
+<p>我们的后台管理会采用token+redis这种方案。因为作为管理系统，我们必须要对会话进行管理。jwt这种方案更适合应用在其他的场景，比如邮件验证等。</p>
+</blockquote>
+<h4 id="接口鉴权"><a href="#接口鉴权" class="headerlink" title="接口鉴权"></a>接口鉴权</h4><p>接口鉴权是使用spring security的<code>@PreAuthorize</code>+权限编码进行鉴权。这样设计鉴权逻辑可以有很大的自由，且可以精细到对每个接口单独进行权限管理。</p>
+<p><img src="http://file.note.0moe.cn/img/image-20210215103340240.png" srcset="/img/loading.gif" alt="image-20210215103340240"></p>
+<p><img src="http://file.note.0moe.cn/img/image-20210215103405036.png" srcset="/img/loading.gif" alt="image-20210215103405036"></p>
+<blockquote>
+<p>这一块我们采用和ruoyi相同的方案。</p>
+</blockquote>
+<h3 id="RBAC角色权限设计"><a href="#RBAC角色权限设计" class="headerlink" title="RBAC角色权限设计"></a>RBAC角色权限设计</h3><p>关于RBAC的方面可以参考<a target="_blank" rel="noopener" href="https://shuwoom.com/?p=3041">《RBAC权限系统分析、设计与实现》</a> 或自行百度，这里我们不再赘述。</p>
+<p>ruoyi也是采用的RBAC的设计方案，做到<code>用户-角色-权限</code>三者的解耦。不过它实现的有一些小瑕疵，并未完全做到用户与权限的解耦。</p>
+<p><img src="http://file.note.0moe.cn/img/image-20210215211158151.png" srcset="/img/loading.gif" alt="image-20210215211158151"></p>
+<p>在这里，它创建用户的时候，不是将角色放在用户里，而是直接将权限放在用户里。这样会导致角色权限更新的时候要去更新所有用户缓存的权限，或者让具有此角色的用户重新登录才能获取到最新的权限list。前者需要遍历所有用户，对缓存的压力极大，后者会使token集体失效，对登录接口的压力极大。</p>
+<p><img src="http://file.note.0moe.cn/img/image-20210215212949736.png" srcset="/img/loading.gif" alt="image-20210215212949736"></p>
+<p>ruoyi为了解决它，只更新了当前用户的权限缓存。但随之而来的是：如果其他用户具有此角色，则这个用户必须要重新登陆才能使用最新添加的权限，否则他还是没有这个权限。这样就造成了数据不一致。</p>
+<blockquote>
+<p>这个问题有更好的解决办法。在我们的系统中，用户信息存储的是角色信息，而非具体的权限信息。我们在访问接口时，会拿着用户的当前角色去缓存中查询角色对应的权限集合进行鉴权；当角色权限更新时，只要更新角色对应的权限集合及缓存。不需要进行用户遍历，也不会有数据一致性的问题。我们只要付出一次redis查询的代价就可以解决。</p>
+</blockquote>
+<h2 id="动态数据源"><a href="#动态数据源" class="headerlink" title="动态数据源"></a>动态数据源</h2><p>动态数据源这里要思考两处：一是怎么创建多个DataSource，多个DataSource的配置如何维护；二是在使用时如何选择自己想要的数据源，即数据源选择。</p>
+<h3 id="数据源创建"><a href="#数据源创建" class="headerlink" title="数据源创建"></a>数据源创建</h3><p>在数据源创建时，创建主从数据源（实际上主从只是个代号，你也可以叫一号数据源二号数据源等等）。<code>@ConfigurationProperties</code>这个注解可以将对应配置下的属性自动填充到bean中；<code>DruidProperties</code>是统一进行druid连接池的配置。这样会创建两个数据源。</p>
+<p><img src="http://file.note.0moe.cn/img/image-20210215223545825.png" srcset="/img/loading.gif" alt="image-20210215223545825"></p>
+<p><img src="http://file.note.0moe.cn/img/image-20210215223757427.png" srcset="/img/loading.gif" alt="image-20210215223757427"></p>
+<p><img src="http://file.note.0moe.cn/img/image-20210215224336965.png" srcset="/img/loading.gif" alt="image-20210215224336965"></p>
+<p>在创建完主从数据源后，会将两个数据源bean都加入到<code>dynamicDataSource</code>bean中，这个bean需要继承<code>org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource</code>，她内部会维护一个map，在数据源切换时会根据标记从map取出数据源使用。</p>
+<p><img src="http://file.note.0moe.cn/img/image-20210215223810748.png" srcset="/img/loading.gif" alt="image-20210215223810748"></p>
+<p><img src="http://file.note.0moe.cn/img/image-20210215225013355.png" srcset="/img/loading.gif" alt="image-20210215225013355"></p>
+<p>注意上图的这个方法，这里是选择最终调用的数据源，ruoyi是使用ThreadLocal（线程变量）的方式进行选择。<img src="http://file.note.0moe.cn/img/image-20210215225426832.png" srcset="/img/loading.gif" alt="image-20210215225426832"></p>
+<p>还有一点要说明。如果你使用这种客制化数据源，一定要将spring boot数据源的自动配置类排除。不然会因无法找到数据源配置而启动失败。</p>
+<div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span><span class="token punctuation">(</span>exclude <span class="token operator">=</span> <span class="token class-name">DataSourceAutoConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div>
+
+<h3 id="数据源选择"><a href="#数据源选择" class="headerlink" title="数据源选择"></a>数据源选择</h3><p>在选择数据源时，ruoyi是用AOP+ThreadLocal做的数据源选择。</p>
+<p>整体思路：</p>
+<p><img src="http://file.note.0moe.cn/img/image-20210218000912204.png" srcset="/img/loading.gif" alt="image-20210218000912204"></p>
+<p>使用示例：</p>
+<p><img src="http://file.note.0moe.cn/img/image-20210215231153555.png" srcset="/img/loading.gif" alt="image-20210215231153555"></p>
+<p>需要注意，因为数据源切换时基于aop的，所以同类调用方法不能使用this调用，需要使用代理对象调用，即<code>AopContext.currentProxy()</code>。</p>
+<h2 id="数据权限隔离"><a href="#数据权限隔离" class="headerlink" title="数据权限隔离"></a>数据权限隔离</h2><p>数据权限隔离，或者说叫数据权限分配，他的业务目的是让每个人只能看自己全权限的数据，不能越权去看别人的数据。比如每个销售员自己的单子都不想给别人看，但是销售经理应该可以看到所有销售员的单子，这时候就有了它的用武之地。</p>
+<h3 id="主流做法"><a href="#主流做法" class="headerlink" title="主流做法"></a>主流做法</h3><p>目前这块主流的解决方案都是拼sql，将权限配置保存在数据库中，只不过是最后拼在哪：有些设计选择拼在sql最后，由开发人员显示的调用；也有些设计是在表名处做文章，根据权限条件限制生成临时表。</p>
+<p>ruoyi的数据权限隔离的做法便是前者，且是基于aop做的。根据方法上标记<code>@DataScope</code>注解，在当前方法拦截并生成权限sql片段，最后由开发人员显式的插入。具体片段生成方法见<code>com.ruoyi.framework.aspectj.DataScopeAspect#dataScopeFilter</code>。</p>
+<p><img src="http://file.note.0moe.cn/img/image-20210217231043061.png" srcset="/img/loading.gif" alt="image-20210217231043061"></p>
+<blockquote>
+<p>因数据权限这里每种业务要求都不相同，这个没法做一个非常通用的方案，我们这里也是会维持相同的设计。</p>
+</blockquote>
+<h2 id="代码生成器"><a href="#代码生成器" class="headerlink" title="代码生成器"></a>代码生成器</h2><p>代码生成器这里算是比较重要的一块，一个好用的生成器可以极大的减少工作量。</p>
+<p>这里技术不是难点，会用模板引擎就ok，比如freemarker，velocity等。ruoyi使用的是velocity，它性能要比freemarker好一些，语法友好度也好一些。具体语法可以参考文档<a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/velocity-doc/content/">介紹| Velocity 中文文档 - wizardforcel</a>，这里不做赘述</p>
+<p>代码结构和预留结构是重点。直接影响你是否需要加班，像ruoyi自带的就有增删查改，导出，权限，这一块就做的很好，极大的减轻了工作量。</p>
+<p>在这里提一下数据库乐观锁的问题，因为是管理系统，一条数据可能被很多人同时修改，所以需要加入乐观锁控制数据版本，保证所见即所得。</p>
+<blockquote>
+<p>我们这里因为使用框架的原因，需要对生成器模板做一些魔改。还有权限方面，我们希望做成自动放入数据库的模式，不要手动插入；还会在表设计中加入乐观锁。</p>
+</blockquote>
+<h2 id="common工具"><a href="#common工具" class="headerlink" title="common工具"></a>common工具</h2><p>工具包这里就比较自由了，常见的包有apache-common，guava，hutool，objectMapper等。这里我们主要分析工具类的设计原则。</p>
+<h3 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h3><ol>
+<li><p>尽量静态</p>
+<p>工具类的方法应尽可能做成静态方法和静态字段，如果无法做成静态方法，则要考虑将这个类做成单例模式，不要多次实例化。因为静态方法会直接放在jvm栈中，效率要比非静态的高，而且对于开发人员来说也用着舒服。</p>
+</li>
+<li><p>命名规范</p>
+<p>一般情况下，可以叫做xxxUtil或xxxUtils，如果有一些业务领域特定的工具类，则应该叫做xxxHelper,比如redisHelper，exportHelper等。且这些helper因为都要基于某一个组件的原因，必须要实例化。所以需要做单例设计。</p>
+</li>
+<li><p>性能要求</p>
+<p>工具类方法作为基础架构的一种，调用的频率非常之高，所以内部实现在设计时就要考虑时间复杂度和空间复杂度，一点点性能问题就会被十倍百倍的放大，这也是一些公司要求工具类必须要技术经理编写的原因。</p>
+</li>
+<li><p>接口规范</p>
+<p>一是方法命名要通俗易懂，且参数数量尽量控制不要超过5个。不然参数太多，命名只有自己看得懂，太麻烦了没人愿意用的。</p>
+<p>二是是弃用原则。弃用时如果项目已经发布，要将原有方法打上<code>@Deprecated</code>标记，并记录推荐使用的新方法。原有方法千万不要立刻删除，要在写一个新接口。因为老方法不知道有多少个人用，一旦删除别人的系统可能立刻崩溃。在打上标记后再经历几个版本迭代，发个删除通告，再删就可以了。</p>
+</li>
+</ol>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p><del>其实ruoyi的common包我看着很难受</del>，他把core包的内容也放到了common包中，实际上core包和common包应该是独立的两个包。common负责工具，core负责核心配置。像<code>RuoYiConfig</code>，<code>BaseController</code>，<code>BaseException</code>这些应该集成在core包中单独发布。而像常量类、utils应放在common中。没必要混合在一起。这里感觉ruoyi比较混乱。</p>
+<blockquote>
+<p>关于这部分我会拆成两个包：core和common包，让职责划分更加清晰一点。</p>
+</blockquote>
+<h2 id="其他设计"><a href="#其他设计" class="headerlink" title="其他设计"></a>其他设计</h2><h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>定时任务这里ruoyi是对quartz做了一个包装，封装了一些查询任务信息的方法和执行任务，具体可以参考quartz的方法。</p>
+<p>如果对job的需求比较轻量可以试一下这个工具<a target="_blank" rel="noopener" href="https://www.hutool.cn/docs/#/cron/%E5%85%A8%E5%B1%80%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1-CronUtil">全局定时任务-CronUtil</a>，非常轻量</p>
+<h3 id="异步日志"><a href="#异步日志" class="headerlink" title="异步日志"></a>异步日志</h3><p>这里也是用aop做了一个异步日志的拦截，核心就收集入参、出参、用户信息等信息调用异步线程插入数据库，比较简单。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>其实后端设计主要就是几块：数据库设计，配置设计，工程结构设计。剩下的基本都是经验积累：比如怎么去设计代码生成器，工具类应该怎么设计，这里只能讲一些原则性的思路（劝告？）,还是要多听多写多看多读源码。</p>
+<p>关于ruoyi的后端部分分析就到此结束了，有一些设计原则和优化的点我都在相应章节记录下来。等我们正式开始编码的时候会一起应用。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B/">从绫开始</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">后台管理系统</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/">
+                        <span class="hidden-mobile">从绫开始的后台管理系统（一）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "VRhYR3EGwGA6iw2TAUzlvGTp-9Nh9j0Va",
+          app_key: "sNvkmexbN6XoJoXsrt08XkpB",
+          placeholder: "纵使相逢应不识，想说啥，写下叭~",
+          path: window.location.pathname,
+          avatar: "wavatar",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        黑ICP备19007946号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-189010513-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

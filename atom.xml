@@ -6,7 +6,7 @@
   <link href="https://note.0moe.cn/atom.xml" rel="self"/>
   
   <link href="https://note.0moe.cn/"/>
-  <updated>2021-02-08T01:05:06.576Z</updated>
+  <updated>2021-02-17T16:09:17.284Z</updated>
   <id>https://note.0moe.cn/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>从绫开始分析搭建一个后台管理系统（一）</title>
+    <title>从绫开始的后台管理系统（二）</title>
+    <link href="https://note.0moe.cn/2021/02/14/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://note.0moe.cn/2021/02/14/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <published>2021-02-14T13:10:17.000Z</published>
+    <updated>2021-02-17T16:09:17.284Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="从绫开始" scheme="https://note.0moe.cn/tags/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B/"/>
+    
+    <category term="后台管理系统" scheme="https://note.0moe.cn/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从绫开始的后台管理系统（一）</title>
     <link href="https://note.0moe.cn/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://note.0moe.cn/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2021-02-08T00:21:35.000Z</published>
-    <updated>2021-02-08T01:05:06.576Z</updated>
+    <updated>2021-02-14T13:10:38.249Z</updated>
     
     
     <summary type="html">&lt;p&gt;这是从绫开始系列的新坑，适合有一些基础的朋友，&lt;del&gt;比如会写hello world的朋友&lt;/del&gt;。&lt;/p&gt;</summary>

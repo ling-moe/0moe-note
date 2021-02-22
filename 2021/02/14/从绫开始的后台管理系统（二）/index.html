@@ -265,7 +265,7 @@
 <p>遇到这种情况我们会放在同一个包里。</p>
 </blockquote>
 <h2 id="权限系统"><a href="#权限系统" class="headerlink" title="权限系统"></a>权限系统</h2><h3 id="权限验证设计"><a href="#权限验证设计" class="headerlink" title="权限验证设计"></a>权限验证设计</h3><p>ruoyi的权限系统是使用spring security的方案，token颁发是使用jwt+redis。即将token下发给客户端，且在服务器也存储一份。鉴权时在接口调用处进行鉴权。</p>
-<h4 id="token颁发"><a href="#token颁发" class="headerlink" title="token颁发"></a>token颁发</h4><p>这个设计在我来看着实是有些臃肿。如果需要用户信息只要单开一个请求用户信息的接口就好了，没必要每次都用jwt去请求，这样一来存了两次（客户端一次，服务端一次），真的有这个必要吗？</p>
+<h4 id="token颁发"><a href="#token颁发" class="headerlink" title="token颁发"></a>token颁发</h4><p>这个设计在我来看着实是有些臃肿。用户信息是用单独接口去获取的，那为什么还要用jwt去封装一次token，这样一来解析了两次（jwt一次，cache一次）才能获取到用户信息，真的有这个必要吗？</p>
 <p>现在主流的方案有两种，<code>jwt</code>和<code>token+redis</code></p>
 <ol>
 <li>jwt是无状态分布式的设计，类似于证书签署下发。<ul>

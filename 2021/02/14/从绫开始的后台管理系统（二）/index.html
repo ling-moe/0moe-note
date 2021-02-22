@@ -238,6 +238,7 @@
               <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>那这一章就正式开始对ruoyi的后端配置进行分析。</p>
 <p>ruoyi的后端模块主要包括权限系统，动态数据源、数据权限隔离、代码生成器、定时任务，common工具，还有后端接口，下面我们逐一进行分析。</p>
 <p>我们也会讲一些关于工程结构，依赖管理配置方面的设计。</p>
+<a id="more"></a>
 <h2 id="工程结构"><a href="#工程结构" class="headerlink" title="工程结构"></a>工程结构</h2><p>工程结构主要分为两部分：pom结构和包结构。</p>
 <h3 id="pom结构"><a href="#pom结构" class="headerlink" title="pom结构"></a>pom结构</h3><p>pom结构遵循oo（面向对象）原则，即配置尽量放在父工程中进行管理，同时子工程也要能够根据自己的需要进行调整（封装与继承），但注意在划分工程时不要成环，即子工程互相依赖。</p>
 <p><img src="https://file.note.0moe.cn/img/image-20210217215151835.png" srcset="/img/loading.gif" alt="image-20210217215151835"></p>

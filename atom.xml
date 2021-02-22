@@ -6,7 +6,7 @@
   <link href="https://note.0moe.cn/atom.xml" rel="self"/>
   
   <link href="https://note.0moe.cn/"/>
-  <updated>2021-02-18T10:35:31.665Z</updated>
+  <updated>2021-02-22T08:12:16.292Z</updated>
   <id>https://note.0moe.cn/</id>
   
   <author>
@@ -17,22 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>从绫开始的后台管理系统（四）</title>
+    <link href="https://note.0moe.cn/2021/02/22/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
+    <id>https://note.0moe.cn/2021/02/22/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89/</id>
+    <published>2021-02-22T01:42:24.000Z</published>
+    <updated>2021-02-22T08:12:16.292Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;我们开始正式写代码。&lt;/p&gt;
+&lt;p&gt;这一章主要讲前后端的工程结构设计和搭建。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="从绫开始" scheme="https://note.0moe.cn/tags/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B/"/>
+    
+    <category term="后台管理系统" scheme="https://note.0moe.cn/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>从绫开始的后台管理系统（三）</title>
     <link href="https://note.0moe.cn/2021/02/18/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>https://note.0moe.cn/2021/02/18/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89/</id>
     <published>2021-02-18T08:32:31.000Z</published>
-    <updated>2021-02-18T10:35:31.665Z</updated>
+    <updated>2021-02-22T08:12:14.394Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这一章我们开始对若依的前端工程进行分析。&lt;/p&gt;
-&lt;p&gt;ruoyi的前端主要包括登录验证，路由转发，dev模式这几个模块。&lt;/p&gt;
-&lt;h2</summary>
-        
-      
+&lt;p&gt;ruoyi的前端主要包括登录验证，路由转发，dev模式这几个模块。&lt;/p&gt;</summary>
     
     
     
@@ -48,16 +61,12 @@
     <link href="https://note.0moe.cn/2021/02/14/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://note.0moe.cn/2021/02/14/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
     <published>2021-02-14T13:10:17.000Z</published>
-    <updated>2021-02-17T16:18:48.588Z</updated>
+    <updated>2021-02-22T08:12:10.327Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;那这一章就正式开始对ruoyi的后端配置进行分析。&lt;/p&gt;
+&lt;p&gt;ruoyi的后端模块主要包括权限系统，动态数据源、数据权限隔离、代码生成器、定时任务，common工具，还有后端接口，下面我们逐一进行分析。&lt;/p&gt;
+&lt;p&gt;我们也会讲一些关于工程结构，依赖管理配置方面的设计。&lt;/p&gt;</summary>
     
     
     
@@ -73,7 +82,7 @@
     <link href="https://note.0moe.cn/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://note.0moe.cn/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2021-02-08T00:21:35.000Z</published>
-    <updated>2021-02-14T13:10:38.249Z</updated>
+    <updated>2021-02-22T08:18:21.488Z</updated>
     
     
     <summary type="html">&lt;p&gt;这是从绫开始系列的新坑，适合有一些基础的朋友，&lt;del&gt;比如会写hello world的朋友&lt;/del&gt;。&lt;/p&gt;</summary>

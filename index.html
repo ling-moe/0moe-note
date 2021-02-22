@@ -182,6 +182,50 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/02/22/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89/">从绫开始的后台管理系统（四）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/22/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89/">
+          
+          
+            
+          
+          前言我们开始正式写代码。
+这一章主要讲前后端的工程结构设计和搭建。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-22 09:42" pubdate>
+              2021-02-22
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B/">从绫开始</a>
+            
+              <a href="/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">后台管理系统</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/02/18/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89/">从绫开始的后台管理系统（三）</a>
       </h1>
 
@@ -193,11 +237,6 @@
           
           前言这一章我们开始对若依的前端工程进行分析。
 ruoyi的前端主要包括登录验证，路由转发，dev模式这几个模块。
-工程结构ruoyi的前端主要包括api(service)、layout、router、store(vuex)、view几个部分。
-
-组件视图assets是存储一些静态图片资源的地方；
-components内放了一些抽象的、可复用的组件，可以放在具体的视图中直接使用。
-layout是存储
         </a>
       </p>
 
@@ -243,8 +282,6 @@ layout是存储
           前言那这一章就正式开始对ruoyi的后端配置进行分析。
 ruoyi的后端模块主要包括权限系统，动态数据源、数据权限隔离、代码生成器、定时任务，common工具，还有后端接口，下面我们逐一进行分析。
 我们也会讲一些关于工程结构，依赖管理配置方面的设计。
-工程结构工程结构主要分为两部分：pom结构和包结构。
-pom结构pom结构遵循oo（面向对象）原则，即配置尽量放在父工程中进行管理，同时子工程也要能
         </a>
       </p>
 
@@ -594,68 +631,6 @@ private i
               <a href="/tags/html/">html</a>
             
               <a href="/tags/css/">css</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/10/17/nginx%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99/">nginx匹配规则</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/10/17/nginx%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99/">
-          
-          
-            
-          
-          一、语法规则location [=|~|~*|^~] /uri/ &#123; … &#125;
-
-
-
-
-符&nbsp;号
-含&nbsp;义
-
-
-
-=
-开头表示精确匹配
-
-
-^~
-开头表示 uri 以某个常规字符串开头，理解为匹配 url 路径即可。nginx 不对 url 做编码，因此请求为/static/20%/aa，可以被规则^~ /static/ /aa匹配到（注意是空格）
-
-
-~
-开头表
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-10-17 09:43" pubdate>
-              2019-10-17
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/nginx/">nginx</a>
-            
-              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
             
           </div>
         

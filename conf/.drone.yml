@@ -1,0 +1,43 @@
+# drone 本地构建
+kind: pipeline
+type: kubernetes
+name: note-deploy
+
+# drone构建步骤
+steps:
+  # 1.打成docker镜像
+  - name: docker-build
+    pull: if-not-exists
+    image: plugins/docker
+    settings:
+      repo: 0moe
+      tags: 
+        - latest
+        - sha_${DRONE_COMMIT_SHA}
+      dockerfile: conf/Dockerfile
+  # 2.部署到k3s
+  - name: k3s-deploy
+    pull: if-not-exists
+    image: vallard/drone-kube
+    settings:
+      namespace: dev
+      template: /root/note.yml
+  # 3.邮件通知
+  - name: dingTalk notification
+    pull: if-not-exists
+    image: drillster/drone-email
+    settings:
+      host: smtp.0moe.cn
+      username: system@0moe.cn
+      password: MjEcKARP3qAECSMS
+      from: system@0moe.cn
+      recipients: [ 571863559@qq.com ]
+    when:
+      status: [failure, success]
+
+# drone执行触发器
+trigger:
+  branch:
+    - master
+  event:
+    - push

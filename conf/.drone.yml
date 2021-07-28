@@ -23,7 +23,7 @@ steps:
       namespace: dev
       template: /root/note.yml
   # 3.邮件通知
-  - name: dingTalk notification
+  - name: email-notice
     pull: if-not-exists
     image: drillster/drone-email
     settings:
@@ -39,5 +39,3 @@ steps:
 trigger:
   branch:
     - master
-  event:
-    - push

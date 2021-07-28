@@ -3,6 +3,11 @@ kind: pipeline
 type: kubernetes
 name: note-deploy
 
+# drone执行触发器
+trigger:
+  branch:
+    - master
+
 # drone构建步骤
 steps:
   # 1.打成docker镜像
@@ -34,8 +39,3 @@ steps:
       recipients: [ 571863559@qq.com ]
     when:
       status: [failure, success]
-
-# drone执行触发器
-trigger:
-  branch:
-    - master

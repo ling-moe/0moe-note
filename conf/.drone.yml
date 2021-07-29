@@ -17,7 +17,7 @@ steps:
     image: alpine/git
     commands:
     - echo '140.82.112.3 github.com' >> /etc/hosts
-    - git clone git@github.com:ling-moe/0moe-note.git
+    - telnet github.com 443
     - git checkout $DRONE_COMMIT
   # 1.打成docker镜像
   - name: docker-build

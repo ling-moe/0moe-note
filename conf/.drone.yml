@@ -19,7 +19,7 @@ steps:
     - echo '140.82.112.3 github.com' >> /etc/hosts
     - git clone https://github.dev.svc.cluster.local/$DRONE_REPO
     - git checkout $DRONE_COMMIT
-  # 1.打成docker镜像
+  # 2.打成docker镜像
   - name: docker-build
     pull: if-not-exists
     image: plugins/docker
@@ -29,14 +29,14 @@ steps:
         - latest
         - sha_${DRONE_COMMIT_SHA}
       dockerfile: conf/Dockerfile
-  # 2.部署到k3s
+  # 3.部署到k3s
   - name: k3s-deploy
     pull: if-not-exists
     image: vallard/drone-kube
     settings:
       namespace: dev
       template: /root/note.yml
-  # 3.邮件通知
+  # 4.邮件通知
   - name: email-notice
     pull: if-not-exists
     image: drillster/drone-email

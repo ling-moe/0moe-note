@@ -16,7 +16,7 @@ steps:
   - name: clone
     image: alpine/git
     commands:
-    - git clone https://gitee.com/y_project/RuoYi.git
+    - ping baidu.com
     - git checkout $DRONE_COMMIT
   # 1.打成docker镜像
   - name: docker-build

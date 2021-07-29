@@ -16,7 +16,8 @@ steps:
   - name: clone
     image: alpine/git
     commands:
-    - ping baidu.com
+    - echo '140.82.112.3 github.com' >> /etc/hosts
+    - git clone https://gitclone.com/$DRONE_REPO
     - git checkout $DRONE_COMMIT
   # 1.打成docker镜像
   - name: docker-build

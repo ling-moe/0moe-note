@@ -10,6 +10,10 @@ trigger:
 
 # drone构建步骤
 steps:
+  - name: fetch
+    image: alpine/git
+    commands:
+    - git fetch --tags
   # 1.打成docker镜像
   - name: docker-build
     pull: if-not-exists

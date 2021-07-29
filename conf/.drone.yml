@@ -32,7 +32,7 @@ steps:
     pull: if-not-exists
     image: drillster/drone-email
     settings:
-      host: smtp.0moe.cn
+      host: smtp.exmail.qq.com
       port: 465
       username: system@0moe.cn
       password: MjEcKARP3qAECSMS

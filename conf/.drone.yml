@@ -16,7 +16,7 @@ steps:
   - name: clone
     image: alpine/git
     commands:
-    - git clone $DRONE_GIT_HTTP_URL
+    - git clone https://github.com.cnpmjs.org/$DRONE_REPO
     - git checkout $DRONE_COMMIT
   # 1.打成docker镜像
   - name: docker-build

@@ -16,7 +16,7 @@ steps:
   - name: clone
     image: alpine/git
     commands:
-    - curl https://baidu.com
+    - ping baidu.com
     - git checkout $DRONE_COMMIT
   # 1.打成docker镜像
   - name: docker-build

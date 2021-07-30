@@ -14,7 +14,7 @@ clone:
 # drone构建步骤
 steps:
   - name: clone
-    image: alpine/git
+    image: bitnami/git
     commands:
     - echo '140.82.114.4 github.com' >> /etc/hosts
     - git clone https://github.com/$DRONE_REPO

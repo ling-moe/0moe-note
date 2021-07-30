@@ -14,10 +14,9 @@ clone:
 # drone构建步骤
 steps:
   - name: clone
-    image: curlimages/curl
+    image: alpine/git
     commands:
-    # - echo '140.82.114.4 github.com' >> /etc/hosts
-    - curl 10.42.0.252:80
+    - echo '140.82.114.4 github.com' >> /etc/hosts
     - git clone https://github.com/$DRONE_REPO
     - git checkout $DRONE_COMMIT
   # 1.打成docker镜

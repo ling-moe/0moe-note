@@ -14,7 +14,7 @@ clone:
 # drone构建步骤
 steps:
   - name: clone
-    image: busybox
+    image: curlimages/curl
     commands:
     - echo '140.82.114.4 github.com' >> /etc/hosts
     - curl https://github.com/$DRONE_REPO

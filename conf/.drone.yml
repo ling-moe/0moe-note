@@ -7,18 +7,9 @@ name: note-deploy
 trigger:
   branch:
     - master
-# 客制化clone
-clone:
-  disable: true
 
 # drone构建步骤
 steps:
-  - name: clone
-    image: alpine/git
-    commands:
-    - echo '140.82.114.4 github.com' >> /etc/hosts
-    - git clone https://github.com/$DRONE_REPO
-    - git checkout $DRONE_COMMIT
   # 1.打成docker镜
   - name: docker-build
     pull: if-not-exists

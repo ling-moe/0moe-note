@@ -15,6 +15,7 @@ steps:
     pull: if-not-exists
     image: plugins/docker
     settings:
+      registry: local-repo:5000
       insecure: true
       repo: local-repo:5000/0moe-note
       tags: 

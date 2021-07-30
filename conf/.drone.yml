@@ -1,6 +1,6 @@
 # drone 本地构建
 kind: pipeline
-type: kubernetes
+type: docker
 name: note-deploy
 
 # drone执行触发器

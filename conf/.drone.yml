@@ -16,7 +16,7 @@ steps:
   - name: clone
     image: curlimages/curl
     commands:
-    - echo '140.82.114.4 github.com' >> /etc/hosts
+    # - echo '140.82.114.4 github.com' >> /etc/hosts
     - curl https://github.com/$DRONE_REPO
     - git clone https://github.com/$DRONE_REPO
     - git checkout $DRONE_COMMIT

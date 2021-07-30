@@ -15,10 +15,11 @@ steps:
     pull: if-not-exists
     image: plugins/docker
     settings:
-      repo: 0moe
+      repo: 0moe-note
+      dry_run: false
       tags: 
         - latest
-        - sha_${DRONE_COMMIT_SHA}
+        - ${DRONE_COMMIT_SHA}
       dockerfile: conf/Dockerfile
   # 3.部署到k3s
   - name: k3s-deploy

@@ -20,7 +20,7 @@ steps:
         - latest
         - ${DRONE_COMMIT_SHA}
       dockerfile: conf/Dockerfile
-  # 3.部署到k3s
+  # 2.部署到k3s
   - name: k3s-deploy
     pull: if-not-exists
     image: vallard/drone-kube

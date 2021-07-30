@@ -9,9 +9,9 @@ trigger:
     - master
 
 volumes:
-- name: cache
-  host:
-    path: /root
+  - name: cache
+    host:
+      path: /root
 
 # drone构建步骤
 steps:

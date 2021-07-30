@@ -10,7 +10,7 @@ trigger:
 
 # drone构建步骤
 steps:
-  # 1.打成docker
+  # 1.打成docke
   - name: docker-build
     pull: if-not-exists
     image: plugins/docker

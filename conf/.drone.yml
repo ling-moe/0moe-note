@@ -27,6 +27,7 @@ steps:
     pull: if-not-exists
     image: vallard/drone-kube
     settings:
+      server: http://172.17.0.6:6433
       namespace: dev
       template: /root/note.yml
   # 4.邮件通知

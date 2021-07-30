@@ -15,8 +15,7 @@ steps:
     pull: if-not-exists
     image: plugins/docker
     settings:
-      insecure: true
-      repo: local-repo:9120/0moe-note
+      repo: 172.17.0.6:9120/0moe-note
       tags: 
         - latest
         - ${DRONE_COMMIT_SHA}

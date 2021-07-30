@@ -16,10 +16,10 @@ steps:
   - name: clone
     image: alpine/git
     commands:
-    - echo '140.82.112.3 github.com' >> /etc/hosts
-    - git clone https://github.dev.svc.cluster.local/$DRONE_REPO
+    - echo '140.82.114.4 github.com' >> /etc/hosts
+    - git clone https://github.com/$DRONE_REPO
     - git checkout $DRONE_COMMIT
-  # 2.打成docker镜
+  # 1.打成docker镜
   - name: docker-build
     pull: if-not-exists
     image: plugins/docker

@@ -15,8 +15,7 @@ steps:
     pull: if-not-exists
     image: plugins/docker
     settings:
-      repo: 0moe-note
-      dry_run: true
+      repo: local-repo/0moe-note
       tags: 
         - latest
         - ${DRONE_COMMIT_SHA}

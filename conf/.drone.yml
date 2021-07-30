@@ -15,8 +15,9 @@ steps:
     pull: if-not-exists
     image: plugins/docker
     settings:
-      repo: local-repo/0moe-note
+      repo: local-repo:5000/0moe-note
       tags: 
+        - latest
         - ${DRONE_COMMIT_SHA}
       dockerfile: conf/Dockerfile
   # 3.部署到k3s

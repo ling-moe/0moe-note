@@ -16,7 +16,7 @@ steps:
     image: plugins/docker
     settings:
       repo: 0moe-note
-      dry_run: false
+      dry_run: true
       tags: 
         - latest
         - ${DRONE_COMMIT_SHA}

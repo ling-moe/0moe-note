@@ -15,7 +15,7 @@ steps:
     pull: if-not-exists
     image: plugins/docker
     settings:
-      repo: localhost:5000/0moe-note
+      repo: local-repo:5000/0moe-note
       # username: cn-east-3@OSLWAOUDJLI5YPEKRSS5
       # password: a01ac7aaf9e74d102d0a35f79391478c7ee95929b40daa27a0dc2be031f59745
       tags: 

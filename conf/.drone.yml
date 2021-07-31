@@ -35,7 +35,7 @@ steps:
       username: root
       port: 22
       key:
-        from_secret: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6uqHGfuSEqeJHwRnl8sE3Yk/7dsuk8GRJ5kEHCM2cn9zPB/xQ9DEAXp4PCXVLRQkz+gUmi0R0CV7ksun3RBqdTXxlMBqEDC3T/LZk9baBi7LB5yWUb2veu3ztRf7ezjL6k4HZ4JMwd1sND2jireBQ4nn+EuskdC7beClDwswHbr3mBP1YhqO7eUmwLeBGJHIrYRi6Zf/B425pwGZw0Acd17jou9LT2gzZGEesQzBLf6rneCmaFEH4poR53NvSrw/fnZpaqleHxgXFGz/YU/Ra/UBFZAFTnBS0oGm2g2fZGLN9Xv5m1pg3h2TRFlfvTc+jjDj42rlUkTfzK66wZ56d 571833559@qq.com'
+        from_secret: ssh_key
       script:
         - echo hello
         - echo world

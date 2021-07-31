@@ -37,8 +37,9 @@ steps:
       password:
         from_secret: ssh_pwd
       script:
-        - echo hello
-        - echo world
+        - cd /root
+        - sed 's/{{ build.commit }}/${DRONE_COMMIT_SHA}/g' note-template.yml > note.yml
+        - kubectl apply -f note.yml
   # 4.邮件通知
   - name: email-notice
     pull: if-not-exists

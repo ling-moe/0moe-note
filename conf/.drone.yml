@@ -20,8 +20,10 @@ steps:
     pull: if-not-exists
     image: plugins/docker
     settings:
-      registry: harbor.resource.0moe.cn
-      repo: harbor.resource.0moe.cn/0moe-note
+      username: 571863559@qq.com
+      password: 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
+      registry: ghcr.io
+      repo: ghcr.io/0moe-note
       tags: 
         - latest
         - ${DRONE_COMMIT_SHA}

@@ -28,16 +28,17 @@ steps:
         - ${DRONE_COMMIT_SHA}
       dockerfile: conf/Dockerfile
   # 2.部署到k3s
-  - name: k3s-deploy
-    pull: if-not-exists
-    image: bh90210/dron8s
-    volumes:
-    - name: cache
-      path: /root
+  - name: ssh commands
+    image: appleboy/drone-ssh
     settings:
-      yaml: /root/note.yml
-      kubeconfig:
-        from_secret: kubeconfig
+      host: 122.51.158.110
+      username: root
+      port: 22
+      key:
+        from_secret: ssh_key
+      script:
+        - echo hello
+        - echo world
   # 4.邮件通知
   - name: email-notice
     pull: if-not-exists

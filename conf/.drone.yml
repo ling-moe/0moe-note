@@ -20,8 +20,8 @@ steps:
     pull: if-not-exists
     image: plugins/docker
     settings:
-      registry: harbor.resource.0moe.cn:5000
-      repo: harbor.resource.0moe.cn:5000/0moe-note
+      registry: harbor.resource.0moe.cn
+      repo: harbor.resource.0moe.cn/0moe-note
       tags: 
         - latest
         - ${DRONE_COMMIT_SHA}

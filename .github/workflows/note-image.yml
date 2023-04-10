@@ -24,6 +24,12 @@ jobs:
         file: ./conf/Dockerfile
         push: true
         tags: ghcr.io/dawnsouther/0moe-note:latest
+    - uses: D3rHase/ssh-command-action@{version}
+      with:
+        host: ${{ secrets.NOTE_HOST }} # Remote server address / ip - required
+        user: ${{ secrets.NOTE_USER }} # Remote server user - required
+        private_key: ${{secrets.NOTE_PRIVATE_KEY}} # Private ssh key registered on the remote server - required
+        command: cd /0moe & docker pull ghcr.io/dawnsouther/0moe-note:latest & docker-compose up -d --force-recreate note
     - name: SSH-Compose
       uses: matiasnu/github-action-ssh-docker-compose@v2.0.1
       with:

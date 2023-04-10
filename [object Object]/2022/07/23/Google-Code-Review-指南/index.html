@@ -1,0 +1,976 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assert/icon/favicon.ico">
+  <link rel="icon" href="/assert/icon/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dawn_南风">
+  <meta name="keywords" content="Dawn_南风,南风,南风破晓,需求驱动学习，实用推动执行">
+  
+    <meta name="description" content="代码审查者指南本节是基于过往经验编写的 Code Review 最佳方式建议。其中分为了很多独立的部分，共同组成完整的文档。虽然您不必阅读文档，但通读一遍会对您自己和团队很有帮助。 Code Review 标准代码审查的主要目的是确保逐步改善 Google 代码库的整体健康状况。代码审查的所有工具和流程都是为此而设计的。 为了实现此目标，必须做出一系列权衡。 首先，开发人员必须能够对任务进行改进。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Code Review 指南">
+<meta property="og:url" content="https://note.0moe.cn/[object%20Object]/2022/07/23/Google-Code-Review-%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="今日方知我是我 | 南风">
+<meta property="og:description" content="代码审查者指南本节是基于过往经验编写的 Code Review 最佳方式建议。其中分为了很多独立的部分，共同组成完整的文档。虽然您不必阅读文档，但通读一遍会对您自己和团队很有帮助。 Code Review 标准代码审查的主要目的是确保逐步改善 Google 代码库的整体健康状况。代码审查的所有工具和流程都是为此而设计的。 为了实现此目标，必须做出一系列权衡。 首先，开发人员必须能够对任务进行改进。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-23T15:21:02.000Z">
+<meta property="article:modified_time" content="2023-04-10T10:46:59.138Z">
+<meta property="article:author" content="Dawn_南风">
+<meta property="article:tag" content="Code Review">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Google Code Review 指南 - 今日方知我是我 | 南风</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"note.0moe.cn","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":"UA-189010513-1","gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript('https://www.google-analytics.com/analytics.js', function() {
+          window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+          ga.l = +new Date;
+          ga('create', 'UA-189010513-1', 'auto');
+          ga('send', 'pageview');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="今日方知我是我 | 南风" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>南风破晓</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Google Code Review 指南"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-23 23:21" pubdate>
+          2022年7月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          16k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          135 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Google Code Review 指南</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="代码审查者指南"><a href="#代码审查者指南" class="headerlink" title="代码审查者指南"></a>代码审查者指南</h1><p>本节是基于过往经验编写的 Code Review 最佳方式建议。其中分为了很多独立的部分，共同组成完整的文档。虽然您不必阅读文档，但通读一遍会对您自己和团队很有帮助。</p>
+<h1 id="Code-Review-标准"><a href="#Code-Review-标准" class="headerlink" title="Code Review 标准"></a>Code Review 标准</h1><p>代码审查的主要目的是确保逐步改善 Google 代码库的整体健康状况。代码审查的所有工具和流程都是为此而设计的。</p>
+<p>为了实现此目标，必须做出一系列权衡。</p>
+<p>首先，开发人员必须能够对任务进行<strong>改进</strong>。如果开发者从未向代码库提交过代码，那么代码库的改进也就无从谈起。此外，如果审核人员对代码吹毛求疵，那么开发人员以后也很难再做出改进。</p>
+<p>另外，审查者有责任确保随着时间的推移，CL 的质量不会使代码库的整体健康状况下降。这可能很棘手，因为通常情况下，代码库健康状况会随着时间的而下降，特别是在对团队有严格的时间要求时，团队往往会采取捷径来达成他们的目标。</p>
+<p>此外，审查者应对正在审核的代码负责并拥有所有权。审查者希望确保代码库保持一致、可维护及 [Code Review 要点](#Code Review 要点)中所提及的所有其他内容。</p>
+<p>因此，我们将以下规则作为 Code Review 中期望的标准：</p>
+<p><strong>一般来说，审核人员应该倾向于批准 CL，只要 CL 确实可以提高系统的整体代码健康状态，即使 CL 并不完美。</strong></p>
+<p>这是所有 Code Review 指南中的<strong>高级</strong>原则。</p>
+<p>当然，也有一些限制。例如，如果 CL 添加了审查者认为系统中不需要的功能，那么即使代码设计良好，审查者依然可以拒绝批准它。</p>
+<p>此处有一个关键点就是没有“完美”的代码，只有<strong>更好的</strong>代码。审查者不该要求开发者在批准程序前仔细清理、润色 CL 每个角落。相反，审查者应该在变更的重要性与取得进展之间取得平衡。审查者不应该追求完美，而应是追求持续改进。不要因为一个 CL不是“完美的”，就将可以提高系统的可维护性、可读性和可理解性的 CL 延迟数天或数周才批准。</p>
+<p>审核者应该随时在可以改善的地方留下审核评论，但如果评论不是很重要，请在评论语句前加上“Nit：”之类的内容，让开发者知道这条评论是用来指出可以润色的地方，而他们可以选择是否忽略。</p>
+<p>注意：本文档中没有任何内容证明检查 CL 肯定会使系统的整体代码健康状况恶化。您会做这种事情应该只有在<a href="#%E7%B4%A7%E6%80%A5%E6%83%85%E5%86%B5">紧急情况</a>时。</p>
+<h2 id="指导"><a href="#指导" class="headerlink" title="指导"></a>指导</h2><p>代码审查具有向开发人员传授语言、框架或通用软件设计原则新内容的重要功能。留下评论可以帮助开发人员学习新东西，这总归是很好的。分享知识是随着长年累月改善系统代码健康状况的一部分。请记住，如果您的评论纯粹是教育性的，且对于本文档中描述的标准并不重要，请在其前面添加“Nit：”或以其他方式表明作者不必在此 CL 中解决它。</p>
+<h2 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h2><ul>
+<li>基于技术事实和数据否决意见和个人偏好。</li>
+<li>关于代码风格问题，<a target="_blank" rel="noopener" href="http://google.github.io/styleguide/">风格指南</a>是绝对权威。任何不在风格指南中的纯粹风格点（例如空白等）都是个人偏好的问题。代码风格应该与风格指南中的一致。如果没有以前的风格，请接受作者的风格。</li>
+<li><strong>软件设计方面几乎不是纯粹的风格或个人偏好问题。</strong>软件设计基于基本原则且应该权衡这些原则，而不仅仅是个人意见。有时候会有多种有效的选择。如果作者可以证明（通过数据或基于可靠的工程原理）该方法同样有效，那么审查者应该接受作者的偏好。否则，就要取决于软件设计的标准原则。</li>
+<li>如果没有其他适用规则，则审查者可以要求作者与当前代码库中的内容保持一致，只要不恶化系统的整体代码健康状况即可。</li>
+</ul>
+<h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>如果在代码审查过程中有任何冲突，第一步应该始终是开发人员和审查者根据本文档中的 <a href="#%E4%BB%A3%E7%A0%81%E5%BC%80%E5%8F%91%E8%80%85%E6%8C%87%E5%8D%97">CL 开发者指南</a>和<a href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E6%9F%A5%E8%80%85%E6%8C%87%E5%8D%97">审查者指南</a>达成共识。</p>
+<p>当达成共识变得特别困难时，审阅者和开发者可以进行面对面的会议，或者有 VC 参与调停，而不仅仅是试着通过代码审查评论来解决冲突。 （但是，如果您这样做了，请确保在 CL 的评论中记录讨论结果，以供将来的读者使用。）</p>
+<p>如果这样还不能解决问题，那么解决该问题最常用方法是将问题升级。通常是将问题升级为更广泛的团队讨论，有一个 TL 权衡，要求维护人员对代码作出决定，或要求工程经理的帮助。 <strong>不要因为 CL 的开发者和审查者不能达成一致，就让 CL 在那里卡壳。</strong></p>
+<h1 id="Code-Review-要点"><a href="#Code-Review-要点" class="headerlink" title="Code Review 要点"></a>Code Review 要点</h1><p>注意：在考虑这些要点时，请谨记 “[Code Review 标准](#Code Review 标准)”。</p>
+<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><p>审查中最重要的是 CL 的整体设计。CL 中各种代码的交互是否有意义？此变更是属于您的代码库（codebase）还是属于库（library）？它是否与您系统的其他部分很好地集成？现在是添加此功能的好时机吗？</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>这个 CL 是否符合开发者的意图？开发者的意图对代码的用户是否是好的？ “用户”通常都是最终用户（当他们受到变更影响时）和开发者（将来必须“使用”此代码）。</p>
+<p>大多数情况下，我们希望开发者能够很好地测试 CL，以便在审查时代码能够正常工作。但是，作为审查者，仍然应该考虑边缘情况，寻找并发问题，尝试像用户一样思考，并确保您单纯透过阅读方式审查时，代码没有包含任何 bug。</p>
+<p>当要检查 CL 的行为会对用户有重大影响时，验证 CL 的变化将变得十分重要。例如 <strong>UI 变更</strong>。当您只是阅读代码时，很难理解某些变更会如何影响用户。如果在 CL 中打 patch 或自行尝试这样的变更太不方便，您可以让开发人员为您提供功能演示。</p>
+<p>另一个在代码审查期间特别需要考虑功能的时机，就是如果 CL 中存在某种<strong>并行编程</strong>，理论上可能导致死锁或竞争条件。通过运行代码很难检测到这些类型的问题，并且通常需要某人（开发者和审查者）仔细思考它们以确保不会引入问题。 （请注意，这也是在可能出现竞争条件或死锁的情况下，不使用并发模型的一个很好的理由——它会使代码审查或理解代码变得非常复杂。）</p>
+<h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><p>CL 是否已经超过它原本所必须的复杂度？针对任何层级的 CL 请务必确认这点——每行程序是否过于复杂？ 功能太复杂了吗？类太复杂了吗？ “太复杂”通常意味着<strong>“阅读代码的人无法快速理解</strong>。”也可能意味着<strong>“开发者在尝试调用或修改此代码时可能会引入错误。”</strong></p>
+<p>其中一种复杂性就是<strong>过度工程（over-engineering）</strong>，如开发人员使代码过度通用，超过它原本所需的，或者添加系统当前不需要的功能。审查者应特别警惕过度工程。未来的问题应该在它实际到达后解决，且届时才能更清晰的看到其真实样貌及在现实环境里的需求，鼓励开发人员解决他们现在需要解决的问题，而不是开发人员推测<strong>可能</strong>需要在未来解决的问题。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>将要求单元、集成或端到端测试视为应该做的适当变更。通常，除非 CL 处理<a href="#%E7%B4%A7%E6%80%A5%E6%83%85%E5%86%B5">紧急情况</a>，否则应在与生产代码相同的 CL 中添加测试。</p>
+<p>确保 CL 中的测试正确，合理且有用。测试并非用来测试自己本身，且我们很少为测试编写测试——人类必须确保测试有效。</p>
+<p>当代码被破坏时，测试是否真的会失败？ 如果代码发生变化时，它们会开始产生误报吗？ 每个测试都会做出简单而有用的断言吗？ 不同测试方法的测试是否适当分开？</p>
+<p>请记住，测试也是必须维护的代码。不要仅仅因为它们不是主二进制文件的一部分而接受测试中的复杂性。</p>
+<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><p>开发人员是否为所有内容选择了好名字？ 一个好名字应该足够长，可以完全传达项目的内容或作用，但又不会太长，以至于难以阅读。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>开发者是否用可理解的英语撰写了清晰的注释？所有注释都是必要的吗？通常，注释<strong>解释为什么</strong>某些代码存在时很有用，且不应该用来解释某些代码正在做什么。如果代码无法清楚到去解释自己时，那么代码应该变得更简单。有一些例外（正则表达式和复杂算法通常会从解释他们正在做什么事情的注释中获益很多），但大多数注释都是针对代码本身可能无法包含的信息，例如决策背后的推理。</p>
+<p>查看此 CL 之前的注释也很有帮助。 也许有一个 TODO 现在可以删除，一个注释建议不要进行这种改变，等等。</p>
+<p>请注意，注释与类、模块或函数的<strong>文档</strong>不同，它们应该代表一段代码的目的，如何使用它，以及使用时它的行为方式。</p>
+<h2 id="风格"><a href="#风格" class="headerlink" title="风格"></a>风格</h2><p>Google 提供了所有主要语言的<a target="_blank" rel="noopener" href="http://google.github.io/styleguide/">风格指南</a>，甚至包括大多数小众语言。确保 CL 遵循适当的风格指南。</p>
+<p>如果您想改进风格指南中没有的一些样式点，请在评论前加上“Nit：”，让开发人员知道这是您认为可改善代码的小瑕疵，但不是强制性的。不要仅根据个人风格偏好阻止提交 CL。</p>
+<p>CL 的作者不应在主要风格变更中，包括与其他种类的变更。它会使得很难看到 CL 中的变更了什么，使合并和回滚更复杂，并导致其他问题。例如，如果作者想要重新格式化整个文件，让他们只将重新格式化变为一个 CL，其后再发送另一个包含功能变更的 CL。</p>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p>如果 CL 变更了用户构建、测试、交互或发布代码的方式，请检查相关文档是否有更新，包括 README、g3doc 页面和任何生成的参考文档。如果 CL 删除或弃用代码，请考虑是否也应删除文档。 如果缺少文档，请询问。</p>
+<h2 id="每一行"><a href="#每一行" class="headerlink" title="每一行"></a>每一行</h2><p>查看分配给您审查的<strong>每行</strong>代码。有时如数据文件、生成的代码或大型数据结构等东西，您可以快速扫过。但不要快速扫过人类编写的类、函数或代码块，并假设其中的内容是 OK 的。显然，某些代码需要比其他代码更仔细的审查——这是您必须做出的判断——但您至少应该确定您<strong>理解</strong>所有代码正在做什么。</p>
+<p>如果您觉得这些代码太难以阅读了并减慢您审查的速度，您应该在您尝试继续审核前要让开发者知道这件事，并等待他们为程序做出解释、澄清。在 Google，我们聘请了优秀的软件工程师，您就是其中之一。如果您无法理解代码，那么很可能其他开发人员也不会。因此，当您要求开发人员澄清此代码时，您也会帮助未来的开发人员理解这些代码。</p>
+<p>如果您了解代码但觉得没有资格做某些部分的审查，请确保 CL 上有一个合格的审查人，特别是对于安全性、并发性、可访问性、国际化等复杂问题。</p>
+<h2 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h2><p>在广泛的上下文下查看 CL 通常很有帮助。通常，代码审查工具只会显示变更的部分的周围的几行。有时您必须查看整个文件以确保变更确实有意义。例如，您可能只看到添加了四行新代码，但是当您查看整个文件时，您会看到这四行是添加在一个 50 行的方法里，现在确实需要将它们分解为更小的方法。</p>
+<p>在整个系统的上下文中考虑 CL 也很有用。 这个 CL 是否改善了系统的代码健康状况，还是使整个系统更复杂，测试更少等等？<strong>不要接受降低系统代码运行状况的 CL</strong>。大多数系统通过许多小的变化而变得复杂，因此防止新变更引入即便很小的复杂性也非常重要。</p>
+<h2 id="好的事情"><a href="#好的事情" class="headerlink" title="好的事情"></a>好的事情</h2><p>如果您在 CL 中看到一些不错的东西，请告诉开发者，特别是当他们以一种很好的方式解决了您的的一个评论时。代码审查通常只关注错误，但也应该为良好实践提供鼓励。在指导方面，比起告诉他们他们做错了什么，有时更有价值的是告诉开发人员他们做对了什么。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在进行代码审查时，您应该确保：</p>
+<ul>
+<li>代码设计精良。</li>
+<li>该功能对代码用户是有好处的。</li>
+<li>任何 UI 变更都是合理的且看起来是好的。</li>
+<li>其中任何并行编程都是安全的。</li>
+<li>代码并不比它需要的复杂。</li>
+<li>开发人员没有实现他们将来<strong>可能</strong>需要，但不知道他们现在是否需要的东西。</li>
+<li>代码有适当的单元测试。</li>
+<li>测试精心设计。</li>
+<li>开发人员使用了清晰的名称。</li>
+<li>注释清晰有用，且大多用来解释<strong>为什么</strong>而不是<strong>做什么</strong>。</li>
+<li>代码有适当记录成文件（通常在 g3doc 中）。</li>
+<li>代码符合我们的风格指南。</li>
+</ul>
+<p>确保查看您被要求查看的<strong>每一行</strong>代码，查看<strong>上下文</strong>，确保您<strong>提高代码健康状况</strong>，并赞扬开发人员所做的<strong>好事</strong>。</p>
+<h1 id="查看-CL-的步骤"><a href="#查看-CL-的步骤" class="headerlink" title="查看 CL 的步骤"></a>查看 CL 的步骤</h1><h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>现在您已经知道了 [Code Review 要点](#Code Review 要点)，那么管理分布在多个文件中的评论的最有效方法是什么？</p>
+<ol>
+<li>变更是否有意义？它有很好的描述吗？</li>
+<li>首先看一下变更中最重要的部分。整体设计得好吗？</li>
+<li>以适当的顺序查看 CL 的其余部分。</li>
+</ol>
+<h2 id="第一步：全面了解变更"><a href="#第一步：全面了解变更" class="headerlink" title="第一步：全面了解变更"></a>第一步：全面了解变更</h2><p>查看 [CL 描述](#写好 CL 描述)和 CL 大致上用来做什么事情。这种变更是否有意义？如果在最初不应该发生这样的变更，请立即回复，说明为什么不应该进行变更。当您拒绝这样的变更时，向开发人员建议应该做什么也是一个好主意。</p>
+<p>例如，您可能会说“看起来你已经完成一些不错的工作，谢谢！但实际上，我们正朝着删除您在这里修改的 FooWidget 系统的方向演进，所以我们不想对它进行任何新的修改。不过，您来重构下新的 BarWidget 类怎么样？“</p>
+<p>请注意，审查者不仅拒绝了当前的 CL 并提供了替代建议，而且他们保持礼貌地这样做。这种礼貌很重要，因为我们希望表明，即使不同意，我们也会相互尊重。</p>
+<p>如果您获得了多个您不想变更的 CL，您应该考虑重整开发团队的开发过程或外部贡献者的发布过程，以便在编写CL之前有更多的沟通。最好在他们完成大量工作之前说“不”，避免已经投入心血的工作现在必须被抛弃或彻底重写。</p>
+<h2 id="第二步：检查-CL-的主要部分"><a href="#第二步：检查-CL-的主要部分" class="headerlink" title="第二步：检查 CL 的主要部分"></a>第二步：检查 CL 的主要部分</h2><p>查找作为此 CL “主要”部分的文件。通常，包含大量的逻辑变更的文件就是 CL 的主要部分。先看看这些主要部分。这有助于为 CL 的所有较小部分提供上下文，并且通常可以加速代码审查。如果 CL 太大而无法确定哪些部分是主要部分，请向开发人员询问您应该首先查看的内容，或者要求他们[将 CL 拆分为多个 CL](#小型 CL)。</p>
+<p>如果在该部分发现存在一些主要的设计问题时，即使没有时间立即查看 CL 的其余部分，也应立即留下评论告知此问题。因为事实上，因为该设计问题足够严重的话，继续审查其余部分很可能只是浪费宝贵的时间，因为其他正在审查的程序可能都将无关或消失。</p>
+<p>立即发送这些主要设计评论非常重要，有两个主要原因：</p>
+<ul>
+<li>通常开发者在发出 CL 后，在等待审查时立即开始基于该 CL 的新工作。如果您正在审查的 CL 中存在重大设计问题，那么他们以后的 CL 也必须要返工。您应该赶在他们在有问题的设计上做了太多无用功之前通知他们。</li>
+<li>主要的设计变更比起小的变更来说需要更长的时间才能完成。开发人员基本都有截止日期；为了完成这些截止日期并且在代码库中仍然保有高质量代码，开发人员需要尽快开始 CL 的任何重大工作。</li>
+</ul>
+<h2 id="第三步：以适当的顺序查看-CL-的其余部分"><a href="#第三步：以适当的顺序查看-CL-的其余部分" class="headerlink" title="第三步：以适当的顺序查看 CL 的其余部分"></a>第三步：以适当的顺序查看 CL 的其余部分</h2><p>一旦您确认整个 CL 没有重大的设计问题，试着找出一个逻辑顺序来查看文件，同时确保您不会错过查看任何文件。 通常在查看主要文件之后，最简单的方法是按照代码审查工具向您提供的顺序浏览每个文件。有时在阅读主代码之前先阅读测试也很有帮助，因为这样您就可以了解该变更应当做些什么。</p>
+<h1 id="Code-Review-速度"><a href="#Code-Review-速度" class="headerlink" title="Code Review 速度"></a>Code Review 速度</h1><h2 id="为什么尽快进行-Code-Review？"><a href="#为什么尽快进行-Code-Review？" class="headerlink" title="为什么尽快进行 Code Review？"></a>为什么尽快进行 Code Review？</h2><p><strong>在Google，我们优化了开发团队共同开发产品的速度</strong>，而不是优化单个开发者编写代码的速度。个人开发的速度很重要，它并不如整个团队的速度那么重要。</p>
+<p>当代码审查很慢时，会发生以下几件事：</p>
+<ul>
+<li><strong>整个团队的速度降低了。</strong>是的，对审查没有快速响应的个人的确完成了其他工作。但是，对于团队其他人来说重要的新功能与缺陷修復将会被延迟数天、数周甚至数月，只因为每个 CL 正在等待审查和重新审查。</li>
+<li><strong>开发者开始抗议代码审查流程。</strong>如果审查者每隔几天只响应一次，但每次都要求对 CL 进行重大更改，那么开发者可能会变得沮丧。通常，开发者将表达对审查者过于“严格”的抱怨。如果审查者请求相同实质性更改（确实可以改善代码健康状况），但每次开发者进行更新时都会快速响应，则抱怨会逐渐消失。<strong>大多数关于代码审查流程的投诉实际上是通过加快流程来解决的。</strong></li>
+<li><strong>代码健康状况可能会受到影响。</strong>如果审查速度很慢，则造成开发者提交不尽如人意的 CL 的压力会越来越大。审查太慢还会阻止代码清理、重构以及对现有 CL 的进一步改进。</li>
+</ul>
+<h2 id="Code-Review-应该有多快？"><a href="#Code-Review-应该有多快？" class="headerlink" title="Code Review 应该有多快？"></a>Code Review 应该有多快？</h2><p>如果您没有处于重点任务的中，那么您应该在<strong>收到代码审查后尽快开始</strong>。</p>
+<p><strong>一个工作日</strong>是应该响应代码审查请求所需的最长时间（即第二天早上的第一件事）。</p>
+<p>遵循这些指导意味着典型的 CL 应该在一天内进行多轮审查（如果需要）。</p>
+<h2 id="速度-vs-中断"><a href="#速度-vs-中断" class="headerlink" title="速度 vs. 中断"></a>速度 vs. 中断</h2><p>有一种情况下个人速度胜过团队速度。<strong>如果您正处于重点任务中，例如编写代码，请不要打断自己进行代码审查。</strong>研究表明，开发人员在被打断后需要很长时间才能恢复到顺畅的开发流程中。因此，编写代码时打断自己实际上比让另一位开发人员等待代码审查的代价更加昂贵。</p>
+<p>相反，在回复审查请求之前，请等待工作中断点。可能是当你的当前编码任务完成，午餐后，从会议返回，从厨房回来等等。</p>
+<h2 id="快速响应"><a href="#快速响应" class="headerlink" title="快速响应"></a>快速响应</h2><p>当我们谈论代码审查的速度时，我们关注的是响应时间，而不是 CL 需要多长时间才能完成整个审查并提交。理想情况下，整个过程也应该是快速的，<strong>快速的个人响应比整个过程快速发生更为重要</strong>。</p>
+<p>即使有时需要很久才能完成整个审查流程，但在整个过程中获得审查者的快速响应可以显着减轻开发人员对“慢速”代码审查感到的挫败感。</p>
+<p>如果您太忙而无法对 CL 进行全面审查，您仍然可以发送快速回复，让开发人员知道您什么时候可以开始，或推荐其他能够更快回复的审查人员，或者[提供一些大体的初步评论](#查看 CL 的步骤)。 （注意：这并不意味着您应该中断编码，即使发送这样的响应，也要在工作中的合理断点处发出响应。）</p>
+<p>重要的是，审查人员要花足够的时间进行审查，确信他们的“LGTM”意味着“此代码符合我们的[标准](#Code Review 标准)。”但是，理想情况下，个人反应仍然应该很[快](#Code Review 应该有多快？)。</p>
+<h2 id="跨时区审查"><a href="#跨时区审查" class="headerlink" title="跨时区审查"></a>跨时区审查</h2><p>在处理时区差异时，尝试在他们还在办公室时回复作者。 如果他们已经下班回家了，那么请确保在第二天回到办公室之前完成审查。</p>
+<h2 id="带评论的-LGTM"><a href="#带评论的-LGTM" class="headerlink" title="带评论的 LGTM"></a>带评论的 LGTM</h2><p>为了加快代码审查，在某些情况下，即使他们也在 CL 上留下未解决的评论，审查者也应该给予 LGTM&#x2F;Approval，这可以是以下任何一种情况：</p>
+<ul>
+<li>审查者确信开发人员将适当地处理所有审查者的剩余评论。</li>
+<li>其余的更改很小，不必由开发者完成。</li>
+</ul>
+<p>如果不清楚的话，审查者应该指定他们想要哪些选项。</p>
+<p>当开发者和审查者处于不同的时区时，带评论的 LGTM 尤其值得考虑，否则开发者将等待一整天才能获得 “LGTM，Approval”。</p>
+<h2 id="大型-CL"><a href="#大型-CL" class="headerlink" title="大型 CL"></a>大型 CL</h2><p>如果有人向您发送了代码审查太大，您不确定何时有时间查看，那么您应该要求开发者[将 CL 拆分为几个较小的 CL](#小型 CL) 而不是一次审查的一个巨大的 CL。这通常可行，对审查者非常有帮助，即使需要开发人员的额外工作。</p>
+<p>如果 CL 无法分解为较小的 CL，并且您没有时间快速查看整个内容，那么至少要对 CL 的整体设计写一些评论并将其发送回开发人员以进行改进。作为审查者，您的目标之一应该在不牺牲代码健康状况的前提下，始终减少开发者能够快速采取某种进一步的操作的阻力。</p>
+<h2 id="代码审查随时间推移而改进"><a href="#代码审查随时间推移而改进" class="headerlink" title="代码审查随时间推移而改进"></a>代码审查随时间推移而改进</h2><p>如果您遵循这些准则，并且您对代码审查非常严格，那么您应该会发现整个代码审核流程会随着时间的推移而变得越来越快。开发者可以了解健康代码所需的内容，并向您发送从一开始就很棒的 CL，且需要的审查时间越来越短。审查者学会快速响应，而不是在审查过程中添加不必要的延迟。但是，从长远来看，<strong>不要为了提高想象中的代码审查速度，而在[代码审查标准](#Code Review 标准)或质量方面妥协，实际上这样做对于长期来说不会有任何帮助。</strong></p>
+<h2 id="紧急情况"><a href="#紧急情况" class="headerlink" title="紧急情况"></a>紧急情况</h2><p>还有一些<a href="#%E7%B4%A7%E6%80%A5%E6%83%85%E5%86%B5">紧急情况</a>，CL 必须非常快速地通过整个审查流程，并且质量准则将放宽。请查看<a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A7%E6%80%A5%E6%83%85%E5%86%B5%EF%BC%9F">什么是紧急情况？</a> 中描述的哪些情况属于紧急情况，哪些情况不属于紧急情况。</p>
+<h1 id="如何撰写-Code-Review-评论"><a href="#如何撰写-Code-Review-评论" class="headerlink" title="如何撰写 Code Review 评论"></a>如何撰写 Code Review 评论</h1><h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>保持友善。</li>
+<li>解释你的推理。</li>
+<li>在给出明确的指示与只指出问题并让开发人员自己决定间做好平衡。</li>
+<li>鼓励开发人员简化代码或添加代码注释，而不仅仅是向你解释复杂性。</li>
+</ul>
+<h2 id="礼貌"><a href="#礼貌" class="headerlink" title="礼貌"></a>礼貌</h2><p>一般而言，对于那些正在被您审查代码的人，除了保持有礼貌且尊重以外，重要的是还要确保您（的评论）是非常清楚且有帮助的。你并不总是必须遵循这种做法，但在说出可能令人不安或有争议的事情时你绝对应该使用它。 例如：</p>
+<p>糟糕的示例：“为什么这里<strong>你</strong>使用了线程，显然并发并没有带来什么好处？”</p>
+<p>好的示例：“这里的并发模型增加了系统的复杂性，但没有任何实际的性能优势，因为没有性能优势，最好是将这些代码作为单线程处理而不是使用多线程。”</p>
+<h2 id="解释为什么"><a href="#解释为什么" class="headerlink" title="解释为什么"></a>解释为什么</h2><p>关于上面的“好”示例，您会注意到的一件事是，它可以帮助开发人员理解您发表评论的原因。 并不总是需要您在审查评论中包含此信息，但有时候提供更多解释，对于表明您的意图，您在遵循的最佳实践，或为您建议如何提高代码健康状况是十分恰当的。</p>
+<h2 id="给予指导"><a href="#给予指导" class="headerlink" title="给予指导"></a>给予指导</h2><p><strong>一般来说，修复 CL 是开发人员的责任，而不是审查者。</strong> 您无需为开发人员详细设计解决方案或编写代码。</p>
+<p>但这并不意味着审查者应该没有帮助。一般来说，您应该在指出问题和提供直接指导之间取得适当的平衡。指出问题并让开发人员做出决定通常有助于开发人员学习，并使代码审查变得更容易。它还可能产生更好的解决方案，因为开发人员比审查者更接近代码。</p>
+<p>但是，有时直接说明，建议甚至代码会更有帮助。代码审查的主要目标是尽可能获得最佳 CL。第二个目标是提高开发人员的技能，以便他们随着时间的推移需要的审查越来越少。</p>
+<h2 id="接受解释"><a href="#接受解释" class="headerlink" title="接受解释"></a>接受解释</h2><p>如果您要求开发人员解释一段您不理解的代码，那通常会导致他们<strong>更清楚地重写代码</strong>。偶尔，在代码中添加注释也是一种恰当的响应，只要它不仅仅是解释过于复杂的代码。</p>
+<p><strong>仅在代码审查工具中编写的解释对未来的代码阅读者没有帮助。</strong>这仅在少数情况下是可接受的，例如当您查看一个您不熟悉的领域时，开发人员会用来向您解释普通读者已经知道的内容。</p>
+<h1 id="处理-Code-Review-中的拖延"><a href="#处理-Code-Review-中的拖延" class="headerlink" title="处理 Code Review 中的拖延"></a>处理 Code Review 中的拖延</h1><p>有时开发人员会拖延（Pushback）代码审查。他们要么不同意您的建议，要么抱怨您太严格。</p>
+<h2 id="谁是对的？"><a href="#谁是对的？" class="headerlink" title="谁是对的？"></a>谁是对的？</h2><p>当开发人员不同意您的建议时，请先花点时间考虑一下是否正确。通常，他们比你更接近代码，所以他们可能真的对它的某些方面有更好的洞察力。他们的论点有意义吗？从代码健康的角度来看它是否有意义？如果是这样，让他们知道他们是对的，把问题解决。</p>
+<p>但是，开发人员并不总是对的。在这种情况下，审查人应进一步解释为什么认为他们的建议是正确的。好的解释在描述对开发人员回复的理解的同时，还会解释为什么请求更改。</p>
+<p>特别是，当审查人员认为他们的建议会改善代码健康状况时，他们应该继续提倡更改，如果他们认为最终的代码质量改进能够证明所需的额外工作是合理的。<strong>提高代码健康状况往往只需很小的几步。</strong></p>
+<p>有时需要几轮解释一个建议才能才能让对方真正理解你的用意。只要确保始终保持[礼貌](#如何撰写 Code Review 评论)，让开发人员知道你有听到他们在说什么，只是你不同意该论点而已。</p>
+<h2 id="沮丧的开发者"><a href="#沮丧的开发者" class="headerlink" title="沮丧的开发者"></a>沮丧的开发者</h2><p>审查者有时认为，如果审查者人坚持改进，开发人员会感到不安。有时候开发人员会感到很沮丧，但这样的感觉通常只会持续很短的时间，后来他们会非常感谢您在提高代码质量方面给他们的帮助。通常情况下，如果您在评论中表现得很有[礼貌](#如何撰写 Code Review 评论)，开发人员实际上根本不会感到沮丧，这些担忧都仅存在于审核者心中而已。开发者感到沮丧通常更多地与[评论的写作方式](#如何撰写 Code Review 评论)有关，而不是审查者对代码质量的坚持。</p>
+<h2 id="稍后清理"><a href="#稍后清理" class="headerlink" title="稍后清理"></a>稍后清理</h2><p>开发人员拖延的一个常见原因是开发人员（可以理解）希望完成任务。他们不想通过另一轮审查来完成该 CL。所以他们说会在以后的 CL 中清理一些东西，所以您现在应该 LGTM 这个 CL。一些开发人员非常擅长这一点，并会立即编写一个修复问题的后续 CL。但是，经验表明，在开发人员编写原始 CL 后，经过越长的时间这种清理发生的可能性就越小。实际上，通常除非开发人员在当前 CL 之后立即进行清理，否则它就永远不会发生。这不是因为开发人员不负责任，而是因为他们有很多工作要做，清理工作在其他工作中被丢失或遗忘。因此，在代码进入代码库并“完成”之前，通常最好坚持让开发人员现在清理他们的 CL。让人们“稍后清理东西”是代码库质量退化的常见原因。</p>
+<p>如果 CL 引入了新的复杂性，除非是<a href="#%E7%B4%A7%E6%80%A5%E6%83%85%E5%86%B5">紧急情况</a>，否则必须在提交之前将其清除。如果 CL 暴露了相关的问题并且现在无法解决，那么开发人员应该将 bug 记录下来并分配给自己，避免后续被遗忘。又或者他们可以选择在程序中留下 TODO 的注释并连结到刚记录下的 bug。</p>
+<h2 id="关于严格性的抱怨"><a href="#关于严格性的抱怨" class="headerlink" title="关于严格性的抱怨"></a>关于严格性的抱怨</h2><p>如果您以前有相当宽松的代码审查，并转而进行严格的审查，一些开发人员会抱怨得非常大声。通常提高代码审查的[速度](#Code Review 速度)会让这些抱怨逐渐消失。</p>
+<p>有时，这些投诉可能需要数月才会消失，但最终开发人员往往会看到严格的代码审查的价值，因为他们会看到代码审查帮助生成的优秀代码。而且一旦发生某些事情时，最响亮的抗议者甚至可能会成为你最坚定的支持者，因为他们会看到审核变严格后所带来的价值。</p>
+<h2 id="解决冲突-1"><a href="#解决冲突-1" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>如果上述所有操作仍无法解决您与开发人员之间的冲突，请参阅 “[Code Review 标准](#Code Review 标准)”以获取有助于解决冲突的指导和原则。</p>
+<h1 id="代码开发者指南"><a href="#代码开发者指南" class="headerlink" title="代码开发者指南"></a>代码开发者指南</h1><p>本节页面的内容为开发人员进行代码审查的最佳实践。这些指南可帮助您更快地完成审核并获得更高质量的结果。您不必全部阅读它们，但它们适用于每个 Google 开发人员，并且许阅读全文通常会很有帮助。</p>
+<h1 id="写好-CL-描述"><a href="#写好-CL-描述" class="headerlink" title="写好 CL 描述"></a>写好 CL 描述</h1><p>CL 描述是进行了<strong>哪些更改</strong>以及<strong>为何更改</strong>的公开记录。CL 将作为版本控制系统中的永久记录，可能会在长时期内被除审查者之外的数百人阅读。</p>
+<p>开发者将来会根据描述搜索您的 CL。有人可能会仅凭有关联性的微弱印象，但没有更多具体细节的情况下，来查找你的改动。如果所有重要信息都在代码而不是描述中，那么会让他们更加难以找到你的 CL 。</p>
+<h2 id="首行"><a href="#首行" class="headerlink" title="首行"></a>首行</h2><ul>
+<li>正在做什么的简短摘要。</li>
+<li>完整的句子，使用祈使句。</li>
+<li>后面跟一个空行。</li>
+</ul>
+<p>CL 描述的<strong>第一行</strong>应该是关于这个 CL 是<strong>做什么</strong>的简短摘要，后面跟一个空白行。这是将来大多数的代码搜索者在浏览代码的版本控制历史时，最常被看到的内容，因此第一行应该提供足够的信息，以便他们不必阅读 CL 的整个描述就可以获得这个 CL 实际上是做了什么的信息。</p>
+<p>按照传统，CL 描述的第一行应该是一个完整的句子，就好像是一个命令（一个命令句）。例如，“<strong>Delete</strong> the FizzBuzz RPC and <strong>replace</strong> it with the new system.”而不是“<strong>Deleting</strong> the FizzBuzz RPC and <strong>replacing</strong> it with the new system.“ 但是，您不必把其余的描述写成祈使句。</p>
+<h2 id="Body-是信息丰富的"><a href="#Body-是信息丰富的" class="headerlink" title="Body 是信息丰富的"></a>Body 是信息丰富的</h2><p>其余描述应该是提供信息的。可能包括对正在解决的问题的简要描述，以及为什么这是最好的方法。如果方法有任何缺点，应该提到它们。如果相关，请包括背景信息，例如错误编号，基准测试结果以及设计文档的链接。</p>
+<p>即使是小型 CL 也需要注意细节。在 CL 描述中提供上下文以供参照。</p>
+<h2 id="糟糕的-CL-描述"><a href="#糟糕的-CL-描述" class="headerlink" title="糟糕的 CL 描述"></a>糟糕的 CL 描述</h2><p>“Fix bug ”是一个不充分的 CL 描述。什么 bug？你做了什么修复？其他类似的不良描述包括：</p>
+<ul>
+<li>“Fix build.”</li>
+<li>“Add patch.”</li>
+<li>“Moving code from A to B.”</li>
+<li>“Phase 1.”</li>
+<li>“Add convenience functions.”</li>
+<li>“kill weird URLs.”</li>
+</ul>
+<p>其中一些是真正的 CL 描述。他们的作者可能认为自己提供了有用的信息，却没有达到 CL 描述的目的。</p>
+<h2 id="好的-CL-描述"><a href="#好的-CL-描述" class="headerlink" title="好的 CL 描述"></a>好的 CL 描述</h2><p>以下是一些很好的描述示例。</p>
+<h3 id="功能更新"><a href="#功能更新" class="headerlink" title="功能更新"></a>功能更新</h3><blockquote>
+<p>rpc：删除 RPC 服务器消息 freelist 上的大小限制。</p>
+<p>像 FIzzBuzz 这样的服务器有非常大的消息，并且可以从重用中受益。增大 freelist，添加一个 goroutine，缓慢释放 freelist 条目，以便空闲服务器最终释放所有 freelist 条目。</p>
+</blockquote>
+<p>前几个词描述了CL实际上做了什么。其余的描述讨论了正在解决的问题，为什么这是一个很好的解决方案，以及有关具体实现的更多信息。</p>
+<h3 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h3><blockquote>
+<p>Construct a Task with a TimeKeeper to use its TimeStr and Now methods.</p>
+<p>Add a Now method to Task, so the borglet() getter method can be removed (which was only used by OOMCandidate to call borglet’s Now method). This replaces the methods on Borglet that delegate to a TimeKeeper.</p>
+<p>Allowing Tasks to supply Now is a step toward eliminating the dependency on Borglet. Eventually, collaborators that depend on getting Now from the Task should be changed to use a TimeKeeper directly, but this has been an accommodation to refactoring in small steps.</p>
+<p>Continuing the long-range goal of refactoring the Borglet Hierarchy.</p>
+</blockquote>
+<p>第一行描述了 CL 的作用以及改变。其余的描述讨论了具体的实现，CL 的背景，解决方案并不理想，以及未来的可能方向。它还解释了为什么正在进行此更改。</p>
+<h3 id="需要上下文的-小-CL"><a href="#需要上下文的-小-CL" class="headerlink" title="需要上下文的 小 CL"></a>需要上下文的 小 CL</h3><blockquote>
+<p>Create a Python3 build rule for status.py.</p>
+<p>This allows consumers who are already using this as in Python3 to depend on a rule that is next to the original status build rule instead of somewhere in their own tree. It encourages new consumers to use Python3 if they can, instead of Python2, and significantly simplifies some automated build file refactoring tools being worked on currently.</p>
+</blockquote>
+<p>第一句话描述实际做了什么。其余的描述解释了为什么正在进行更改并为审查者提供了大量背景信息。</p>
+<h2 id="在提交-CL-前审查描述"><a href="#在提交-CL-前审查描述" class="headerlink" title="在提交 CL 前审查描述"></a>在提交 CL 前审查描述</h2><p>CL 在审查期间可能会发生重大变更。在提交 CL 之前检查 CL 描述是必要的，以确保描述仍然反映了 CL 的作用。</p>
+<h1 id="小型-CL"><a href="#小型-CL" class="headerlink" title="小型 CL"></a>小型 CL</h1><h2 id="为什么提交小型-CL"><a href="#为什么提交小型-CL" class="headerlink" title="为什么提交小型 CL?"></a>为什么提交小型 CL?</h2><p>小且简单的 CL 是指：</p>
+<ul>
+<li><strong>审查更快。</strong>审查者更容易抽多次五分钟时间来审查小型 CL，而不是留出 30 分钟来审查一个大型 CL。</li>
+<li><strong>审查得更彻底。</strong>如果是大的变更，审查者和提交者往往会因为大量细节的讨论翻来覆去而感到沮丧——有时甚至到了重要点被遗漏或丢失的程度。</li>
+<li><strong>不太可能引入错误。</strong> 由于您进行的变更较少，您和您的审查者可以更轻松有效地推断 CL 的影响，并查看是否已引入错误。</li>
+<li><strong>如果被拒绝，减少浪费的工作。</strong> 如果您写了一个巨大的 CL，您的评论者说整个 CL 的方向都错误了，你就浪费了很多精力和时间。</li>
+<li><strong>更容易合并。</strong> 处理大型 CL 需要很长时间，在合并时会出现很多冲突，并且必须经常合并。</li>
+<li><strong>更容易设计好。</strong> 打磨一个小变更的设计和代码健康状况比完善一个大变更的所有细节要容易得多。</li>
+<li><strong>减少对审查的阻碍。</strong> 发送整体变更的自包含部分可让您在等待当前 CL 审核时继续编码。</li>
+<li><strong>更简单的回滚。</strong> 大型 CL 更有可能触及在初始 CL 提交和回滚 CL 之间更新的文件，从而使回滚变得复杂（中间的 CL 也可能需要回滚）。</li>
+</ul>
+<p>请注意，<strong>审查者可以仅凭 CL 过大而自行决定完全拒绝您的变更。</strong>通常他们会感谢您的贡献，但要求您以某种方式将其 CL 改成一系列较小的变更。在您编写完变更后，或者需要花费大量时间来讨论为什么审查者应该接受您的大变更，这可能需要做很多工作。首先编写小型 CL 更容易。</p>
+<h2 id="什么是小型-CL？"><a href="#什么是小型-CL？" class="headerlink" title="什么是小型 CL？"></a>什么是小型 CL？</h2><p>一般来说，CL 的正确大小是<strong>自包含的变更</strong>。这意味着：</p>
+<ul>
+<li>CL 进行了一项最小的变更，<strong>只解决了一件事</strong>。通常只是功能的一部分，而不是一个完整的功能。一般来说，因为编写过小的 CL 而犯错也比过大的 CL 犯错要好。与您的审查者讨论以确定可接受的大小。</li>
+<li>审查者需要了解的关于 CL 的所有内容（除了未来的开发）都在 CL 的描述、现有的代码库或已经审查过的 CL 中。</li>
+<li>对其用户和开发者来说，在签入 CL 后系统能继续良好的工作。</li>
+<li>CL 不会过小以致于其含义难以理解。如果您添加新 API，则应在同一 CL 中包含 API 的用法，以便审查者可以更好地了解 API 的使用方式。这也可以防止签入未使用的 API。</li>
+</ul>
+<p>关于多大算“太大”没有严格的规则。对于 CL 来说，100 行通常是合理的大小，1000 行通常太大，但这取决于您的审查者的判断。变更中包含的文件数也会影响其“大小”。一个文件中的 200 行变更可能没问题，但是分布在 50 个文件中通常会太大。</p>
+<p>请记住，尽管从开始编写代码开始就您就已经密切参与了代码，但审查者通常不清楚背景信息。对您来说，看起来像是一个可接受的大小的 CL 对您的审查者来说可能是压倒性的。如有疑问，请编写比您认为需要编写的要小的 CL。审查者很少抱怨收到过小的 CL 提交。</p>
+<h2 id="什么时候大-CL-是可以的？"><a href="#什么时候大-CL-是可以的？" class="headerlink" title="什么时候大 CL 是可以的？"></a>什么时候大 CL 是可以的？</h2><p>在某些情况下，大变更也是可以接受的：</p>
+<ul>
+<li>您通常可以将整个文件的删除视为一行变更，因为审核人员不需要很长时间审核。</li>
+<li>有时一个大的 CL 是由您完全信任的自动重构工具生成的，而审查者的工作只是检查并确定想要这样的变更。但这些 CL 可以更大，尽管上面的一些警告（例如合并和测试）仍然适用。</li>
+</ul>
+<h3 id="按文件拆分"><a href="#按文件拆分" class="headerlink" title="按文件拆分"></a>按文件拆分</h3><p>拆分 CL 的另一种方法是对文件进行分组，这些文件需要不同的审查者，否则就是自包含的变更。</p>
+<p>例如：您发送一个 CL 以修改协议缓冲区，另一个 CL 发送变更使用该原型的代码。您必须在代码 CL 之前提交 proto CL，但它们都可以同时进行审查。如果这样做，您可能希望通知两组审查者审查您编写的其他 CL，以便他们对您的变更具有更充足的上下文。</p>
+<p>另一个例子：你发送一个 CL 用于代码更改，另一个用于使用该代码的配置或实验；如果需要，这也更容易回滚，因为配置&#x2F;实验文件有时会比代码变更更快地推向生产。</p>
+<h2 id="分离出重构"><a href="#分离出重构" class="headerlink" title="分离出重构"></a>分离出重构</h2><p>通常最好在功能变更或错误修复的单独 CL 中进行重构。例如，移动和重命名类应该与修复该类中的错误的 CL 不同。审查者更容易理解每个 CL 在单独时引入的更改。</p>
+<p>但是，修复本地变量名称等小清理可以包含在功能变更或错误修复 CL 中。如果重构大到包含在您当前的 CL 中，会使审查更加困难的话，需要开发者和审查者一起判断是否将其拆开。</p>
+<h2 id="将相关的测试代码保存在同一个-CL-中"><a href="#将相关的测试代码保存在同一个-CL-中" class="headerlink" title="将相关的测试代码保存在同一个 CL 中"></a>将相关的测试代码保存在同一个 CL 中</h2><p>避免将测试代码拆分为单独的 CL。验证代码修改的测试应该进入相同的 CL，即使它增加了代码行数。</p>
+<p>但是，独立的测试修改可以首先进入单独的 CL，类似于<a href="#%E5%88%86%E7%A6%BB%E5%87%BA%E9%87%8D%E6%9E%84">重构指南</a>。包括：</p>
+<ul>
+<li>使用新测试验证预先存在的已提交代码。</li>
+<li>重构测试代码（例如引入辅助函数）。</li>
+<li>引入更大的测试框架代码（例如集成测试）。</li>
+</ul>
+<h2 id="不要破坏构建"><a href="#不要破坏构建" class="headerlink" title="不要破坏构建"></a>不要破坏构建</h2><p>如果您有几个相互依赖的 CL，您需要找到一种方法来确保在每次提交 CL 后整个系统能够继续运作。否则可能会在您的 CL 提交的几分钟内打破所有开发人员的构建（如果您之后的 CL 提交意外出错，时间可能会甚至更长）。</p>
+<h2 id="如果不能让它足够小"><a href="#如果不能让它足够小" class="headerlink" title="如果不能让它足够小"></a>如果不能让它足够小</h2><p>有时你会遇到看起来您的 CL 必须如此庞大，但这通常很少是正确的。习惯于编写小型 CL 的提交者几乎总能找到将功能分解为一系列小变更的方法。</p>
+<p>在编写大型 CL 之前，请考虑在重构 CL 之前是否可以为更清晰的实现铺平道路。与你的同伴聊聊，看看是否有人想过如何在小型 CL 中实现这些功能。</p>
+<p>如果以上的努力都失败了（这应该是非常罕见的），那么请在事先征得审查者的同意后提交大型 CL，以便他们收到有关即将发生的事情的警告。在这种情况下，做好完成审查过程需要很长一段时间的准备，对不引入错误保持警惕，并且在编写测试时要更下功夫。</p>
+<h1 id="如何处理审查者的评论"><a href="#如何处理审查者的评论" class="headerlink" title="如何处理审查者的评论"></a>如何处理审查者的评论</h1><p>当您发送 CL 进行审查时，您的审查者可能会对您的 CL 发表一些评论。以下是处理审查者评论的一些有用信息。</p>
+<h2 id="不是针对您"><a href="#不是针对您" class="headerlink" title="不是针对您"></a>不是针对您</h2><p>审查的目标是保持代码库和产品的质量。当审查者对您的代码提出批评时，请将其视为在帮助您、代码库和 Google，而不是对您或您的能力的个人攻击。</p>
+<p>有时，审查者会感到沮丧并在评论中表达他们的挫折感。对于审查者来说，这不是一个好习惯，但作为开发人员，您应该为此做好准备。问问自己，“审查者试图与我沟通的建设性意见是什么？”然后像他们实际说的那样操作。</p>
+<p><strong>永远不要愤怒地回应代码审查评论。</strong>这严重违反了专业礼仪且将永远存在于代码审查工具中。如果您太生气或恼火而无法好好的回应，那么请离开电脑一段时间，或者做一些别的事情，直到您感到平静，可以礼貌地回答。</p>
+<p>一般来说，如果审查者没有以建设性和礼貌的方式提供反馈，请亲自向他们解释。如果您无法亲自或通过视频通话与他们交谈，请向他们发送私人电子邮件。以友善的方式向他们解释您不喜欢的东西以及您希望他们以怎样不同的方式来做些什么。如果他们也以非建设性的方式回复此私人讨论，或者没有预期的效果，那么请酌情上报给您的经理。</p>
+<h2 id="修复代码"><a href="#修复代码" class="headerlink" title="修复代码"></a>修复代码</h2><p>如果审查者说他们不了解您的代码中的某些内容，那么您的第一反应应该是澄清代码本身。 如果无法澄清代码，请添加代码注释，以解释代码存在的原因。 只有在想增加的注释看起来毫无意义时，您才能在代码审查工具中进行回复与解释。</p>
+<p>如果审查者不理解您的某些代码，那么代码的未来读者可能也不会理解。在代码审查工具中回复对未来的代码读者没有帮助，但澄清代码或添加代码注释确可以实实在在得帮助他们。</p>
+<h2 id="自我反思"><a href="#自我反思" class="headerlink" title="自我反思"></a>自我反思</h2><p>编写 CL 可能需要做很多工作。在终于发送一个 CL 用于审查后，我们通常会感到满足的，认为它已经完成，并且非常确定不需要进一步的工作。这通常是令人满意的。因此，当审查者回复对可以改进的事情的评论时，很容易本能地认为评论是错误的，审查者正在不必要地阻止您，或者他们应该让您提交 CL。但是，<strong>无论您目前多么确定</strong>，请花一点时间退一步，考虑审查者是否提供有助于对代码库和对 Google 的有价值的反馈。您首先应该想到的应该是，“审查者是否正确？”</p>
+<p>如果您无法回答这个问题，那么审查者可能需要澄清他们的意见。</p>
+<p>如果您已经考虑过并且仍然认为自己是正确的，请随时回答一下为什么您的方法对代码库、用户和&#x2F;或 Google 更好。通常，审查者实际上是在提供建议，他们希望您自己思考什么是最好的。您可能实际上对审阅者不知道的用户、代码库或 CL 有所了解。所以提供并告诉他们更多的上下文。通常，您可以根据技术事实在自己和审查者之间达成一些共识。</p>
+<h2 id="解决冲突-2"><a href="#解决冲突-2" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>解决冲突的第一步应该是尝试与审查者达成共识。 如果您无法达成共识，请参阅“[Code Review 标准](#Code Review 标准)”，该标准提供了在这种情况下遵循的原则。</p>
+<h1 id="紧急情况-1"><a href="#紧急情况-1" class="headerlink" title="紧急情况"></a>紧急情况</h1><p>有时候紧急 CL 必须尽快通过 code review 过程。</p>
+<h2 id="什么是紧急情况？"><a href="#什么是紧急情况？" class="headerlink" title="什么是紧急情况？"></a>什么是紧急情况？</h2><p>紧急 CL 是这样的<strong>小</strong>更新：允许主要发布继续而不是回滚，修复显著影响用户生产的错误，处理紧迫的法律问题，关闭主要安全漏洞等。</p>
+<p>在紧急情况下，我们确实关心 Code Review 的整体速度，而不仅仅是响应的速度。仅在这种情况下，审查人员应该更关心审查的速度和代码的正确性（是否解决了紧急情况？）。此外（显然）这类状况的审查应该优先于所有其他 code reivew。</p>
+<p>但是，在紧急情况解决后，您应该再次查看紧急 CL 并进行更彻底的审查。</p>
+<h2 id="什么不是紧急情况？"><a href="#什么不是紧急情况？" class="headerlink" title="什么不是紧急情况？"></a>什么不是紧急情况？</h2><p>需要说明的是，以下情况并非紧急情况：</p>
+<ul>
+<li>想要在本周而不是下周推出（除非有一些实际<a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A7%E6%80%A5%E6%83%85%E5%86%B5%EF%BC%9F">硬性截止日期</a>，例如合作伙伴协议）。</li>
+<li>开发人员已经在很长一段时间内完成了一项功能想要获得 CL。</li>
+<li>审查者都在另一个时区，目前是夜间或他们已离开现场。</li>
+<li>现在是星期五，在开发者在过周末之前获得这个 CL 会很棒。</li>
+<li>今天因为<a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A7%E6%80%A5%E6%83%85%E5%86%B5%EF%BC%9F">软（非硬）截止日期</a>，经理表示必须完成此审核并签入 CL。</li>
+<li>回滚导致测试失败或构建破坏的 CL。</li>
+</ul>
+<p>等等。</p>
+<h2 id="什么是-Hard-Deadline？"><a href="#什么是-Hard-Deadline？" class="headerlink" title="什么是 Hard Deadline？"></a>什么是 Hard Deadline？</h2><p>硬性截止日期（Hard Deadline）是指如果你错过它会发生灾难性的事情。例如：</p>
+<ul>
+<li>对于合同义务，必须在特定日期之前提交 CL。</li>
+<li>如果在某个日期之前没有发布，您的产品将在市场上完全失败。</li>
+<li>一些硬件制造商每年只发送一次新硬件。如果您错过了向他们提交代码的截止日期，那么这可能是灾难性的，具体取决于您尝试发布的代码类型。</li>
+</ul>
+<p>延迟发布一周并不是灾难性的。错过重要会议可能是灾难性的，但往往不是。</p>
+<p>大多数截止日期都是软截止日期，而非最后期限。软截止日期表示希望在特定时间内完成某项功能。它们很重要，但你不应该以牺牲代码健康为前提来达到。</p>
+<p>如果您的发布周期很长（几周），那么在下一个周期之前就可能会牺牲代码审查质量来获取功能。然而，如果重复这种模式，往往会给项目建立压倒性技术债务。如果开发人员在周期结束时经常提交 CL，只需要进行表面评审就必须“进入”，那么团队应该修改其流程，以便在周期的早期发生大的功能变更，并有足够的时间进行良好的审查。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="category-chain-item">工程实践</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Code-Review/">#Code Review</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Google Code Review 指南</div>
+      <div>https://note.0moe.cn/[object Object]/2022/07/23/Google-Code-Review-指南/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Dawn_南风</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%5Bobject%20Object%5D/2022/12/04/CodeReview%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" title="CodeReview最佳实践">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CodeReview最佳实践</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%5Bobject%20Object%5D/2022/05/10/%E7%90%86%E8%A7%A3Redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="理解Redis基本数据结构及设计策略">
+                        <span class="hidden-mobile">理解Redis基本数据结构及设计策略</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"VRhYR3EGwGA6iw2TAUzlvGTp-9Nh9j0Va","appKey":"sNvkmexbN6XoJoXsrt08XkpB","path":"window.location.pathname","placeholder":"纵使相逢应不识，想说啥，写下叭~","avatar":"wavatar","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":null,"emojiCDN":null,"emojiMaps":null,"enableQQ":false,"appid":"VRhYR3EGwGA6iw2TAUzlvGTp-9Nh9j0Va","appkey":"sNvkmexbN6XoJoXsrt08XkpB"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      黑ICP备19007946号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

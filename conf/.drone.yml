@@ -38,8 +38,8 @@ steps:
       password:
         from_secret: ssh_pwd
       script:
-        - cd /root
-        - sed 's/{{ build.commit }}/${DRONE_COMMIT_SHA}/g' note-template.yml > note.yml
+        - cd /0moe
+        - docker-compose up -d 
         - kubectl apply -f note.yml
   # 3.邮件通知
   - name: email-notice

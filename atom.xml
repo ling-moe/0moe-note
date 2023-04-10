@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>南风</title>
+  <title>今日方知我是我 | 南风</title>
   <icon>https://note.0moe.cn/icon.png</icon>
   <subtitle>需求驱动学习，实用推动执行</subtitle>
   <link href="https://note.0moe.cn/atom.xml" rel="self"/>
   
   <link href="https://note.0moe.cn/"/>
-  <updated>2021-02-22T08:12:16.292Z</updated>
+  <updated>2023-04-10T10:49:52.938Z</updated>
   <id>https://note.0moe.cn/</id>
   
   <author>
@@ -17,406 +17,485 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>配色图例</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2023/04/09/%E9%85%8D%E8%89%B2%E5%9B%BE%E4%BE%8B/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2023/04/09/%E9%85%8D%E8%89%B2%E5%9B%BE%E4%BE%8B/</id>
+    <published>2023-04-09T15:59:04.000Z</published>
+    <updated>2023-04-10T10:49:52.938Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;为了做PPT，UI等方面快速确定主题配色，记录一些网络上的配色表，以备后用。&lt;/p&gt;
+&lt;h2 id=&quot;天气之子&quot;&gt;&lt;a href=&quot;#天气之子&quot; class=&quot;headerlink&quot; title=&quot;天气之子&quot;&gt;&lt;/a&gt;天气之子&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="配色" scheme="https://note.0moe.cn/categories/%E9%85%8D%E8%89%B2/"/>
+    
+    
+    <category term="速查集" scheme="https://note.0moe.cn/tags/%E9%80%9F%E6%9F%A5%E9%9B%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>敏捷与宗教与供给侧结构性改革</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2022/12/25/%E6%95%8F%E6%8D%B7%E4%B8%8E%E5%AE%97%E6%95%99%E4%B8%8E%E4%BE%9B%E7%BB%99%E4%BE%A7%E7%BB%93%E6%9E%84%E6%80%A7%E6%94%B9%E9%9D%A9/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2022/12/25/%E6%95%8F%E6%8D%B7%E4%B8%8E%E5%AE%97%E6%95%99%E4%B8%8E%E4%BE%9B%E7%BB%99%E4%BE%A7%E7%BB%93%E6%9E%84%E6%80%A7%E6%94%B9%E9%9D%A9/</id>
+    <published>2022-12-25T11:27:21.000Z</published>
+    <updated>2023-04-10T10:49:52.938Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;敏捷与宗教与供给侧结构性改革&quot;&gt;&lt;a href=&quot;#敏捷与宗教与供给侧结构性改革&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="设计哲学" scheme="https://note.0moe.cn/categories/%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6/"/>
+    
+    
+    <category term="敏捷" scheme="https://note.0moe.cn/tags/%E6%95%8F%E6%8D%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CodeReview最佳实践</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2022/12/04/CodeReview%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2022/12/04/CodeReview%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</id>
+    <published>2022-12-04T08:57:00.000Z</published>
+    <updated>2023-04-10T10:49:52.927Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我一直认为Code Review是软件开发中的最佳实践之一，可以有效提高整体代码质量，及时发现代码中可能存在的问题。包括像Google、微软这些公司，Code</summary>
+        
+      
+    
+    
+    
+    <category term="工程实践" scheme="https://note.0moe.cn/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/"/>
+    
+    
+    <category term="Code Review" scheme="https://note.0moe.cn/tags/Code-Review/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Google Code Review 指南</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2022/07/23/Google-Code-Review-%E6%8C%87%E5%8D%97/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2022/07/23/Google-Code-Review-%E6%8C%87%E5%8D%97/</id>
+    <published>2022-07-23T15:21:02.000Z</published>
+    <updated>2023-04-10T10:46:59.138Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;代码审查者指南&quot;&gt;&lt;a href=&quot;#代码审查者指南&quot; class=&quot;headerlink&quot; title=&quot;代码审查者指南&quot;&gt;&lt;/a&gt;代码审查者指南&lt;/h1&gt;&lt;p&gt;本节是基于过往经验编写的 Code Review</summary>
+        
+      
+    
+    
+    
+    <category term="工程实践" scheme="https://note.0moe.cn/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/"/>
+    
+    
+    <category term="Code Review" scheme="https://note.0moe.cn/tags/Code-Review/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>理解Redis基本数据结构及设计策略</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2022/05/10/%E7%90%86%E8%A7%A3Redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2022/05/10/%E7%90%86%E8%A7%A3Redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</id>
+    <published>2022-05-10T10:15:40.000Z</published>
+    <updated>2023-04-10T10:49:52.928Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Redis内置了5种对外开放的数据结构， 分别是字符串， 列表， 集合， 有序集合以及哈希对象。 每一种数据结构的底层实现都会由存入的数据产生动态变化， 这也是Redis具有极佳吞吐量的原因之一。</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="https://note.0moe.cn/categories/Redis/"/>
+    
+    
+    <category term="源码分析" scheme="https://note.0moe.cn/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何实现具备 ACID 事务的分布式 KV 存储</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2022/03/12/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%85%B7%E5%A4%87-ACID-%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F-KV-%E5%AD%98%E5%82%A8/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2022/03/12/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%85%B7%E5%A4%87-ACID-%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F-KV-%E5%AD%98%E5%82%A8/</id>
+    <published>2022-03-12T09:56:05.000Z</published>
+    <updated>2023-04-10T10:49:52.938Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;F1&amp;#x2F;Spanner 的论文于 2012 年发表，至今仍是世界上最先进的、规模最大的分布式数据库架构，毫无疑问对现代数据库设计产生了深远影响。其最大的亮点莫过于 TrueTime API，凭借原子钟和 GPS</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://note.0moe.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="事务" scheme="https://note.0moe.cn/tags/%E4%BA%8B%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Akka构建无锁的并发</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2022/01/03/%E4%BD%BF%E7%94%A8Akka%E6%9E%84%E5%BB%BA%E6%97%A0%E9%94%81%E7%9A%84%E5%B9%B6%E5%8F%91/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2022/01/03/%E4%BD%BF%E7%94%A8Akka%E6%9E%84%E5%BB%BA%E6%97%A0%E9%94%81%E7%9A%84%E5%B9%B6%E5%8F%91/</id>
+    <published>2022-01-03T07:27:46.000Z</published>
+    <updated>2023-04-10T10:45:55.538Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://note.0moe.cn/categories/Java/"/>
+    
+    
+    <category term="无锁设计" scheme="https://note.0moe.cn/tags/%E6%97%A0%E9%94%81%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>高性能队列——Disruptor</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2021/12/04/%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97%E2%80%94%E2%80%94Disruptor/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2021/12/04/%E9%AB%98%E6%80%A7%E8%83%BD%E9%98%9F%E5%88%97%E2%80%94%E2%80%94Disruptor/</id>
+    <published>2021-12-04T06:42:49.000Z</published>
+    <updated>2023-04-10T10:45:39.223Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://note.0moe.cn/categories/Java/"/>
+    
+    
+    <category term="无锁设计" scheme="https://note.0moe.cn/tags/%E6%97%A0%E9%94%81%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Manjaro 滚动更新流程</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2021/10/09/Manjaro-%E6%BB%9A%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%B5%81%E7%A8%8B/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2021/10/09/Manjaro-%E6%BB%9A%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%B5%81%E7%A8%8B/</id>
+    <published>2021-10-09T03:37:21.000Z</published>
+    <updated>2023-04-10T10:44:37.332Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;常规流程&quot;&gt;&lt;a href=&quot;#常规流程&quot; class=&quot;headerlink&quot; title=&quot;常规流程&quot;&gt;&lt;/a&gt;常规流程&lt;/h2&gt;&lt;figure&gt;&lt;div class=&quot;code-wrapper&quot;&gt;&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://note.0moe.cn/categories/Linux/"/>
+    
+    
+    <category term="速查集" scheme="https://note.0moe.cn/tags/%E9%80%9F%E6%9F%A5%E9%9B%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计树形数据的表结构</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2021/08/16/%E8%AE%BE%E8%AE%A1%E6%A0%91%E5%BD%A2%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%BB%93%E6%9E%84/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2021/08/16/%E8%AE%BE%E8%AE%A1%E6%A0%91%E5%BD%A2%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%BB%93%E6%9E%84/</id>
+    <published>2021-08-16T08:39:57.000Z</published>
+    <updated>2023-04-10T10:49:52.938Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;存储树形结构数据是一个常见的问题，同时也有多种解决方案。&lt;/p&gt;
+&lt;p&gt;这里介绍三种树形结构的表设计方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;邻接表模型&lt;/li&gt;
+&lt;li&gt;基于路径和层级的表设计&lt;/li&gt;
+&lt;li&gt;基于左右值编码的表设计（MPT）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://note.0moe.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="树形数据" scheme="https://note.0moe.cn/tags/%E6%A0%91%E5%BD%A2%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分布式数据库的ACID事务</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2021/06/08/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84ACID%E4%BA%8B%E5%8A%A1/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2021/06/08/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84ACID%E4%BA%8B%E5%8A%A1/</id>
+    <published>2021-06-08T09:49:37.000Z</published>
+    <updated>2023-04-10T10:44:00.451Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;事务的属性&quot;&gt;&lt;a href=&quot;#事务的属性&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://note.0moe.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="事务" scheme="https://note.0moe.cn/tags/%E4%BA%8B%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Groovy语法糖及常用用法</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2021/04/10/Groovy%E8%AF%AD%E6%B3%95%E7%B3%96%E5%8F%8A%E5%B8%B8%E7%94%A8%E7%94%A8%E6%B3%95/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2021/04/10/Groovy%E8%AF%AD%E6%B3%95%E7%B3%96%E5%8F%8A%E5%B8%B8%E7%94%A8%E7%94%A8%E6%B3%95/</id>
+    <published>2021-04-10T09:38:49.000Z</published>
+    <updated>2023-04-10T10:49:52.928Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Groovy是JVM平台上的一种面向对象且同时支持静态动态的脚本语言，语法和Java区别不大，提供了一些语法糖，代码的表达能力更强。Gradle，Spring Cloud</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://note.0moe.cn/categories/Java/"/>
+    
+    
+    <category term="Groovy" scheme="https://note.0moe.cn/tags/Groovy/"/>
+    
+  </entry>
+  
+  <entry>
     <title>从绫开始的后台管理系统（四）</title>
-    <link href="https://note.0moe.cn/2021/02/22/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
-    <id>https://note.0moe.cn/2021/02/22/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89/</id>
+    <link href="https://note.0moe.cn/[object%20Object]/2021/02/22/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2021/02/22/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%9B%9B%EF%BC%89/</id>
     <published>2021-02-22T01:42:24.000Z</published>
-    <updated>2021-02-22T08:12:16.292Z</updated>
+    <updated>2023-04-10T10:49:52.938Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;我们开始正式写代码。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;我们开始正式写代码。&lt;/p&gt;
 &lt;p&gt;这一章主要讲前后端的工程结构设计和搭建。&lt;/p&gt;</summary>
     
     
     
+    <category term="后台管理系统" scheme="https://note.0moe.cn/categories/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
     
     <category term="从绫开始" scheme="https://note.0moe.cn/tags/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B/"/>
-    
-    <category term="后台管理系统" scheme="https://note.0moe.cn/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
   <entry>
     <title>从绫开始的后台管理系统（三）</title>
-    <link href="https://note.0moe.cn/2021/02/18/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89/"/>
-    <id>https://note.0moe.cn/2021/02/18/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89/</id>
+    <link href="https://note.0moe.cn/[object%20Object]/2021/02/18/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2021/02/18/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%89%EF%BC%89/</id>
     <published>2021-02-18T08:32:31.000Z</published>
-    <updated>2021-02-22T08:12:14.394Z</updated>
+    <updated>2023-04-10T10:49:52.938Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这一章我们开始对若依的前端工程进行分析。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;这一章我们开始对若依的前端工程进行分析。&lt;/p&gt;
 &lt;p&gt;ruoyi的前端主要包括登录验证，路由转发，dev模式这几个模块。&lt;/p&gt;</summary>
     
     
     
+    <category term="后台管理系统" scheme="https://note.0moe.cn/categories/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
     
     <category term="从绫开始" scheme="https://note.0moe.cn/tags/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B/"/>
-    
-    <category term="后台管理系统" scheme="https://note.0moe.cn/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
   <entry>
     <title>从绫开始的后台管理系统（二）</title>
-    <link href="https://note.0moe.cn/2021/02/14/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://note.0moe.cn/2021/02/14/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <link href="https://note.0moe.cn/[object%20Object]/2021/02/14/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2021/02/14/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
     <published>2021-02-14T13:10:17.000Z</published>
-    <updated>2021-02-22T09:44:20.559Z</updated>
+    <updated>2023-04-10T10:49:52.940Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;那这一章就正式开始对ruoyi的后端配置进行分析。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;那这一章就正式开始对ruoyi的后端配置进行分析。&lt;/p&gt;
 &lt;p&gt;ruoyi的后端模块主要包括权限系统，动态数据源、数据权限隔离、代码生成器、定时任务，common工具，还有后端接口，下面我们逐一进行分析。&lt;/p&gt;
 &lt;p&gt;我们也会讲一些关于工程结构，依赖管理配置方面的设计。&lt;/p&gt;</summary>
     
     
     
+    <category term="后台管理系统" scheme="https://note.0moe.cn/categories/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
     
     <category term="从绫开始" scheme="https://note.0moe.cn/tags/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B/"/>
-    
-    <category term="后台管理系统" scheme="https://note.0moe.cn/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
   <entry>
     <title>从绫开始的后台管理系统（一）</title>
-    <link href="https://note.0moe.cn/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://note.0moe.cn/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <link href="https://note.0moe.cn/[object%20Object]/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2021/02/08/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2021-02-08T00:21:35.000Z</published>
-    <updated>2021-02-22T08:18:21.488Z</updated>
+    <updated>2023-04-10T10:49:52.938Z</updated>
     
     
     <summary type="html">&lt;p&gt;这是从绫开始系列的新坑，适合有一些基础的朋友，&lt;del&gt;比如会写hello world的朋友&lt;/del&gt;。&lt;/p&gt;</summary>
     
     
     
+    <category term="后台管理系统" scheme="https://note.0moe.cn/categories/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
     
     <category term="从绫开始" scheme="https://note.0moe.cn/tags/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B/"/>
-    
-    <category term="后台管理系统" scheme="https://note.0moe.cn/tags/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
   <entry>
     <title>分布式事务选型对比</title>
-    <link href="https://note.0moe.cn/2021/01/13/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94/"/>
-    <id>https://note.0moe.cn/2021/01/13/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94/</id>
+    <link href="https://note.0moe.cn/[object%20Object]/2021/01/13/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2021/01/13/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94/</id>
     <published>2021-01-13T06:28:51.000Z</published>
-    <updated>2021-01-13T06:52:29.046Z</updated>
+    <updated>2023-04-10T10:49:52.938Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;分布式事务选型对比&quot;&gt;&lt;a href=&quot;#分布式事务选型对比&quot; class=&quot;headerlink&quot; title=&quot;分布式事务选型对比&quot;&gt;&lt;/a&gt;分布式事务选型对比&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;随着互联网架构的不断扩展，传统的ACID事务已经无法满足要求。为了解决这个问题，BASE理论被提出来取代ACID，基于BASE理论和CAP理论的分布式事务也有各种事务策略。如何保证整个事务整体的原子性与一致性问题？分布式事务如何选项才能更加适合当下的业务场景？已经成为了当下事务的痛点。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;分布式事务选型对比&quot;&gt;&lt;a href=&quot;#分布式事务选型对比&quot; class=&quot;headerlink&quot; title=&quot;分布式事务选型对比&quot;&gt;&lt;/a&gt;分布式事务选型对比&lt;/h1&gt;&lt;p&gt;随着互联网架构的不断扩展，传统的ACID事务已经无法满足要求。为了解决这个问题，BASE理论被提出来取代ACID，基于BASE理论和CAP理论的分布式事务也有各种事务策略。如何保证整个事务整体的原子性与一致性问题？分布式事务如何选项才能更加适合当下的业务场景？已经成为了当下事务的痛点。&lt;/p&gt;</summary>
     
     
+    
+    <category term="数据库" scheme="https://note.0moe.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
     <category term="事务" scheme="https://note.0moe.cn/tags/%E4%BA%8B%E5%8A%A1/"/>
     
-    <category term="分布式" scheme="https://note.0moe.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+  </entry>
+  
+  <entry>
+    <title>Java实现操作符重载</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2020/12/09/Java%E5%AE%9E%E7%8E%B0%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2020/12/09/Java%E5%AE%9E%E7%8E%B0%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/</id>
+    <published>2020-12-09T05:02:34.000Z</published>
+    <updated>2023-04-10T10:49:52.933Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;操作符重载，就是把已经定义的、有一定功能的操作符进行重新定义，来完成更为细致具体的运算等功能。&lt;/p&gt;
+&lt;p&gt;从面向对象的角度说，就是可以将操作符定义为类的方法，使得该操作符的功能可以用来代表对象的某个行为。&lt;/p&gt;
+&lt;p&gt;从DSL的角度说，就是用操作符来代替部分语法，提高</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://note.0moe.cn/categories/Java/"/>
+    
+    
+    <category term="操作符重载" scheme="https://note.0moe.cn/tags/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java多线程工具之CountDownLatch分析</title>
+    <link href="https://note.0moe.cn/[object%20Object]/2020/09/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B7%A5%E5%85%B7%E4%B9%8BCountDownLatch%E5%88%86%E6%9E%90/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2020/09/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B7%A5%E5%85%B7%E4%B9%8BCountDownLatch%E5%88%86%E6%9E%90/</id>
+    <published>2020-09-15T09:09:00.000Z</published>
+    <updated>2023-04-10T10:49:52.928Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;相信大家都挺熟悉 CountDownLatch 的，顾名思义就是一个栅栏，其主要作用是多线程环境下，让多个线程在栅栏门口等待，所有线程到齐后，栅栏打开程序继续执行。&lt;/p&gt;
+&lt;h2 id=&quot;案例&quot;&gt;&lt;a href=&quot;#案例&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://note.0moe.cn/categories/Java/"/>
+    
+    
+    <category term="源码分析" scheme="https://note.0moe.cn/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    
+    <category term="多线程" scheme="https://note.0moe.cn/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>从绫开始的k3s到istio（一）：安装K3S</title>
-    <link href="https://note.0moe.cn/2020/06/19/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84k3s%E5%88%B0istio%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://note.0moe.cn/2020/06/19/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84k3s%E5%88%B0istio%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <link href="https://note.0moe.cn/[object%20Object]/2020/06/19/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84k3s%E5%88%B0istio%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://note.0moe.cn/[object%20Object]/2020/06/19/%E4%BB%8E%E7%BB%AB%E5%BC%80%E5%A7%8B%E7%9A%84k3s%E5%88%B0istio%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-06-19T06:12:56.000Z</published>
-    <updated>2020-11-13T02:09:34.856Z</updated>
+    <updated>2023-04-10T10:49:52.938Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;从绫开始的k3s到istio（一）：安装K3S&quot;&gt;&lt;a href=&quot;#从绫开始的k3s到istio（一）：安装K3S&quot; class=&quot;headerlink&quot; title=&quot;从绫开始的k3s到istio（一）：安装K3S&quot;&gt;&lt;/a&gt;从绫开始的k3s到istio（一）：安装K3S&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;因为k8s太大了嘛，就一直想搞也莫得银子。正巧从逼乎上看到了k3s，也是挺有意思，正好我服务器也能勉强带的动（2C4G）就搞了一个。这个系列主要使用k3s+istio。从k3s安装，配置资源服务，部署代码，自动化构建到状态监控等，会一直更新下去。&lt;/p&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;从绫开始的k3s到istio（一）：安装K3S&quot;&gt;&lt;a href=&quot;#从绫开始的k3s到istio（一）：安装K3S&quot; class=&quot;headerlink&quot; title=&quot;从绫开始的k3s到istio（一）：安装K3S&quot;&gt;&lt;/a&gt;从绫开始的k3s到istio（一）：安装K3S&lt;/h1&gt;&lt;p&gt;因为k8s太大了嘛，就一直想搞也莫得银子。正巧从逼乎上看到了k3s，也是挺有意思，正好我服务器也能勉强带的动（2C4G）就搞了一个。这个系列主要使用k3s+istio。从k3s安装，配置资源服务，部署代码，自动化构建到状态监控等，会一直更新下去。&lt;/p&gt;</summary>
     
     
     
+    <category term="运维" scheme="https://note.0moe.cn/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+    <category term="速查集" scheme="https://note.0moe.cn/tags/%E9%80%9F%E6%9F%A5%E9%9B%86/"/>
     
     <category term="k3s" scheme="https://note.0moe.cn/tags/k3s/"/>
-    
-    <category term="k8s" scheme="https://note.0moe.cn/tags/k8s/"/>
-    
-    <category term="istio" scheme="https://note.0moe.cn/tags/istio/"/>
-    
-    <category term="mysql" scheme="https://note.0moe.cn/tags/mysql/"/>
-    
-    <category term="redis" scheme="https://note.0moe.cn/tags/redis/"/>
-    
-    <category term="gateway" scheme="https://note.0moe.cn/tags/gateway/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java线程池配置详解</title>
-    <link href="https://note.0moe.cn/2020/05/27/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://note.0moe.cn/2020/05/27/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/</id>
-    <published>2020-05-27T02:26:06.000Z</published>
-    <updated>2020-05-27T09:47:05.016Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;java线程池配置详解&quot;&gt;&lt;a href=&quot;#java线程池配置详解&quot; class=&quot;headerlink&quot; title=&quot;java线程池配置详解&quot;&gt;&lt;/a&gt;java线程池配置详解&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;网络资料多是复制粘贴，在此重写，以我为准。&lt;/p&gt;
-&lt;h2 id=&quot;结论&quot;&gt;&lt;a href=&quot;#结论&quot; class=&quot;headerlink&quot; title=&quot;结论&quot;&gt;&lt;/a&gt;结论&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;4核&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-java&quot; data-language=&quot;java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// 核心线程池大小&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; corePoolSize &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;// 最大可创建的线程数&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; maxPoolSize &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;// 队列最大长度&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; queueCapacity &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;token comment&quot;&gt;// 线程池维护线程所允许的空闲时间&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; keepAliveSeconds &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</summary>
-    
-    
-    
-    
-    <category term="java" scheme="https://note.0moe.cn/tags/java/"/>
-    
-    <category term="线程池， 多线程" scheme="https://note.0moe.cn/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%8C-%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微信小程序+mpvue+vant的打开方式</title>
-    <link href="https://note.0moe.cn/2019/12/20/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-mpvue-vant%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/"/>
-    <id>https://note.0moe.cn/2019/12/20/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-mpvue-vant%E7%9A%84%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F/</id>
-    <published>2019-12-20T02:06:10.000Z</published>
-    <updated>2021-02-06T06:30:34.839Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;微信小程序-mpvue-vant的打开方式&quot;&gt;&lt;a href=&quot;#微信小程序-mpvue-vant的打开方式&quot; class=&quot;headerlink&quot; title=&quot;微信小程序+mpvue+vant的打开方式&quot;&gt;&lt;/a&gt;微信小程序+mpvue+vant的打开方式&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;前阵子使用mpvue构建微信小程序，在引入其他框架时出现了一点问题，需要去修改配置，这里给出具体的配置流程。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="vue" scheme="https://note.0moe.cn/tags/vue/"/>
-    
-    <category term="微信小程序" scheme="https://note.0moe.cn/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
-    <category term="mpvue" scheme="https://note.0moe.cn/tags/mpvue/"/>
-    
-    <category term="vant" scheme="https://note.0moe.cn/tags/vant/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于docker版nginx的几点注意</title>
-    <link href="https://note.0moe.cn/2019/11/16/%E5%85%B3%E4%BA%8Edocker%E7%89%88nginx%E7%9A%84%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F/"/>
-    <id>https://note.0moe.cn/2019/11/16/%E5%85%B3%E4%BA%8Edocker%E7%89%88nginx%E7%9A%84%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F/</id>
-    <published>2019-11-15T16:40:59.000Z</published>
-    <updated>2020-11-13T02:41:36.695Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;关于docker版nginx的几点注意&quot;&gt;&lt;a href=&quot;#关于docker版nginx的几点注意&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="nginx" scheme="https://note.0moe.cn/tags/nginx/"/>
-    
-    <category term="docker" scheme="https://note.0moe.cn/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用flex制作滚动列表</title>
-    <link href="https://note.0moe.cn/2019/11/03/%E4%BD%BF%E7%94%A8flex%E5%88%B6%E4%BD%9C%E6%BB%9A%E5%8A%A8%E5%88%97%E8%A1%A8/"/>
-    <id>https://note.0moe.cn/2019/11/03/%E4%BD%BF%E7%94%A8flex%E5%88%B6%E4%BD%9C%E6%BB%9A%E5%8A%A8%E5%88%97%E8%A1%A8/</id>
-    <published>2019-11-03T02:10:31.000Z</published>
-    <updated>2021-02-08T00:16:10.716Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;使用flex制作滚动列表&quot;&gt;&lt;a href=&quot;#使用flex制作滚动列表&quot; class=&quot;headerlink&quot; title=&quot;使用flex制作滚动列表&quot;&gt;&lt;/a&gt;使用flex制作滚动列表&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;因为自己在做一点小东西，所以就有个需求，一个元素里面需要有两个子元素，两个子元素竖排排列，第二个子元素里面的内容不定长，需要做滚动，但第二个元素的高度需要自适应。&lt;/p&gt;
-&lt;p&gt;在学习的过程稿发现flex和overflow挺有意思的，特此记录下来。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="html" scheme="https://note.0moe.cn/tags/html/"/>
-    
-    <category term="css" scheme="https://note.0moe.cn/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx匹配规则</title>
-    <link href="https://note.0moe.cn/2019/10/17/nginx%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99/"/>
-    <id>https://note.0moe.cn/2019/10/17/nginx%E5%8C%B9%E9%85%8D%E8%A7%84%E5%88%99/</id>
-    <published>2019-10-17T01:43:33.000Z</published>
-    <updated>2019-10-17T02:07:32.607Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;一、语法规则&quot;&gt;&lt;a href=&quot;#一、语法规则&quot; class=&quot;headerlink&quot; title=&quot;一、语法规则&quot;&gt;&lt;/a&gt;一、语法规则&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-nginx&quot; data-language=&quot;nginx&quot;&gt;&lt;code class=&quot;language-nginx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;uri&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;&amp;#123;&lt;/span&gt; … &lt;span class=&quot;token punctuation&quot;&gt;&amp;#125;&lt;/span&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;符&amp;nbsp;号&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;含&amp;nbsp;义&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;code&gt;=&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;开头表示精确匹配&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;code&gt;^~&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;开头表示 uri 以某个常规字符串开头，理解为匹配 &lt;code&gt;url&lt;/code&gt; 路径即可。&lt;code&gt;nginx&lt;/code&gt; 不对 &lt;code&gt;url&lt;/code&gt; 做编码，因此请求为&lt;code&gt;/static/20%/aa&lt;/code&gt;，可以被规则&lt;code&gt;^~ /static/ /aa&lt;/code&gt;匹配到（注意是空格）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;code&gt;~&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;开头表示区分大小写的正则匹配&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;code&gt;~*&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;开头表示不区分大小写的正则匹配&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;code&gt;/&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;通用匹配，任何请求都会匹配到&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;</summary>
-    
-    
-    
-    
-    <category term="nginx" scheme="https://note.0moe.cn/tags/nginx/"/>
-    
-    <category term="服务器" scheme="https://note.0moe.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux常用命令</title>
-    <link href="https://note.0moe.cn/2019/10/17/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>https://note.0moe.cn/2019/10/17/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
-    <published>2019-10-17T01:43:17.000Z</published>
-    <updated>2021-01-13T02:37:25.061Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;内存资源最多的前 10 个进程&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-shell&quot; data-language=&quot;shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;ps -auxf | sort -nr -k 4 | head -10&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt; CPU 资源最多的前 10 个进程 &lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-shell&quot; data-language=&quot;shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;ps -auxf | sort -nr -k 3 | head -10&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;find在根目录下根据文件名查找&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-shell&quot; data-language=&quot;shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;find &amp;#x2F; -name 文件名&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;</summary>
-    
-    
-    
-    
-    <category term="linux" scheme="https://note.0moe.cn/tags/linux/"/>
-    
-    <category term="运维" scheme="https://note.0moe.cn/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>服务器自动部署脚本</title>
-    <link href="https://note.0moe.cn/2019/09/10/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/"/>
-    <id>https://note.0moe.cn/2019/09/10/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC/</id>
-    <published>2019-09-10T07:56:06.000Z</published>
-    <updated>2020-11-13T02:41:22.078Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;服务器自动部署脚本&quot;&gt;&lt;a href=&quot;#服务器自动部署脚本&quot; class=&quot;headerlink&quot; title=&quot;服务器自动部署脚本&quot;&gt;&lt;/a&gt;服务器自动部署脚本&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;自搭服务器需要自动打包部署流程，写了个脚本，备忘。&lt;/p&gt;
-&lt;p&gt;没有特殊需求直接放在工程根目录下就可以。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="java" scheme="https://note.0moe.cn/tags/java/"/>
-    
-    <category term="服务器" scheme="https://note.0moe.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    <category term="springboot" scheme="https://note.0moe.cn/tags/springboot/"/>
-    
-    <category term="ops" scheme="https://note.0moe.cn/tags/ops/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gitlab的specificRunner安装与注册</title>
-    <link href="https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/"/>
-    <id>https://note.0moe.cn/2019/08/26/Gitlab%E7%9A%84specificRunner%E5%AE%89%E8%A3%85%E4%B8%8E%E6%B3%A8%E5%86%8C/</id>
-    <published>2019-08-26T09:12:01.000Z</published>
-    <updated>2019-08-28T09:33:16.604Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Gitlab的specificRunner安装与注册&quot;&gt;&lt;a href=&quot;#Gitlab的specificRunner安装与注册&quot; class=&quot;headerlink&quot; title=&quot;Gitlab的specificRunner安装与注册&quot;&gt;&lt;/a&gt;Gitlab的specificRunner安装与注册&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这里使用docker版本的specificRunner，以下命令可直接使用。&lt;/p&gt;
-&lt;p&gt;注册时必须须替换&lt;code&gt;url&lt;/code&gt;和 &lt;code&gt;registration-token&lt;/code&gt;，其他项可按需求更改。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="脚本,随笔" scheme="https://note.0moe.cn/tags/%E8%84%9A%E6%9C%AC-%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>针对业务场景的解决方案</title>
-    <link href="https://note.0moe.cn/2019/08/15/%E9%92%88%E5%AF%B9%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <id>https://note.0moe.cn/2019/08/15/%E9%92%88%E5%AF%B9%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
-    <published>2019-08-15T11:52:52.000Z</published>
-    <updated>2021-01-13T02:23:46.211Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;针对业务场景的解决方案&quot;&gt;&lt;a href=&quot;#针对业务场景的解决方案&quot; class=&quot;headerlink&quot; title=&quot;针对业务场景的解决方案&quot;&gt;&lt;/a&gt;针对业务场景的解决方案&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​        这是一个系列专题，是根据我所经历的具体的业务场景所用到的解决方案和技术架构设计的一个汇总。&lt;/p&gt;
-&lt;p&gt;​        一方面是对一直以来的经历做一个总结，在以后做项目的时候有一个基础的想法。&lt;/p&gt;
-&lt;p&gt;​        另一方面是秉承这开源的精神，希望大家在接到甲方爸爸的需求时候，起码一个基本的解决方案的思路方向，不至于心里没底。&lt;/p&gt;
-&lt;p&gt;​        如果针对某一场景，在以后的工作中有更好的解决方案，我也会更新进来并说明原因及优劣。&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="解决方案" scheme="https://note.0moe.cn/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DDD项目结构（领域驱动设计）</title>
-    <link href="https://note.0moe.cn/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/"/>
-    <id>https://note.0moe.cn/2019/07/28/DDD%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%EF%BC%88%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%89/</id>
-    <published>2019-07-27T16:00:00.000Z</published>
-    <updated>2019-07-29T16:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;DDD项目结构（领域驱动设计）&quot;&gt;&lt;a href=&quot;#DDD项目结构（领域驱动设计）&quot; class=&quot;headerlink&quot; title=&quot;DDD项目结构（领域驱动设计）&quot;&gt;&lt;/a&gt;DDD项目结构（领域驱动设计）&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;DDD项目结构（领域驱动设计）这种工程结构模型我接触了一年多，虽然每个人都有不同的理解，不过相比于MVC的工程结构，对于代码结构的清晰度，还有业务逻辑的分层方面，DDD都是优于MVC的。&lt;/p&gt;
-&lt;p&gt;尽管每个人对DDD模型的理解不同，但大家的思路总归是一致的（api、app、domain、infra），争议之处在于一些包放置的层级以及代码分层。&lt;/p&gt;
-&lt;p&gt;因此这里记录了对DDD工程结构的理解，以后我会不定期更新。&lt;/p&gt;
-&lt;p&gt;互相分享，互相学习。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="工程结构" scheme="https://note.0moe.cn/categories/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/"/>
-    
-    <category term="spring" scheme="https://note.0moe.cn/categories/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/spring/"/>
-    
-    <category term="微服务" scheme="https://note.0moe.cn/categories/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/spring/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-    <category term="工程结构,DDD" scheme="https://note.0moe.cn/tags/%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84-DDD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MyBatis拦截器--从基础到与Spring Boot整合</title>
-    <link href="https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/"/>
-    <id>https://note.0moe.cn/2019/07/28/MyBatis%E6%8B%A6%E6%88%AA%E5%99%A8--%E4%BB%8E%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%8ESpring%20Boot%E6%95%B4%E5%90%88/</id>
-    <published>2019-07-27T16:00:00.000Z</published>
-    <updated>2019-07-27T16:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;h3 id=&quot;MyBatis拦截器–从基础到与Spring-Boot整合&quot;&gt;&lt;a href=&quot;#MyBatis拦截器–从基础到与Spring-Boot整合&quot; class=&quot;headerlink&quot; title=&quot;MyBatis拦截器–从基础到与Spring Boot整合&quot;&gt;&lt;/a&gt;MyBatis拦截器–从基础到与Spring Boot整合&lt;/h3&gt;&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;MyBatis拦截器是Java持久层框架，最近在研究拦截器的写法。本以为会很复杂，实际上从使用上来说，是很简单的。&lt;/p&gt;
-&lt;p&gt;本文主要介绍的时各个&lt;strong&gt;方法&lt;/strong&gt;和&lt;strong&gt;注解&lt;/strong&gt;的&lt;code&gt;含义&lt;/code&gt;及&lt;code&gt;使用方式&lt;/code&gt;，并且与springboot进行简单的整合。&lt;/p&gt;</summary>
-    
-    
-    
     
   </entry>
   

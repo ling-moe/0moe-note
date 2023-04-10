@@ -20,7 +20,8 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
-        context: ./conf
+        context: .
+        file: ./conf/Dockerfile
         push: true
         tags: dawnsouther/0moe-note:latest
     - name: SSH-Compose

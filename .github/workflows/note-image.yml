@@ -29,4 +29,4 @@ jobs:
         host: ${{ secrets.NOTE_HOST }} # Remote server address / ip - required
         user: ${{ secrets.NOTE_USER }} # Remote server user - required
         private_key: ${{secrets.NOTE_PRIVATE_KEY}} # Private ssh key registered on the remote server - required
-        command: docker pull ghcr.io/dawnsouther/0moe-note:latest & docker-compose -f /0moe/docker-compose.yml up -d --force-recreate note
+        command: docker pull ghcr.io/dawnsouther/0moe-note:latest && docker-compose -f /0moe/docker-compose.yml up -d --force-recreate note

@@ -35,3 +35,4 @@ jobs:
         ssh_user: ${{ secrets.NOTE_USER }}
         # Prefix for docker-compose containers.
         docker_compose_prefix: note
+        docker_compose_filename: /0moe/docker-compose.yml

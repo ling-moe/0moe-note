@@ -23,7 +23,7 @@ jobs:
         context: .
         file: ./conf/Dockerfile
         push: true
-        tags: dawnsouther/0moe-note:latest
+        tags: ghcr.io/dawnsouther/0moe-note:latest
     - name: SSH-Compose
       uses: matiasnu/github-action-ssh-docker-compose@v2.0.1
       with:

@@ -22,7 +22,7 @@ jobs:
       with:
         context: ./conf
         push: true
-        tags: dawnsouther/0moe-note:latest,dawnsouther/0moe-note:${{ github.event.pull_request.head.sha }}
+        tags: dawnsouther/0moe-note:latest
     - name: SSH-Compose
       uses: matiasnu/github-action-ssh-docker-compose@v2.0.1
       with:

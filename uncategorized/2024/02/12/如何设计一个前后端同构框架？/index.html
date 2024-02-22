@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://picx.zhimg.com/80/v2-a6ef14ed3381b376c10f49a2924b2185_720w.png?source=d16d100b">
 <meta property="article:published_time" content="2024-02-12T04:55:50.000Z">
-<meta property="article:modified_time" content="2024-02-22T12:59:40.989Z">
+<meta property="article:modified_time" content="2024-02-22T13:55:15.985Z">
 <meta property="article:author" content="Dawn_南风">
 <meta property="article:tag" content="Dawn_南风">
 <meta property="article:tag" content="南风">
@@ -332,8 +332,7 @@
 <p>Kotlin作为一门语言，本身的定位就是一门多平台语言。其中最知名的框架就是Jetpack Compose。这是是一个优秀的跨平台开发框架，重点放在移动端，特别是Android端。尽管它可以编译为pc端原生程序，在Web开发中有Kotlin&#x2F;JS和Kotlin&#x2F;Wasm来支持，但与JavaScript的互操作性仍然存在一些麻烦。相关的跨平台框架实现如Kivsion可以与原生JavaScript或React框架集成，但在开发体验上，编译速度慢且Dom操作复杂。React只能以组件的方式使用，如果在其中使用原生HTML标签，就需要比较复杂的、套娃式的声明。如果要使用kotlin，则需要等待其Kotlin&#x2F;Wasm模块的成熟，或者Kotlin&#x2F;JS的进一步优化</p>
 <p>JavaScript本身作为浏览器原生语言无须多言，并且它还有nodeJS来支持服务端编程，但是由于其原生的弱类型不利于团队协作，所以我选择使用TypeScript。JavaScript的单线程问题可以用Woker Thread来解决，这一套解决方案在服务端和浏览器端都适用。异步嵌套的问题可以用async&#x2F;await来解决。到这一步，似乎已经没有比TypeScript更合适的语言了，我们选择使用它来实现我们的前后端同构框架。</p>
 <h3 id="Angular-NestJS"><a href="#Angular-NestJS" class="headerlink" title="Angular + NestJS"></a>Angular + NestJS</h3><p>前端有很多的选择：Vue、React、Angular、Svelte、JQuery等。但是其中很多都是一个库（Library），而非一个框架（Framework）。</p>
-<p><img src="https://picx.zhimg.com/80/v2-a6ef14ed3381b376c10f49a2924b2185_720w.png?source=d16d100b" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>Library与Framework对比</p>
+<p><img src="https://picx.zhimg.com/80/v2-a6ef14ed3381b376c10f49a2924b2185_720w.png?source=d16d100b" srcset="/img/loading.gif" lazyload alt="img"><br>Library与Framework对比</p>
 <p>这里我们主要讨论Vue、React和Angular，其他的可以选择基本是要么与上述三种选择相似，要么以Library居多，不需要过多讨论。</p>
 <p>考虑到React被官方定位为一个UI库，其生态基本都是由社区维护，更适合构建组件而非整个应用程序。且React 18已经有两年没有发生重大更新，后面的维护是个问题。不过，现在比较火热的是基于react的nextjs，这个框架让我又想起了PHP、JSP的模板渲染时代。我认为前后端分离开发是刚需，可以有效的提高效率，因此NextJS不满足我们的需求。</p>
 <p>Vue的定位是一个渐进式框架，它是一个约束力比较低的框架。Vue的工程化虽然在某些方面表现不俗，但相较于Angular的全面性、官方最佳实践、约束力等有些欠缺。这里也需要提一下基于vue的NuxtJS，它的定位与NextJS类似，同样不满足我们的需求。</p>
